@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CultureInGdansk", "CultureInGdansk\CultureInGdansk.csproj", "{3EEEF16D-88B1-4333-8DA7-4BD46E50D7C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{2C841FE3-BA0B-4402-910E-041EB9550102}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{ABE783D5-734B-4A37-94C7-DFFCE449A944}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3EEEF16D-88B1-4333-8DA7-4BD46E50D7C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EEEF16D-88B1-4333-8DA7-4BD46E50D7C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EEEF16D-88B1-4333-8DA7-4BD46E50D7C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C841FE3-BA0B-4402-910E-041EB9550102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C841FE3-BA0B-4402-910E-041EB9550102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C841FE3-BA0B-4402-910E-041EB9550102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C841FE3-BA0B-4402-910E-041EB9550102}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABE783D5-734B-4A37-94C7-DFFCE449A944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABE783D5-734B-4A37-94C7-DFFCE449A944}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABE783D5-734B-4A37-94C7-DFFCE449A944}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABE783D5-734B-4A37-94C7-DFFCE449A944}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
