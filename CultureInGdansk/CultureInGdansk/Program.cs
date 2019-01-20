@@ -13,6 +13,7 @@ namespace CultureInGdansk
                 DisplayMenu();
 
                 userInput = Console.ReadKey();
+                Console.ReadLine();
                 switch (userInput.KeyChar.ToString())
                 {
                     case "1":
