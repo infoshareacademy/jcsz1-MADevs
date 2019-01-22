@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JSONparser
 {
-    class Events
+    public class Events
     {
 
         public class Entry
@@ -117,15 +117,6 @@ namespace JSONparser
             public string end { get; set; }
         }
 
-        private static void JsonReader()
-        {
-            using (StreamReader JasonStream = new StreamReader("Events.json"))
-            {
-                // Read the stream to a string, and write the string to the console.
-                string JsonFile = JasonStream.ReadToEnd();
-                Console.WriteLine(JsonFile);
-            }
-        }
     }
 
     

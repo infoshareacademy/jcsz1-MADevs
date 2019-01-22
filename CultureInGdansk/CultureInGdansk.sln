@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{ABE783D5-734B-4A37-94C7-DFFCE449A944}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONparser", "JSONparser\JSONparser.csproj", "{8D646073-596F-4ECB-B1B3-7DEB9AE5A8DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonReader", "JSONparser\JsonReader.csproj", "{8D646073-596F-4ECB-B1B3-7DEB9AE5A8DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
