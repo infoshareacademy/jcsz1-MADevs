@@ -58,6 +58,6 @@ namespace CultureInGdansk
             //string result = Console.ReadLine();
 
             //return Convert.ToInt32(result);
-        }
+        }            
     }
 }
