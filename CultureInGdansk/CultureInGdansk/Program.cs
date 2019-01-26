@@ -6,34 +6,58 @@ namespace CultureInGdansk
     {
         static void Main(string[] args)
         {
+            ConsoleKeyInfo userInput;
+
+            do
             {
-                
-                
-                    // Initialize array for example.
-                    char[] array = new char[4];
-                    array[0] = 'p';
-                    array[1] = 'e';
-                    array[2] = 'r';
-                    array[3] = 'l';
+                DisplayMenu();
 
-                    // Display the array.
-                    for (int i = 0; i < array.Length; i++)
-                    {
-                        Console.Write(array[i]);
-                    }
-                    Console.WriteLine();
+                userInput = Console.ReadKey();
+                Console.ReadLine();
+                switch (userInput.KeyChar.ToString())
+                {
+                    case "1":
+                        Console.Clear();
+                        Console.WriteLine("\nWcisnieto 1");
+                        break;
+                    case "2":
+                        Console.Clear();
+                        Console.WriteLine("\nWcisnieto 2");
+                        break;
+                    case "3":
+                        Console.Clear();
+                        Console.WriteLine("\nWcisnieto 3");
+                        break;
+                    // itd.
 
-                    // Resize the array from 4 to 5 elements.
-                    Array.Resize(ref array, 5);
-                array[4] = '5';
-                    // Display the array that has been resized.
-                    for (int i = 0; i < array.Length; i++)
-                    {
-                        Console.Write(array[i]);
-                    }
-                    Console.WriteLine();
-                Console.ReadKey();
-            }
-    }
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("\nNiema takiej opcji. Spróbuj jeszcze raz");
+                        break;
+                }
+
+            } while (userInput.Key != ConsoleKey.Escape);
+
+
+        }
+
+
+        static public void DisplayMenu()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Welcome to Gdańska Kultura application");
+            Console.WriteLine("----------------------------");
+            Console.WriteLine("1. Wczytaj dane z pliku");
+            Console.WriteLine("2. Wyszukaj wydarzenie");
+            Console.WriteLine("3. Wyświetl szczegóły wydarzenia");
+            Console.WriteLine("Press ESC to Exit");
+            Console.WriteLine();
+            Console.WriteLine("----------------------------");
+            Console.WriteLine();
+            Console.Write("Enter your selection: ");
+            //string result = Console.ReadLine();
+
+            //return Convert.ToInt32(result);
+        }            
     }
 }
