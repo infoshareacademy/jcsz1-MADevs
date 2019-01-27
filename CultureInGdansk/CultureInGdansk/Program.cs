@@ -1,5 +1,4 @@
 ﻿using System;
-using Common;
 namespace CultureInGdansk
 {
     class Program
