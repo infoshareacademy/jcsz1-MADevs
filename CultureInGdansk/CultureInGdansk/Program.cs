@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Common;
 namespace CultureInGdansk
 {
     class Program
@@ -58,6 +58,10 @@ namespace CultureInGdansk
             //string result = Console.ReadLine();
 
             //return Convert.ToInt32(result);
-        }            
+        }
+
+        
+
+        
     }
 }

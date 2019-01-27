@@ -7,9 +7,9 @@ using Newtonsoft.Json.Linq;
 
 namespace Common
 {
-    class Program
+    public class JsonParser
     {
-        static void Main(string[] args)
+        static void JsonReader()
         {
 
             using (StreamReader JasonStream = new StreamReader("Events.json"))
