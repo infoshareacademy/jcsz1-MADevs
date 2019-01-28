@@ -18,7 +18,8 @@ namespace Common
 
                 JObject Events = JObject.Parse(JsonFile);
                 IList<JToken> entry = Events["result"]["entry"].Children().ToList();
-               
+
+
                 Console.WriteLine("Place: " + entry[1]["place"]["name"]);
                 Console.WriteLine("\nDetailed place: " + entry[1]["place"]["subname"]);
                 Console.WriteLine("\nDate of event: " + entry[1]["startDate"]);
