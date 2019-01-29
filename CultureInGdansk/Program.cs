@@ -1,10 +1,22 @@
 ﻿using System;
+using System.IO;
+
 namespace CultureInGdansk
 {
     class Program
     {
+
+
         static void Main(string[] args)
         {
+
+
+            JsonReader ReadJson = new JsonReader
+            {
+            };
+
+
+
             ConsoleKeyInfo userInput;
 
             do
@@ -17,7 +29,7 @@ namespace CultureInGdansk
                 {
                     case "1":
                         Console.Clear();
-                        Console.WriteLine("\nWcisnieto 1");
+                        ReadJson.JsonRead();
                         break;
                     case "2":
                         Console.Clear();
@@ -26,6 +38,10 @@ namespace CultureInGdansk
                     case "3":
                         Console.Clear();
                         Console.WriteLine("\nWcisnieto 3");
+                        break;
+                    case "4":
+                        Console.Clear();
+                        ReadJson.JsonUpdate();
                         break;
                     // itd.
 
@@ -49,6 +65,7 @@ namespace CultureInGdansk
             Console.WriteLine("1. Wczytaj dane z pliku");
             Console.WriteLine("2. Wyszukaj wydarzenie");
             Console.WriteLine("3. Wyświetl szczegóły wydarzenia");
+            Console.WriteLine("4. Zaktualizuj plik");
             Console.WriteLine("Press ESC to Exit");
             Console.WriteLine();
             Console.WriteLine("----------------------------");
@@ -58,9 +75,5 @@ namespace CultureInGdansk
 
             //return Convert.ToInt32(result);
         }
-
-        
-
-        
     }
 }
