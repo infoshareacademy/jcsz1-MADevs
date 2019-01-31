@@ -29,11 +29,16 @@ namespace CultureInGdansk
                     JObject Events = JObject.Parse(JsonFile);
                     IList<JToken> entry = Events["result"]["entry"].Children().ToList();
 
-                    Console.WriteLine("Place: " + entry[1]["place"]["name"]);
-                    Console.WriteLine("\nDetailed place: " + entry[1]["place"]["subname"]);
-                    Console.WriteLine("\nDate of event: " + entry[1]["startDate"]);
-                    Console.WriteLine("\nDate of event end: " + entry[1]["endDate"]);
-                    Console.WriteLine("\nDescription: " + entry[1]["descShort"]);
+                    for (int i = 0; i < entry.Count; i++)
+                    {
+                        Console.WriteLine("Place: " + entry[i]["place"]["name"]);
+                        Console.WriteLine("\nDetailed place: " + entry[i]["place"]["subname"]);
+                        Console.WriteLine("\nDate of event: " + entry[i]["startDate"]);
+                        Console.WriteLine("\nDate of event end: " + entry[i]["endDate"]);
+                        Console.WriteLine("\nDescription: " + entry[i]["descShort"]);
+                        Console.WriteLine("=====================================================================");
+                    }         
+                    
 
                     Console.ReadLine();
                     Console.Clear();
