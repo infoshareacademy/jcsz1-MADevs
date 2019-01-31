@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Common
+namespace CultureInGdansk
 {
+    
     public class Events
     {
-
         public class Entry
         {
             public string id { get; set; }
