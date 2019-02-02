@@ -13,7 +13,7 @@ namespace CultureInGdansk
         {
 
 
-            JsonReader ReadJson = new JsonReader{};
+            //JsonReader ReadJson = new JsonReader{};
             Tickets CheckTickets = new Tickets {};
 
 
@@ -30,7 +30,7 @@ namespace CultureInGdansk
                 {
                     case "1":
                         Console.Clear();
-                        ReadJson.JsonRead();
+                        //ReadJson.JsonRead();
                         break;
                     case "2":
                         Console.Clear();
@@ -48,7 +48,7 @@ namespace CultureInGdansk
                         GetListOfAllEvents ListEvents = new GetListOfAllEvents();
                         var List = ListEvents.Events();
 
-                            for (int i = 0; i < 5; i++)
+                            for (int i = 0; i < List.Count; i++)
                             {
                                 Console.WriteLine($"____WYDARZENIE {i}____");
                                 Console.WriteLine("Nazwa: " + List[i]["name"]);
@@ -96,7 +96,7 @@ namespace CultureInGdansk
                         break;
                     case "5":
                         Console.Clear();
-                        ReadJson.JsonUpdate();
+                        //ReadJson.JsonUpdate();
                         break;
                     default:
                         Console.Clear();
