@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace CultureInGdansk
 {
-    class GetListOfAllEvents
+    public class GetListOfAllEvents
     {
 
         public IList<JToken> Events()
