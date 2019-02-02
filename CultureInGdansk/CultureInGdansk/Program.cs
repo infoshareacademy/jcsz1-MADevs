@@ -26,7 +26,7 @@ namespace CultureInGdansk
                         Console.WriteLine("\nWcisnieto 2");
                         break;
                     case "3":
-                        ConsoleKeyInfo userChooseEvent;
+                        string userChooseEvent;
                         do
                         {
                         Console.Clear();
@@ -51,18 +51,20 @@ namespace CultureInGdansk
                             Console.WriteLine("Wybierz Q aby wyjść z listy");
                             Console.WriteLine("\n");
                             Console.Write("Twój wybór: ");
-                            userChooseEvent = Console.ReadKey();
-                            Console.ReadLine();
-                            //userChooseEvent.KeyChar.ToString();
-                           
+                            userChooseEvent = Console.ReadLine();
 
-                            if (userChooseEvent.Key != ConsoleKey.Q)
+                            while (!(userChooseEvent.All(char.IsDigit)) && userChooseEvent != "Q" && userChooseEvent != "q")
+                            {
+                                Console.WriteLine("\nWybierz numer wydarzenia albo Q żeby wyjść z listy.");
+                                Console.Write("Twój wybór: ");
+                                userChooseEvent = Console.ReadLine();
+                            }
+
+                            if (userChooseEvent != "Q" && userChooseEvent != "q")
                             {
                                 Console.Clear();
 
-                                int index = Convert.ToInt32(userChooseEvent.KeyChar);
-
-                                Console.WriteLine("Wartosc index to:" + index);
+                                var index = Convert.ToInt32(userChooseEvent);
 
                                 Console.WriteLine("Szczegóły wydarzenia o nazwie: " + List[index]["name"]);
                                 Console.WriteLine("--------------------");
@@ -74,7 +76,7 @@ namespace CultureInGdansk
                                 Console.ReadLine();
                             }
                             Console.Clear();
-                        } while (userChooseEvent.Key != ConsoleKey.Q);
+                        } while (userChooseEvent != "Q" && userChooseEvent != "q");
 
                         break;
 
