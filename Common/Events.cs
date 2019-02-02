@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -24,6 +25,7 @@ namespace CultureInGdansk
             public string descShort { get; set; }
             public Tickets tickets { get; set; }
             public Schedule schedule { get; set; }
+            
         }
 
         public class Place
