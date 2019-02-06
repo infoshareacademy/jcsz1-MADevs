@@ -13,7 +13,7 @@ namespace CultureInGdansk
         {
 
 
-            //JsonReader ReadJson = new JsonReader{};
+            JsonReader ReadJson = new JsonReader{};
             Tickets CheckTickets = new Tickets {};
 
 
@@ -30,7 +30,7 @@ namespace CultureInGdansk
                 {
                     case "1":
                         Console.Clear();
-                        //ReadJson.JsonRead();
+                        ReadJson.JsonRead();
                         break;
                     case "2":
                         Console.Clear();
