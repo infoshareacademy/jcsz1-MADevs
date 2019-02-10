@@ -96,7 +96,7 @@ namespace CultureInGdansk
                         break;
                     case "5":
                         Console.Clear();
-                        //ReadJson.JsonUpdate();
+                        ReadJson.JsonUpdate();
                         break;
                     default:
                         Console.Clear();
