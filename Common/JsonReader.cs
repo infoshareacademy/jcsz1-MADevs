@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -37,8 +38,8 @@ namespace CultureInGdansk
                         Console.WriteLine("\nDate of event end: " + entry[i]["endDate"]);
                         Console.WriteLine("\nDescription: " + entry[i]["descShort"]);
                         Console.WriteLine("=====================================================================");
-                    }         
-                    
+                    }
+
 
                     Console.ReadLine();
                     Console.Clear();
@@ -46,25 +47,26 @@ namespace CultureInGdansk
             }
             else
             {
-                Console.WriteLine("File does not exist. Please copy the file Events.json into C: directory");
-                if (File.Exists(@"C:\Events.Json"))
-                {
-                    File.Copy(@"C:\Events.Json", Path);
-                }
-                else
-                {
-                    Console.ReadKey();
-                    Console.Clear();
-                }
-
+                Console.WriteLine($"File does not exist. Please copy the file Events.json into {Directory.GetCurrentDirectory()} directory");
             }
         }
 
         public void JsonUpdate()
         {
-        File.Delete(Path);
-        File.Copy(@"C:\Events.Json", Path);
-
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\Upload");
+            if (File.Exists(Directory.GetCurrentDirectory() + @"\Upload" + @"\Events.json"))
+            {
+                if (File.Exists(Path))
+                {
+                    File.Delete(Path);
+                }
+                File.Copy(Directory.GetCurrentDirectory()+@"\Upload"+@"\Events.json",Path);
+                Console.WriteLine("Events database updated !!");
+            }
+            else
+            {
+                Console.WriteLine($"Please copy the file Events.json into {Directory.GetCurrentDirectory()}{@"\Upload"} directory");
+            }
         }
     }
 }
