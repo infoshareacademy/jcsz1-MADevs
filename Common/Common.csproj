@@ -51,7 +51,9 @@
     <Compile Include="Tickets.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Events.json" />
+    <None Include="Events.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

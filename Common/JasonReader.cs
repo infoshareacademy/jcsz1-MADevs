@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -46,15 +47,26 @@ namespace CultureInGdansk
             }
             else
             {
-                Console.WriteLine("File does not exist. Please copy the file Events.json into application working directory");
+                Console.WriteLine($"File does not exist. Please copy the file Events.json into {Directory.GetCurrentDirectory()} directory");
             }
         }
 
         public void JsonUpdate()
         {
-            File.Delete(Path);
-            File.Copy(@"C:\Events.Json", Path);
-
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\Upload");
+            if (File.Exists(Directory.GetCurrentDirectory() + @"\Upload" + @"\Events.json"))
+            {
+                if (File.Exists(Path))
+                {
+                    File.Delete(Path);
+                }
+                File.Copy(Directory.GetCurrentDirectory()+@"\Upload"+@"\Events.json",Path);
+                Console.WriteLine("Events database updated !!");
+            }
+            else
+            {
+                Console.WriteLine($"Please copy the file Events.json into {Directory.GetCurrentDirectory()}{@"\Upload"} directory");
+            }
         }
     }
 }
