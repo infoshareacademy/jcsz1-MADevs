@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+
 
 
 namespace CultureInGdansk
@@ -79,8 +82,17 @@ namespace CultureInGdansk
             //string result = Console.ReadLine();
 
             //return Convert.ToInt32(result);
+            var EventsList = new JsonReadLinq();
+
+            IEnumerable<Events.Entry> Events = JsonReadLinq.GetEvents();
+
+            var event1 = Events.Where(e => e.name == "Sztuka" );
+           // Console.WriteLine($"{event1}");
         }
 
-         
+     
+            
+            
+        
     }
 }

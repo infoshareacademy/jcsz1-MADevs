@@ -46,10 +46,14 @@
   <ItemGroup>
     <Compile Include="Events.cs" />
     <Compile Include="JsonReader.cs" />
+    <Compile Include="JsonReadLinq.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tickets.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Events.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

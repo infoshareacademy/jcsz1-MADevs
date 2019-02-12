@@ -9,4 +9,10 @@
     <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Events2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
