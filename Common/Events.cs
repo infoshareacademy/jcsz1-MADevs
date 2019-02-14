@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
-namespace CultureInGdansk
+namespace Common
 {
-    
     public class Events
     {
         public class Entry
@@ -116,8 +112,5 @@ namespace CultureInGdansk
             public string start { get; set; }
             public string end { get; set; }
         }
-
     }
-
-    
 }

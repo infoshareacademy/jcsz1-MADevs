@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CultureInGdansk", "CultureInGdansk\CultureInGdansk.csproj", "{3EEEF16D-88B1-4333-8DA7-4BD46E50D7C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{ABE783D5-734B-4A37-94C7-DFFCE449A944}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{18666175-5BB0-48AB-92E7-D927F303A7BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{3EEEF16D-88B1-4333-8DA7-4BD46E50D7C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EEEF16D-88B1-4333-8DA7-4BD46E50D7C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EEEF16D-88B1-4333-8DA7-4BD46E50D7C6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABE783D5-734B-4A37-94C7-DFFCE449A944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABE783D5-734B-4A37-94C7-DFFCE449A944}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABE783D5-734B-4A37-94C7-DFFCE449A944}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABE783D5-734B-4A37-94C7-DFFCE449A944}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18666175-5BB0-48AB-92E7-D927F303A7BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18666175-5BB0-48AB-92E7-D927F303A7BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18666175-5BB0-48AB-92E7-D927F303A7BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18666175-5BB0-48AB-92E7-D927F303A7BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
