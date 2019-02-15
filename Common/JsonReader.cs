@@ -59,11 +59,11 @@ namespace Common
             Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\Upload");
             if (File.Exists(Directory.GetCurrentDirectory() + @"\Upload" + @"\Events.json"))
             {
-                if (File.Exists(Path))
+                if (File.Exists(_path))
                 {
-                    File.Delete(Path);
+                    File.Delete(_path);
                 }
-                File.Copy(Directory.GetCurrentDirectory()+@"\Upload"+@"\Events.json",Path);
+                File.Copy(Directory.GetCurrentDirectory()+@"\Upload"+@"\Events.json",_path);
                 Console.WriteLine("Events database updated !!");
             }
             else

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Common
 {
-    class GetListOfAllEvents
+    public class GetListOfAllEvents
     {
         public IList<JToken> Events()
         {

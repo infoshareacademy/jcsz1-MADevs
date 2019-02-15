@@ -128,7 +128,7 @@ namespace CultureInGdansk
             Console.Write("Twój wybór: ");
 
             Console.Write("Enter your selection: ");
-            string result = Console.ReadLine();
+            //string result = Console.ReadLine();
 
             //return Convert.ToInt32(result);
             //var EventsList = new JsonReadLinq();
