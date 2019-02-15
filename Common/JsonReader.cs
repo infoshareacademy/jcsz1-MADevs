@@ -1,34 +1,27 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
-namespace CultureInGdansk
+namespace Common
 {
     public class JsonReader
     {
-
-        private string Path = Directory.GetCurrentDirectory() + @"\Events.json";
-        private string PathRoot = Directory.GetCurrentDirectory();
-
-
+        private readonly string _path = Directory.GetCurrentDirectory() + @"\Events.json";
+        //private string PathRoot = Directory.GetCurrentDirectory(); // It's never used, remove if not needed
 
         public void JsonRead()
         {
-            if (File.Exists(Path))
+            if (File.Exists(_path))
             {
 
-                using (StreamReader JasonStream = new StreamReader("Events.json"))
+                using (StreamReader jsonStream = new StreamReader("Events.json"))
                 {
+                    string jsonFile = jsonStream.ReadToEnd();
 
-
-                    string JsonFile = JasonStream.ReadToEnd();
-
-                    JObject Events = JObject.Parse(JsonFile);
-                    IList<JToken> entry = Events["result"]["entry"].Children().ToList();
+                    JObject events = JObject.Parse(jsonFile);
+                    IList<JToken> entry = events["result"]["entry"].Children().ToList();
 
                     for (int i = 0; i < entry.Count; i++)
                     {
@@ -47,7 +40,17 @@ namespace CultureInGdansk
             }
             else
             {
-                Console.WriteLine($"File does not exist. Please copy the file Events.json into {Directory.GetCurrentDirectory()} directory");
+                //Console.WriteLine($"File does not exist. Please copy the file Events.json into {Directory.GetCurrentDirectory()} directory");
+                Console.WriteLine("File does not exist. Please copy the file Events.json into C: directory");
+                if (File.Exists(@"C:\Events.Json"))
+                {
+                    File.Copy(@"C:\Events.Json", _path);
+                }
+                else
+                {
+                    Console.ReadKey();
+                    Console.Clear();
+                }
             }
         }
 
@@ -67,6 +70,8 @@ namespace CultureInGdansk
             {
                 Console.WriteLine($"Please copy the file Events.json into {Directory.GetCurrentDirectory()}{@"\Upload"} directory");
             }
+            File.Delete(_path);
+            File.Copy(@"C:\Events.Json", _path);
         }
     }
 }

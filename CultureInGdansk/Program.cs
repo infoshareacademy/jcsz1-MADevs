@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
-
+using System.Linq;
+using Common;
 
 namespace CultureInGdansk
 {
@@ -124,9 +124,24 @@ namespace CultureInGdansk
             Console.WriteLine();
             Console.WriteLine("----------------------------");
             Console.WriteLine();
+
             Console.Write("Twój wybór: ");
+
+            Console.Write("Enter your selection: ");
+            string result = Console.ReadLine();
+
+            //return Convert.ToInt32(result);
+            //var EventsList = new JsonReadLinq();
+
+            //IEnumerable<Events.Entry> Events = JsonReadLinq.GetEvents();
+
+            //var event1 = Events.Where(e => e.name == "Sztuka" );
+           // Console.WriteLine($"{event1}");
         }
 
-         
+     
+            
+            
+        
     }
 }

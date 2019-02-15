@@ -1,25 +1,23 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 
-namespace CultureInGdansk
+namespace Common
 {
     public class Tickets
     {
         public void TicketInfo()
         {
-            using (StreamReader JasonStream = new StreamReader("Events.json"))
-            {         
-                string JsonFile = JasonStream.ReadToEnd();
+            using (StreamReader jsonStream = new StreamReader("Events.json"))
+            {
+                string jsonFile = jsonStream.ReadToEnd();
 
-                JObject Events = JObject.Parse(JsonFile);
-                IList<JToken> entry = Events["result"]["entry"].Children().ToList();
+                JObject events = JObject.Parse(jsonFile);
+                IList<JToken> entry = events["result"]["entry"].Children().ToList();
 
-                object[] Tickets = new object[entry.Count];
+                object[] tickets = new object[entry.Count];
 
                 Console.WriteLine("Wybierz rodzaj biletów: ");
                 Console.WriteLine("1. Darmowe");
@@ -40,15 +38,15 @@ namespace CultureInGdansk
                             Console.Clear();
                             for (int i = 0; i < entry.Count; i++)
                             {
-                                Tickets[i] = entry[i]["tickets"]["type"];
-                                                               
-                                if (Tickets[i].ToString() == "free")
+                                tickets[i] = entry[i]["tickets"]["type"];
+
+                                if (tickets[i].ToString() == "free")
                                 {
                                     Console.WriteLine("Place: " + entry[i]["place"]["name"]);
                                     Console.WriteLine("\nDetailed place: " + entry[i]["place"]["subname"]);
                                     Console.WriteLine("\nDate of event: " + entry[i]["startDate"]);
                                     Console.WriteLine("\nDate of event end: " + entry[i]["endDate"]);
-                                    Console.WriteLine("\nDescription: " + entry[i]["descLong"]);                                    
+                                    Console.WriteLine("\nDescription: " + entry[i]["descLong"]);
                                     Console.WriteLine("===========================================================\n\n\n");
                                 }
                             }
@@ -57,9 +55,9 @@ namespace CultureInGdansk
                             Console.Clear();
                             for (int i = 0; i < entry.Count; i++)
                             {
-                                Tickets[i] = entry[i]["tickets"]["type"];
+                                tickets[i] = entry[i]["tickets"]["type"];
 
-                                if (Tickets[i].ToString() == "tickets")
+                                if (tickets[i].ToString() == "tickets")
                                 {
                                     Console.WriteLine("Place: " + entry[i]["place"]["name"]);
                                     Console.WriteLine("\nDetailed place: " + entry[i]["place"]["subname"]);
@@ -74,9 +72,9 @@ namespace CultureInGdansk
                             Console.Clear();
                             for (int i = 0; i < entry.Count; i++)
                             {
-                                Tickets[i] = entry[i]["tickets"]["type"];
+                                tickets[i] = entry[i]["tickets"]["type"];
 
-                                if (Tickets[i].ToString() == "tickets" || Tickets[i].ToString() == "free")
+                                if (tickets[i].ToString() == "tickets" || tickets[i].ToString() == "free")
                                 {
                                     Console.WriteLine("Place: " + entry[i]["place"]["name"]);
                                     Console.WriteLine("\nDetailed place: " + entry[i]["place"]["subname"]);
@@ -91,9 +89,9 @@ namespace CultureInGdansk
                             Console.Clear();
                             for (int i = 0; i < entry.Count; i++)
                             {
-                                Tickets[i] = entry[i]["tickets"]["type"];
+                                tickets[i] = entry[i]["tickets"]["type"];
 
-                                if (Tickets[i].ToString() == "unknown")
+                                if (tickets[i].ToString() == "unknown")
                                 {
                                     Console.WriteLine("Place: " + entry[i]["place"]["name"]);
                                     Console.WriteLine("\nDetailed place: " + entry[i]["place"]["subname"]);
@@ -109,12 +107,8 @@ namespace CultureInGdansk
                             Console.WriteLine("\nNiema takiej opcji. Spróbuj jeszcze raz");
                             break;
                     }
-
                 } while (userInput.Key != ConsoleKey.Escape);
-                   
-            }            
-
+            }
         }
-
     }
 }

@@ -1,29 +1,23 @@
-﻿using System;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 
-namespace CultureInGdansk
+namespace Common
 {
-    public class GetListOfAllEvents
+    class GetListOfAllEvents
     {
-
         public IList<JToken> Events()
         {
-            using (StreamReader JsonStream = new StreamReader("Events.json"))
+            using (StreamReader jsonStream = new StreamReader("Events.json"))
             {
-                string JsonFile = JsonStream.ReadToEnd();
+                string jsonFile = jsonStream.ReadToEnd();
 
-                JObject Events = JObject.Parse(JsonFile);
-                IList<JToken> entry = Events["result"]["entry"].Children().ToList();
+                JObject events = JObject.Parse(jsonFile);
+                IList<JToken> entry = events["result"]["entry"].Children().ToList();
 
                 return entry;
             }
-
         }
-
     }
 }
