@@ -13,6 +13,7 @@ namespace CultureInGdansk
         static void Main(string[] args)
         {
             JsonReader ReadJson = new JsonReader();
+            GetTickets CheckTickets = new GetTickets();
 
             while (!ReadJson.JsonInsert())
             {
@@ -98,35 +99,8 @@ namespace CultureInGdansk
 
                         break;
                     case "3":
-                        //string userChooseTicket;
-                        //do
-                        //{ 
-                        //Console.Clear();
-                        //Console.WriteLine("Wybierz rodzaj biletów: ");
-                        //Console.WriteLine("1. Darmowe");
-                        //Console.WriteLine("2. Płatne");
-                        //Console.WriteLine("3. Bez znaczenia");
-                        //Console.WriteLine("4. Nie podano");
-                        //Console.WriteLine("\nWybierz Q żeby powrócić do menu.");
-                        //userChooseTicket = Console.ReadLine();
-
-                        //GetTickets CheckTickets = new GetTickets();
-                        //var Ticket = CheckTickets.Events();
-
-                        //    switch (userChooseTicket)
-                        //    {
-                        //        case "1":
-                        //        userChooseTicket = "free";
-                        //        break;
-                        //    }
-                        //    for (int i = 0; i < Ticket.Count; i++)
-                        //    {
-                                                                
-                        //    }
-                                
-
-                        //}
-                        //while (userChooseTicket != "Q" && userChooseTicket != "q");
+                        Console.Clear();
+                        CheckTickets.TicketInfo();
                         break;
                     case "4":
                         Console.Clear();                        
