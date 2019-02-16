@@ -8,15 +8,19 @@ namespace CultureInGdansk
 {
     class Program
     {
+        
 
         static void Main(string[] args)
         {
+            JsonReader ReadJson = new JsonReader();
 
-
-            JsonReader ReadJson = new JsonReader{};
-            Tickets CheckTickets = new Tickets {};
-
-
+            while (!ReadJson.JsonInsert())
+            {
+                Console.WriteLine("Nie znaleziono pliku 'Events.Json'. Wgraj plik 'Events.Json' do katalogu C:");
+                Console.WriteLine("Wciśnij dowolny klawisz aby kontynuować ...");
+                Console.ReadKey();
+                Console.Clear();
+            }
 
             ConsoleKeyInfo userInput;
 
@@ -30,23 +34,26 @@ namespace CultureInGdansk
                 {
                     case "1":
                         Console.Clear();
-                        ReadJson.JsonRead();
+                        Console.WriteLine("\nWcisnieto 1");
+                        //var EventsList = new JsonReadLinq();
+
+                        //IEnumerable<Events.Entry> Events = JsonReadLinq.GetEvents();
+
+                        //var event1 = Events.Where(e => e.name == "Sztuka" );
+                        //Console.WriteLine($"{event1}");
+
                         break;
                     case "2":
-                        Console.Clear();
-                        Console.WriteLine("\nWcisnieto 2");
-                        break;
-                    case "3":
                         string userChooseEvent;
                         do
                         {
-                        Console.Clear();
+                            Console.Clear();
 
-                        Console.WriteLine("\n================LISTA WYDARZEŃ=========================");
-                        Console.WriteLine("\n");
+                            Console.WriteLine("\n================LISTA WYDARZEŃ=========================");
+                            Console.WriteLine("\n");
 
-                        GetListOfAllEvents ListEvents = new GetListOfAllEvents();
-                        var List = ListEvents.Events();
+                            GetListOfAllEvents ListEvents = new GetListOfAllEvents();
+                            var List = ListEvents.Events();
 
                             for (int i = 0; i < List.Count; i++)
                             {
@@ -90,13 +97,45 @@ namespace CultureInGdansk
                         } while (userChooseEvent != "Q" && userChooseEvent != "q");
 
                         break;
-                    case "4":
-                        Console.Clear();
-                        CheckTickets.TicketInfo();
+                    case "3":
+                        //string userChooseTicket;
+                        //do
+                        //{ 
+                        //Console.Clear();
+                        //Console.WriteLine("Wybierz rodzaj biletów: ");
+                        //Console.WriteLine("1. Darmowe");
+                        //Console.WriteLine("2. Płatne");
+                        //Console.WriteLine("3. Bez znaczenia");
+                        //Console.WriteLine("4. Nie podano");
+                        //Console.WriteLine("\nWybierz Q żeby powrócić do menu.");
+                        //userChooseTicket = Console.ReadLine();
+
+                        //GetTickets CheckTickets = new GetTickets();
+                        //var Ticket = CheckTickets.Events();
+
+                        //    switch (userChooseTicket)
+                        //    {
+                        //        case "1":
+                        //        userChooseTicket = "free";
+                        //        break;
+                        //    }
+                        //    for (int i = 0; i < Ticket.Count; i++)
+                        //    {
+                                                                
+                        //    }
+                                
+
+                        //}
+                        //while (userChooseTicket != "Q" && userChooseTicket != "q");
                         break;
-                    case "5":
-                        Console.Clear();
-                        ReadJson.JsonUpdate();
+                    case "4":
+                        Console.Clear();                        
+                        while (!ReadJson.JsonUpdate())
+                        {                            
+                            Console.ReadKey();
+                            Console.Clear();
+                        }
+                        Console.WriteLine("Baza wydarzeń została zaktualizowana !!");
                         break;
                     default:
                         Console.Clear();
@@ -115,11 +154,10 @@ namespace CultureInGdansk
             Console.WriteLine();
             Console.WriteLine("Witamy w aplikacji Gdańska Kultura");
             Console.WriteLine("----------------------------");
-            Console.WriteLine("1. Wczytaj dane z pliku");
-            Console.WriteLine("2. Wyszukaj wydarzenie");
-            Console.WriteLine("3. Wyświetl szczegóły wydarzenia");
-            Console.WriteLine("4. Wyświetl informacje o biletach");
-            Console.WriteLine("5. Zaktualizuj plik");
+            Console.WriteLine("1. Wyszukaj wydarzenie");
+            Console.WriteLine("2. Wyświetl szczegóły wydarzenia");
+            Console.WriteLine("3. Wyświetl informacje o biletach");
+            Console.WriteLine("4. Zaktualizuj bazę wydarzeń");
             Console.WriteLine("Q. Aby zamknąć aplikację");
             Console.WriteLine();
             Console.WriteLine("----------------------------");
@@ -131,12 +169,8 @@ namespace CultureInGdansk
             //string result = Console.ReadLine();
 
             //return Convert.ToInt32(result);
-            //var EventsList = new JsonReadLinq();
+            
 
-            //IEnumerable<Events.Entry> Events = JsonReadLinq.GetEvents();
-
-            //var event1 = Events.Where(e => e.name == "Sztuka" );
-           // Console.WriteLine($"{event1}");
         }
 
      

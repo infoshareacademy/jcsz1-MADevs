@@ -8,7 +8,7 @@ namespace Common
     {
         public static List<Events.Entry> GetEvents()
         {
-            return JsonConvert.DeserializeObject<List<Events.Entry>>(File.ReadAllText("Events2.json"));
+            return JsonConvert.DeserializeObject<List<Events.Entry>>(File.ReadAllText("Events.json"));
         }
     }
 }
