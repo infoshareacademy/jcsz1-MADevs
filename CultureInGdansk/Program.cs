@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Common;
 
 namespace CultureInGdansk
@@ -65,21 +66,28 @@ namespace CultureInGdansk
                                 Console.WriteLine("\n");
                             }
 
+
+                            
+                            
                             Console.WriteLine("\n");
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.WriteLine("Wybierz numer wydarzenia aby wyświetlić szczegóły");
                             Console.WriteLine("Wybierz Q aby wyjść z listy");
                             Console.WriteLine("\n");
                             Console.Write("Twój wybór: ");
+                            Console.ResetColor();
                             userChooseEvent = Console.ReadLine();
 
-                            while (!(userChooseEvent.All(char.IsDigit)) && userChooseEvent != "Q" && userChooseEvent != "q")
+                            while ((!(userChooseEvent.All(char.IsDigit)) && userChooseEvent.ToLower() != "q") || String.IsNullOrEmpty(userChooseEvent))
                             {
+                                Console.ForegroundColor = ConsoleColor.DarkYellow;
                                 Console.WriteLine("\nWybierz numer wydarzenia albo Q żeby wyjść z listy.");
                                 Console.Write("Twój wybór: ");
+                                Console.ResetColor();
                                 userChooseEvent = Console.ReadLine();
                             }
 
-                            if (userChooseEvent != "Q" && userChooseEvent != "q")
+                            if (userChooseEvent.ToLower() != "q")
                             {
                                 Console.Clear();
 
@@ -91,11 +99,13 @@ namespace CultureInGdansk
                                 Console.WriteLine("\nKiedy: " + List[index]["startDate"]);
                                 Console.WriteLine("\nOpis: " + List[index]["descLong"]);
 
+                                Console.ForegroundColor = ConsoleColor.DarkYellow;
                                 Console.WriteLine("\nNaciśnij ENTER aby wrócic do listy wydarzeń");
+                                Console.ResetColor();
                                 Console.ReadLine();
                             }
                             Console.Clear();
-                        } while (userChooseEvent != "Q" && userChooseEvent != "q");
+                        } while (userChooseEvent.ToLower() != "q");
 
                         break;
                     case "3":
@@ -136,14 +146,14 @@ namespace CultureInGdansk
             Console.WriteLine();
             Console.WriteLine("----------------------------");
             Console.WriteLine();
-
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write("Twój wybór: ");
+            Console.ResetColor();
 
-            Console.Write("Enter your selection: ");
             //string result = Console.ReadLine();
 
             //return Convert.ToInt32(result);
-            
+
 
         }
 
