@@ -151,12 +151,17 @@ namespace CultureInGdansk
 
             //return Convert.ToInt32(result);
 
-
+         //  var jsonReaderLinq = new JsonReadLinq();
+         // 
+         //  IEnumerable<Events.Entry> events = jsonReaderLinq.GetEvents();
+         // 
+         //  var event1 = events.Where(n => n.name == "wystawa");
         }
 
-     
-            
-            
+        
+        
+
+
         
     }
 }

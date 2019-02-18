@@ -1,14 +1,18 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using static Common.Events;
 
 namespace Common
 {
     public class JsonReadLinq
     {
-        public static List<Events.Entry> GetEvents()
+        public IEnumerable<Entry> GetEvents()
         {
-            return JsonConvert.DeserializeObject<List<Events.Entry>>(File.ReadAllText("Events.json"));
+
+            
+
+            return JsonConvert.DeserializeObject<IEnumerable<Entry>>(File.ReadAllText("Events.json"));
         }
     }
 }
