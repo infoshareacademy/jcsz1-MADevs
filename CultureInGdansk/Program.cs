@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Common;
 
 namespace CultureInGdansk
@@ -12,6 +13,7 @@ namespace CultureInGdansk
 
         static void Main(string[] args)
         {
+          
             JsonReader ReadJson = new JsonReader();
             GetTickets CheckTickets = new GetTickets();
 
