@@ -10,6 +10,7 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    
 }
 
 /* Carousel */
@@ -34,4 +35,7 @@ body {
     .carousel-caption {
         display: none;
     }
+
 }
+
+
