@@ -1,0 +1,45 @@
+<<<<<<< HEAD
+﻿
+@{
+    ViewData["Title"] = "Wydarzenia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Wyszukaj wydarzenie</h2>
+<div>
+    <label>Nazwa wydarzenia</label>
+    <input type="text">
+    <input type="submit" value="Wyszukaj"/>
+</div>
+<h2>Wszystkie wydarzenia</h2>
+
+
+
+=======
+﻿@model IEnumerable<WebCultureInGdansk.Models.RootObject>
+
+@{
+    ViewData["Title"] = "List of Events";
+}
+
+<h2>List of Events</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@foreach (var item in Model) {
+        <li>
+            
+             Id:@item.id <br><br>
+             Name:@item.name <br><br>
+             Short Description:@item.descShort <br><br>
+             Long Description:@item.descLong <br><br>        
+            
+           
+          
+        </li>
+}
+    </tbody>
+</table>
+>>>>>>> 11992027ab30081f256852407653a26ce69e7643
