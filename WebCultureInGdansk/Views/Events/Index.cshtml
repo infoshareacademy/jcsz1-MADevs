@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<WebCultureInGdansk.Models.RootObject>
 @{
     ViewData["Title"] = "Wydarzenia";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,6 +11,15 @@
     <input type="submit" value="Wyszukaj"/>
 </div>
 <h2>Wszystkie wydarzenia</h2>
+
+@foreach (var item in Model)
+    {
+        <ul>
+            <li>
+                Nazwa wydarzenia: @item.name
+            </li>
+        </ul>
+    }
 
 
 
