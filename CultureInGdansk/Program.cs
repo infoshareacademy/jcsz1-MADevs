@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using Common;
 
-namespace CultureInGdansk
+namespace Common
 {
     class Program
     {
@@ -13,18 +9,7 @@ namespace CultureInGdansk
 
         static void Main(string[] args)
         {
-          
-            JsonReader ReadJson = new JsonReader();
-            GetTickets CheckTickets = new GetTickets();
-
-            while (!ReadJson.JsonInsert())
-            {
-                Console.WriteLine("Nie znaleziono pliku 'Events.Json'. Wgraj plik 'Events.Json' do katalogu C:");
-                Console.WriteLine("Wciśnij dowolny klawisz aby kontynuować ...");
-                Console.ReadKey();
-                Console.Clear();
-            }
-
+                      
             ConsoleKeyInfo userInput;
 
             do
