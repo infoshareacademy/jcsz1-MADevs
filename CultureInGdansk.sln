@@ -8,9 +8,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{18666175-5BB0-48AB-92E7-D927F303A7BD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCultureInGdansk", "WebCultureInGdansk\WebCultureInGdansk.csproj", "{11D35025-A5E2-4A7E-995D-637D37985BDE}"
-	ProjectSection(ProjectDependencies) = postProject
-		{18666175-5BB0-48AB-92E7-D927F303A7BD} = {18666175-5BB0-48AB-92E7-D927F303A7BD}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
