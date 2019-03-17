@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using WebCultureInGdansk.Models;
 
-namespace WebCultureInGdansk
+namespace Common
 {
     public class JsonGetParse
     {

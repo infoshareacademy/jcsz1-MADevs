@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebCultureInGdansk;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Common;
 
 namespace WebCultureInGdansk.Controllers
 {
     public class EventsController : Controller
     {
-        private JsonGetParse Json = new JsonGetParse();
+        private new JsonGetParse Json = new JsonGetParse();
             
         // GET: Events
         public ActionResult Index()
         {
-            var index = Json.JsonGet("");
+            //var index = Json.GetJson();
+            //return View(index);
+
+            var index = Json.DisplayByTicketType("Darmowe");
             return View(index);
 
         }

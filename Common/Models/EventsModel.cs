@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Common.Models
+namespace WebCultureInGdansk.Models
 {
     public class Place
     {
