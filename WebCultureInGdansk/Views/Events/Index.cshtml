@@ -6,20 +6,29 @@
 
 <h2>Wyszukaj wydarzenie</h2>
 <div>
-    <label>Nazwa wydarzenia</label>
-    <input type="text">
-    <input type="submit" value="Wyszukaj"/>
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button>
+    </form>
 </div>
 <h2>Wszystkie wydarzenia</h2>
 
-@foreach (var item in Model)
+<table>
+    <tr>
+        <th>Nazwa wydarzenia</th>
+        <th>Kiedy</th>
+        <th>Gdzie</th>
+        <th>Bilety</th>
+    </tr>
+    @foreach (var item in Model)
     {
-        <ul>
-            <li>
-                Nazwa wydarzenia: @item.name
-            </li>
-        </ul>
+    <tr>
+        <td> @item.name</td>
+        <td> @item.startDate.ToShortDateString()</td>
+        <td> @item.place.name</td>
+        <td> @item.tickets.type</td>
+    </tr>
     }
 
-
+</table>
 
