@@ -9,13 +9,14 @@ namespace WebCultureInGdansk.Controllers
 {
     public class EventsController : Controller
     {
-        private JsonGetParse Json = new JsonGetParse(); 
-        
+        private JsonGetParse Json = new JsonGetParse();
+            
         // GET: Events
         public ActionResult Index()
         {
-            var json = Json.JsonGet();
-            return View(json);
+            var index = Json.JsonGet("");
+            return View(index);
+
         }
 
         // GET: Events/Details/5

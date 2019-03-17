@@ -92,6 +92,7 @@ namespace WebCultureInGdansk.Models
     }
 
     public class RootObject
+    
     {
         public int id { get; set; }
         public Place place { get; set; }
