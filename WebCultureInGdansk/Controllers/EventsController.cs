@@ -11,17 +11,12 @@ namespace WebCultureInGdansk.Controllers
 {
     public class EventsController : Controller
     {
-        private new JsonGetParse Json = new JsonGetParse();
-            
+        private readonly EventsFromJson Events = new EventsFromJson();
+
         // GET: Events
         public ActionResult Index()
         {
-            //var index = Json.GetJson();
-            //return View(index);
-
-            var index = Json.DisplayByTicketType("Darmowe");
-            return View(index);
-
+            return View();
         }
 
         // GET: Events/Details/5
