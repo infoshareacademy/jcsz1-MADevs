@@ -1,12 +1,22 @@
-﻿@{
+﻿@using System.Collections.Immutable
+@model IEnumerable<WebCultureInGdansk.Models.RootObject>
+
+@{
     ViewData["Title"] = "Strona główna";
 }
 
-
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <h1 class="display-4">Fluid jumbotron</h1>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        <div class="row">
+            <div class="col-lg-6 col-md-12 jumbotron-text">
+                <h1 class="display-4">Gdańska Kultura</h1>
+                <p class="lead">Tutaj znajdzień wszystkie wydarzenia z Gdańsk i okolicy.</p>
+                <a asp-area="" asp-controller="Home" asp-action="About" class="btn btn-light">O nas</a>
+            </div>
+            <div class="col-lg-6 col-md-12" style="padding-right: 0">
+                <img src="images/clock.jpg" class="img-fluid jumbotron-image">
+            </div>
+        </div>
     </div>
 </div>
 
@@ -61,36 +71,38 @@
     </a>
 </div>*@
 
-<h2>Top 3 wydzarzeń</h2>
 
-<div class="row">
-    <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap"/>
-            <div class="card-body">
-                <h4 class="card-title">Wydarzenie 1</h4>
-                <p class="card-text">Opis wydarzenia Opis wydarzenia Opis wydarzenia Opis wydarzenia</p>
-                <a href="#" class="btn btn-primary">Więcej</a>
+<div class="container align-content-center">
+    <h2>Top 3 wydarzeń</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/images/StockSnap_N5IUE5LITY.jpg" alt="Upsss..." />
+                <div class="card-body">
+                    <h4 class="card-title">Wydarzenie 1</h4>
+                    <p class="card-text">Opis wydarzenia Opis wydarzenia Opis wydarzenia Opis wydarzenia</p>
+                    <a href="#" class="btn btn-light">Więcej</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap"/>
-            <div class="card-body">
-                <h4 class="card-title">Wydarzenie 1</h4>
-                <p class="card-text">Opis wydarzenia Opis wydarzenia Opis wydarzenia Opis wydarzenia</p>
-                <a href="#" class="btn btn-primary">Więcej</a>
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/images/coffee.jpg" alt="Upsss..." />
+                <div class="card-body">
+                    <h4 class="card-title">Wydarzenie 2</h4>
+                    <p class="card-text">Opis wydarzenia Opis wydarzenia Opis wydarzenia Opis wydarzenia</p>
+                    <a href="#" class="btn btn-light">Więcej</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap"/>
-            <div class="card-body">
-                <h4 class="card-title">Wydarzenie 1</h4>
-                <p class="card-text">Opis wydarzenia Opis wydarzenia Opis wydarzenia Opis wydarzenia</p>
-                <a href="#" class="btn btn-primary">Więcej</a>
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/images/Event1.jpg" alt="Upsss..." />
+                <div class="card-body">
+                    <h4 class="card-title">Wydarzenie 3</h4>
+                    <p class="card-text">Opis wydarzenia Opis wydarzenia Opis wydarzenia Opis wydarzenia</p>
+                    <a href="#" class="btn btn-light">Więcej</a>
+                </div>
             </div>
         </div>
     </div>
