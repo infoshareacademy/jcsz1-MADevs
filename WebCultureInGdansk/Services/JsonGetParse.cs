@@ -1,6 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using Microsoft.CodeAnalysis;
+using Microsoft.IdentityModel.Tokens;
 using WebCultureInGdansk.Models;
 
 namespace WebCultureInGdansk
@@ -16,6 +20,8 @@ namespace WebCultureInGdansk
                 List<RootObject> getData = JsonConvert.DeserializeObject<List<RootObject>>(json);
                 return getData;
             }
-        }       
+        }
     }
+
+    
 }

@@ -4,15 +4,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Wyszukaj wydarzenie</h2>
-<div>
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button>
-    </form>
+<div class="container">
+    <div class="search">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button>
+        </form>
+    </div>
 </div>
-<h2>Wszystkie wydarzenia</h2>
 
+
+<div class="container" style="padding-top: 100px">
 <table>
     <tr>
         <th>Nazwa wydarzenia</th>
@@ -31,4 +33,4 @@
     }
 
 </table>
-
+</div>

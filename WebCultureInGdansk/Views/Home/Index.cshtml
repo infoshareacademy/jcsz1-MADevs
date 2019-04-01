@@ -5,102 +5,49 @@
     ViewData["Title"] = "Strona główna";
 }
 
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 jumbotron-text">
-                <h1 class="display-4">Gdańska Kultura</h1>
-                <p class="lead">Tutaj znajdzień wszystkie wydarzenia z Gdańsk i okolicy.</p>
-                <a asp-area="" asp-controller="Home" asp-action="About" class="btn btn-light">O nas</a>
-            </div>
-            <div class="col-lg-6 col-md-12" style="padding-right: 0">
-                <img src="images/clock.jpg" class="img-fluid jumbotron-image">
-            </div>
+<div class="container">
+    <div class="row align-items-center" style="background-color: #e9ecef;">
+        <div class="col-lg-6 col-md-12 col-sm-12 jumbotron-text">
+            <h1 class="display-4">Gdańska Kultura</h1>
+            <p class="lead">Tutaj znajdzień wszystkie wydarzenia z Gdańsk i okolicy.</p>
+            <a asp-area="" asp-controller="Home" asp-action="About" class="btn btn-light">O nas</a>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12" style="padding: 0 0 0 0">
+            <img src="images/clock.jpg" class="img-fluid jumbotron-image">
         </div>
     </div>
-</div>
 
-@*<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner3.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
+    <div class="row align-items-center">
+        <h3>Najbliższe wydarzenia</h3>
     </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>*@
 
-
-<div class="container align-content-center">
-    <h2>Top 3 wydarzeń</h2>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-12 col-sm-12">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="/images/StockSnap_N5IUE5LITY.jpg" alt="Upsss..." />
                 <div class="card-body">
-                    <h4 class="card-title">Wydarzenie 1</h4>
-                    <p class="card-text">Opis wydarzenia Opis wydarzenia Opis wydarzenia Opis wydarzenia</p>
+                    <h5 class="card-title">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).First().name</h5>
+                    <p class="card-text">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).First().descShort</p>
                     <a href="#" class="btn btn-light">Więcej</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-12 col-sm-12">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="/images/coffee.jpg" alt="Upsss..." />
                 <div class="card-body">
-                    <h4 class="card-title">Wydarzenie 2</h4>
-                    <p class="card-text">Opis wydarzenia Opis wydarzenia Opis wydarzenia Opis wydarzenia</p>
+                    <h5 class="card-title">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(1).First().name</h5>
+                    <p class="card-text">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(1).First().descShort</p>
                     <a href="#" class="btn btn-light">Więcej</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-12 col-sm-12">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="/images/Event1.jpg" alt="Upsss..." />
                 <div class="card-body">
-                    <h4 class="card-title">Wydarzenie 3</h4>
-                    <p class="card-text">Opis wydarzenia Opis wydarzenia Opis wydarzenia Opis wydarzenia</p>
+                    <h5 class="card-title">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(2).First().name</h5>
+                    <p class="card-text">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(2).First().descShort</p>
                     <a href="#" class="btn btn-light">Więcej</a>
                 </div>
             </div>

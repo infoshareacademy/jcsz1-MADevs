@@ -10,9 +10,13 @@ namespace WebCultureInGdansk.Controllers
 {
     public class HomeController : Controller
     {
+        private JsonGetParse EventsList = new JsonGetParse();
+
         public IActionResult Index()
         {
-            return View();
+            var items = EventsList.JsonGet();
+
+            return View(items);
         }
 
         public IActionResult About()
