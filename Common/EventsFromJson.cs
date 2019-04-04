@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Net;
 using WebCultureInGdansk.Models;
 
-namespace WebCultureInGdansk
+namespace Common
 {
-    public class JsonGetParse
+    public class EventsFromJson
     {
         public List<RootObject> GetJson()
         {
@@ -16,22 +16,6 @@ namespace WebCultureInGdansk
                 List<RootObject> getData = JsonConvert.DeserializeObject<List<RootObject>>(json);
                 return getData;
             }
-        }
-
-        private List<RootObject> FilterByTicket(string type)
-        {
-            var getData = GetJson();
-
-            List<RootObject> filtered = new List<RootObject>();
-
-                foreach (var item in getData)
-                {
-                    if (item.tickets.type == type)
-                    {
-                        filtered.Add(item);
-                    }
-                }
-                return filtered;
         }
 
         public List<RootObject> DisplayByTicketType(string type)
@@ -47,6 +31,22 @@ namespace WebCultureInGdansk
                 default:
                     return GetJson();
             }
+        }
+
+        private List<RootObject> FilterByTicket(string type)
+        {
+            var getData = GetJson();
+
+            List<RootObject> filtered = new List<RootObject>();
+
+            foreach (var item in getData)
+            {
+                if (item.tickets.type == type)
+                {
+                    filtered.Add(item);
+                }
+            }
+            return filtered;
         }
     }
 }
