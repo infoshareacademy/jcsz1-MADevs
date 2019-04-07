@@ -7,7 +7,6 @@
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.0.0" />
     <Compile Remove="Models\EventsModel.cs" />
-    <Compile Remove="Services\JsonGetParse.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,11 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>
