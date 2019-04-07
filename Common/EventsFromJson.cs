@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
-using WebCultureInGdansk.Models;
+using Common.Models;
 
 namespace Common
 {
