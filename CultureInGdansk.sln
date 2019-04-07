@@ -4,11 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCultureInGdansk", "WebCultureInGdansk\WebCultureInGdansk.csproj", "{11D35025-A5E2-4A7E-995D-637D37985BDE}"
-	ProjectSection(ProjectDependencies) = postProject
-		{18666175-5BB0-48AB-92E7-D927F303A7BD} = {18666175-5BB0-48AB-92E7-D927F303A7BD}
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{1B719E72-93D4-49D9-A684-28774580EC74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CultureInGdansk.Tests", "CultureInGdansk.Tests\CultureInGdansk.Tests.csproj", "{940403C5-A7F6-4F5D-AD18-522E4F75832C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +23,10 @@ Global
 		{1B719E72-93D4-49D9-A684-28774580EC74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B719E72-93D4-49D9-A684-28774580EC74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B719E72-93D4-49D9-A684-28774580EC74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{940403C5-A7F6-4F5D-AD18-522E4F75832C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{940403C5-A7F6-4F5D-AD18-522E4F75832C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{940403C5-A7F6-4F5D-AD18-522E4F75832C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{940403C5-A7F6-4F5D-AD18-522E4F75832C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
