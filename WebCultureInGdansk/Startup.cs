@@ -47,7 +47,7 @@ namespace WebCultureInGdansk
             }
 
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {

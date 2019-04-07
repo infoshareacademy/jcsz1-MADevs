@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebCultureInGdansk.Models.RootObject>
+@{
+    ViewData["Title"] = "Wydarzenia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="search">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button>
+        </form>
+    </div>
+</div>
+
+<<<<<<< HEAD
+
+<div class="container" style="padding-top: 100px">
+<table>
+    <tr>
+        <th>Nazwa wydarzenia</th>
+        <th>Kiedy</th>
+        <th>Gdzie</th>
+        <th>Bilety</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td> @item.name</td>
+        <td> @item.startDate.ToShortDateString()</td>
+        <td> @item.place.name</td>
+        <td> @item.tickets.type</td>
+    </tr>
+    }
+
+</table>
+</div>
+=======
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+>>>>>>> a9921c8b3fd7fb4e243b3a853e8db8d5646612ed

@@ -5,14 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebCultureInGdansk.Models;
+using Common;
 
 namespace WebCultureInGdansk.Controllers
 {
     public class HomeController : Controller
     {
+        private EventsFromJson EventsList = new EventsFromJson();
+
         public IActionResult Index()
         {
-            return View();
+            var items = EventsList.GetJson();
+
+            return View(items);
         }
 
         public IActionResult About()

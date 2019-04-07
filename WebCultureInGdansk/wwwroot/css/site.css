@@ -1,37 +1,74 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    background-color: #fefefe;
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
-.body-content {
+/*.body-content {
     padding-left: 15px;
     padding-right: 15px;
+    
+}*/
+
+
+.navigation-bar {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+
+.navbar-link {
+    padding-left: 1.7rem;
+    padding-right: 1.7rem;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
+.navbar {
+    background-color: #fefefe;
+}
+
+.jumbotron-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.jumbotron-text {
+    padding-top: 40px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.jumbotron-fluid {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.container-cards-mainpage {
+    text-align: center;
+    align-items: center;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+h3, h4 {
+    padding: 15px;
+}
+
+.search {
+    position: fixed;
     width: 100%;
-}
-
-/* QR code generator */
-#qrCode {
-    margin: 15px;
-}
-
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
+    height: 90px;
+    align-items: center;
+    background-color: #fefefe;
 }

@@ -16,12 +16,14 @@ namespace WebCultureInGdansk.Controllers
         // GET: Events
         public ActionResult Index()
         {
-            return View();
+            var result = Events.GetJson();
+            return View(result);
         }
 
         // GET: Events/Details/5
         public ActionResult Details(int id)
         {
+
             return View();
         }
 

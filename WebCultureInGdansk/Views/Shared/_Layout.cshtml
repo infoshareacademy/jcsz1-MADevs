@@ -3,49 +3,54 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebCultureInGdansk</title>
+    <title>@ViewData["Title"] - Gdańska Kultura</title>
 
+    
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="css/WebCultureInGdansk.css">
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WebCultureInGdansk</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Events" asp-action="Index">Events</a></li>
+<div class="container navigation-bar">
+        <nav class="container navbar fixed-top navbar-expand-lg navbar-light">
+            <a class="navbar-brand">Gdańska Kultura</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Strona Główna<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-area="" asp-controller="Events" asp-action="Index" class="nav-link">Wydarzenia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">O nas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">Kontakt</a>
+                    </li>
                 </ul>
             </div>
-        </div>
-    </nav>
+        </nav>
+</div>
 
-    <partial name="_CookieConsentPartial" />
+
+<partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2019 - WebCultureInGdansk</p>
+            <p>&copy; 2019 - Gdańska Kultura</p>
         </footer>
     </div>
 
@@ -61,7 +66,7 @@
                 crossorigin="anonymous"
                 integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
         </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/4.0.0/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
                 crossorigin="anonymous"

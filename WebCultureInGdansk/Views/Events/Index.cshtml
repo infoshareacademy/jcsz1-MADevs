@@ -1,11 +1,35 @@
-﻿@model IEnumerable<WebCultureInGdansk.Models.RootObject>
-
+﻿@model IEnumerable<Common.Models.RootObject>
 @{
-    ViewData["Title"] = "List of Events";
+    ViewData["Title"] = "Wydarzenia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>List of Events</h2>
+<div class="container">
+    <div class="search">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button>
+        </form>
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
+<div class="container" style="padding-top: 100px">
+<table>
+    <tr>
+        <th>Nazwa wydarzenia</th>
+        <th>Kiedy</th>
+        <th>Gdzie</th>
+        <th>Bilety</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td> @item.name</td>
+        <td> @item.startDate.ToShortDateString()</td>
+        <td> @item.place.name</td>
+        <td> @item.tickets.type</td>
+    </tr>
+    }
+    </table>
+</div>
