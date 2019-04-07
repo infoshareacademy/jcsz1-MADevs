@@ -21,6 +21,7 @@ namespace WebCultureInGdansk.Controllers
         // GET: Events/Details/5
         public ActionResult Details(int id)
         {
+
             return View();
         }
 
