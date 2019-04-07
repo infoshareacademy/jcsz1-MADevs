@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebCultureInGdansk;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Common;
 
 namespace WebCultureInGdansk.Controllers
 {
     public class EventsController : Controller
     {
-        private JsonGetParse Json = new JsonGetParse(); 
-        
+        private readonly EventsFromJson Events = new EventsFromJson();
+
         // GET: Events
         public ActionResult Index()
         {
-            var json = Json.JsonGet();
-            return View(json);
+            return View();
         }
 
         // GET: Events/Details/5
