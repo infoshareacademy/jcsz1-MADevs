@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Net;
 using Common.Models;
+using Common.Services;
 
 namespace Common
 {
-    public class EventsFromJson
+    public class EventsFromJson : IEventsFromJson
     {
+        private readonly List<RootObject> _eventsList = new List<RootObject>();
+            
         public List<RootObject> GetJson()
         {
             var path = "https://planerkulturalny.pl/api/rest/events.json";
@@ -47,6 +50,13 @@ namespace Common
                 }
             }
             return filtered;
+        }
+
+        public RootObject Create(RootObject oneEvent)
+        {
+            oneEvent.id = _eventsList.Count + 1;
+            _eventsList.Add(oneEvent);
+            return oneEvent;
         }
     }
 }

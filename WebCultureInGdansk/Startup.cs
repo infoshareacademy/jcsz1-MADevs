@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common;
+using Common.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,7 +32,7 @@ namespace WebCultureInGdansk
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddSingleton<IEventsFromJson, EventsFromJson>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

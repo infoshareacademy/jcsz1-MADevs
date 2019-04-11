@@ -6,49 +6,50 @@ using WebCultureInGdansk;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Common;
+using Common.Models;
+using Common.Services;
 
 namespace WebCultureInGdansk.Controllers
 {
     public class EventsController : Controller
     {
-        private readonly EventsFromJson Events = new EventsFromJson();
+        private readonly IEventsFromJson _eventsList;
+
+        public EventsController(IEventsFromJson eventsList)
+        {
+            _eventsList = eventsList;
+        }
+        //private readonly EventsFromJson Events = new EventsFromJson();
 
         // GET: Events
-        public ActionResult Index()
+        [HttpGet]
+        public IActionResult Index()
         {
-            var result = Events.GetJson();
+            var result = _eventsList.GetJson();
             return View(result);
         }
 
         // GET: Events/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Details(int id)
         {
-
             return View();
         }
 
-        // GET: Events/Create
-        public ActionResult Create()
+        // Get: Events/Create
+        [HttpGet]
+        public IActionResult Create()
         {
             return View();
         }
 
         // POST: Events/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Create(RootObject oneEvent)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            RootObject events = _eventsList.Create(oneEvent);
+            return RedirectToAction("Index");
         }
+
 
         // GET: Events/Edit/5
         public ActionResult Edit(int id)
