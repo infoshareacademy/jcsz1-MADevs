@@ -6,6 +6,7 @@ using WebCultureInGdansk;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Common;
+using Common.Models;
 
 namespace WebCultureInGdansk.Controllers
 {
@@ -94,6 +95,20 @@ namespace WebCultureInGdansk.Controllers
             {
                 return View();
             }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SearchByName(string searchString)
+        {
+                var result = Events.GetJson();
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    result = result.Where(s => s.name.Contains(searchString)).ToList();
+                }
+
+                return View(result);
+            
         }
     }
 }
