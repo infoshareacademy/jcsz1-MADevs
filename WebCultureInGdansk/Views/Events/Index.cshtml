@@ -6,9 +6,10 @@
 
 <div class="container">
     <div class="search">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Search">
+        <form asp-controller="Events" asp-action="SearchByName" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Search" name="SearchString">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button> 
+        
         </form>
     </div>
 </div>

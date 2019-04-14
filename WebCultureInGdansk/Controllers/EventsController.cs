@@ -96,5 +96,19 @@ namespace WebCultureInGdansk.Controllers
                 return View();
             }
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SearchByName(string searchString)
+        {
+                var result = _eventsList.GetJson();
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    result = result.Where(s => s.name.Contains(searchString)).ToList();
+                }
+
+                return View(result);
+            
+        }
     }
 }
