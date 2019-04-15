@@ -1,0 +1,23 @@
+﻿@model Common.Models.RootObject
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dodaj wydarzenie</h2>
+
+<form asp-controller="Events" asp-action="Create" method="post">
+    <label>Nazwa wydarzenia</label>
+    <input asp-for="name">
+
+    <label>Kiedy</label>
+    <input asp-for="startDate">
+
+    <label>Gdzie</label>
+    <input asp-for="place.name">
+
+    <label>Bilety</label>
+    <input asp-for="tickets.type">
+    
+    <input type="submit" value="Dodaj">
+</form>

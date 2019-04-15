@@ -8,7 +8,7 @@
     <div class="search">
         <form asp-controller="Events" asp-action="SearchByName" class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Search" name="SearchString">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button> 
         
         </form>
     </div>
@@ -16,21 +16,23 @@
 
 
 <div class="container" style="padding-top: 100px">
-<table>
-    <tr>
-        <th>Nazwa wydarzenia</th>
-        <th>Kiedy</th>
-        <th>Gdzie</th>
-        <th>Bilety</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td> @item.name</td>
-        <td> @item.startDate.ToShortDateString()</td>
-        <td> @item.place.name</td>
-        <td> @item.tickets.type</td>
-    </tr>
-    }
+    <table>
+        <tr>
+            <th>Nazwa wydarzenia</th>
+            <th>Kiedy</th>
+            <th>Gdzie</th>
+            <th>Bilety</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @item.name</td>
+                <td> @item.startDate.ToShortDateString()</td>
+                <td> @item.place.name</td>
+                <td> @item.tickets.type</td>
+            </tr>
+        }
     </table>
 </div>
+
+<a asp-controller="Events" asp-action="Create" class="btn btn-outline-success my-2 my-sm-0">Dodaj wydarzenie</a>

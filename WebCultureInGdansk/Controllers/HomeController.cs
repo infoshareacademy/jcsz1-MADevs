@@ -6,16 +6,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebCultureInGdansk.Models;
 using Common;
+using Common.Services;
 
 namespace WebCultureInGdansk.Controllers
 {
     public class HomeController : Controller
     {
-        private EventsFromJson EventsList = new EventsFromJson();
+        private readonly IEventsFromJson _eventsList;
+
+        public HomeController(IEventsFromJson eventsList)
+        {
+            _eventsList = eventsList;
+        }
 
         public IActionResult Index()
         {
-            var items = EventsList.GetJson();
+            var items = _eventsList.GetJson();
 
             return View(items);
         }
