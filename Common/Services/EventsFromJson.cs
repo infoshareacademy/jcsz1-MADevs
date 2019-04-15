@@ -10,7 +10,6 @@ namespace Common
     {
         public List<RootObject> _eventsList = new List<RootObject>();
 
-
         public List<RootObject> GetJson()
         {
             if (_eventsList.Count == 0)

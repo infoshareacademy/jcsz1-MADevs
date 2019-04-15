@@ -19,7 +19,6 @@ namespace WebCultureInGdansk.Controllers
         {
             _eventsList = eventsList;
         }
-        //private readonly EventsFromJson Events = new EventsFromJson();
 
         // GET: Events
         [HttpGet]
@@ -49,7 +48,6 @@ namespace WebCultureInGdansk.Controllers
             RootObject events = _eventsList.Create(oneEvent);
             return RedirectToAction("Index");
         }
-
 
         // GET: Events/Edit/5
         public ActionResult Edit(int id)
@@ -106,9 +104,7 @@ namespace WebCultureInGdansk.Controllers
                 {
                     result = result.Where(s => s.name.Contains(searchString)).ToList();
                 }
-
                 return View(result);
-            
         }
     }
 }

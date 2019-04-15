@@ -19,8 +19,6 @@ namespace WebCultureInGdansk.Controllers
             _eventsList = eventsList;
         }
 
-        //private EventsFromJson EventsList = new EventsFromJson();
-
         public IActionResult Index()
         {
             var items = _eventsList.GetJson();
