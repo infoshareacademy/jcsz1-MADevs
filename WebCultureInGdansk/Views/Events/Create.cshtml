@@ -7,17 +7,25 @@
 <h2>Dodaj wydarzenie</h2>
 
 <form asp-controller="Events" asp-action="Create" method="post">
-    <label>Nazwa wydarzenia</label>
-    <input asp-for="name">
-
-    <label>Kiedy</label>
-    <input asp-for="startDate">
-
-    <label>Gdzie</label>
-    <input asp-for="place.name">
-
-    <label>Bilety</label>
-    <input asp-for="tickets.type">
-    
-    <input type="submit" value="Dodaj">
+    <div class="form-group">
+        <label for="eventName">Nazwa wydarzenia</label>
+        <input asp-for="name" class="form-control" type="text" id="eventName" placeholder="Nazwa wydarzenia...">
+    </div>
+    <div class="form-group">
+        <label>Kiedy</label>
+        <input asp-for="startDate">
+    </div>
+    <div class="form-group">
+        <label for="eventWhere">Gdzie</label>
+        <input asp-for="place.name" class="form-control" type="text" id="eventWhere" placeholder="Miejsce wydarzenia...">
+    </div>
+    <div class="form-group">
+        <label for="eventTicket">Rodzaj biletów</label>
+        <select asp-for="tickets.type" class="form-control" id="eventTicket">
+            <option>Płatne</option>
+            <option>Darmowe</option>
+            <option>Nie podano</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
 </form>
