@@ -31,7 +31,8 @@ namespace WebCultureInGdansk.Controllers
         // GET: Events/Details/5
         public IActionResult Details(int id)
         {
-            return View();
+            var result = _eventsList.GetById(id);
+            return View(result);
         }
 
         // Get: Events/Create

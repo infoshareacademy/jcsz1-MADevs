@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using Common.Models;
 using Common.Services;
@@ -60,6 +61,12 @@ namespace Common
             oneEvent.id = _eventsList.Count + 1;
             _eventsList.Add(oneEvent);
             return oneEvent;
+        }
+
+        public RootObject GetById(int id)
+        {
+            var result = _eventsList.Single(x => x.id == id);
+            return result;
         }
     }
 }

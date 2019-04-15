@@ -7,5 +7,6 @@ namespace Common.Services
     {
         List<RootObject> GetJson();
         RootObject Create(RootObject oneEvent);
+        RootObject GetById(int id);
     }
 }
