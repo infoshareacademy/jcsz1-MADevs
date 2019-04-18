@@ -49,6 +49,7 @@ namespace WebCultureInGdansk.Controllers
             return RedirectToAction("Index");
         }
 
+    
         // GET: Events/Edit/5
         public ActionResult Edit(int id)
         {
@@ -94,6 +95,17 @@ namespace WebCultureInGdansk.Controllers
                 return View();
             }
         }
+
+        [HttpPost]
+        public ActionResult TicketFilter(string type)
+        {
+            var result = _eventsList.GetJson();
+
+            result = result.Where(ticket => ticket.tickets.type.Contains(type)).ToList();
+
+            return View(result);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SearchByName(string searchString)
