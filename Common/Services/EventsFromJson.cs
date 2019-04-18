@@ -24,36 +24,36 @@ namespace Common
             return _eventsList;
         }
 
-        public List<RootObject> DisplayByTicketType(string type)
-        {
-            switch (type)
-            {
-                case "Darmowe":
-                    return FilterByTicket("free");
-                case "Płatne":
-                    return FilterByTicket("tickets");
-                case "Nie podano":
-                    return FilterByTicket("unknown");
-                default:
-                    return GetJson();
-            }
-        }
+        //public List<RootObject> DisplayByTicketType(string type)
+        //{
+        //    switch (type)
+        //    {
+        //        case "Darmowe":
+        //            return FilterByTicket("free");
+        //        case "Płatne":
+        //            return FilterByTicket("tickets");
+        //        case "Nie podano":
+        //            return FilterByTicket("unknown");
+        //        default:
+        //            return GetJson();
+        //    }
+        //}
 
-        private List<RootObject> FilterByTicket(string type)
-        {
-            var getData = GetJson();
+        //private List<RootObject> FilterByTicket(string type)
+        //{
+        //    var getData = GetJson();
 
-            List<RootObject> filtered = new List<RootObject>();
+        //    List<RootObject> filtered = new List<RootObject>();
 
-            foreach (var item in getData)
-            {
-                if (item.tickets.type == type)
-                {
-                    filtered.Add(item);
-                }
-            }
-            return filtered;
-        }
+        //    foreach (var item in getData)
+        //    {
+        //        if (item.tickets.type == type)
+        //        {
+        //            filtered.Add(item);
+        //        }
+        //    }
+        //    return filtered;
+        //}
 
         public RootObject Create(RootObject oneEvent)
         {
