@@ -49,9 +49,9 @@ namespace WebCultureInGdansk.Controllers
             return RedirectToAction("Index");
         }
 
-    
+
         // GET: Events/Edit/5
-        public ActionResult Edit(int id)
+        public IActionResult Update(int id)
         {
             return View();
         }
@@ -59,7 +59,7 @@ namespace WebCultureInGdansk.Controllers
         // POST: Events/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Update(int id, IFormCollection collection)
         {
             try
             {
@@ -95,17 +95,16 @@ namespace WebCultureInGdansk.Controllers
                 return View();
             }
         }
-
+       
         [HttpPost]
-        public ActionResult TicketFilter(string type)
+        public IActionResult TicketFilter(string type)
         {
-            var result = _eventsList.GetJson();
-
-            result = result.Where(ticket => ticket.tickets.type.Contains(type)).ToList();
-
+            var result = _eventsList.GetEventsByTicketType(type);
+            //EventsByTicketType _filtered = new EventsByTicketType();
+            //var result = _filtered.GetEventsByTicketType(type);
             return View(result);
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SearchByName(string searchString)

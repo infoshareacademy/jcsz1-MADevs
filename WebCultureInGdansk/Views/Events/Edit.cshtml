@@ -1,0 +1,37 @@
+﻿@model Common.Models.RootObject
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Edit @Model.name</h2>
+
+<div class="container">
+    <form asp-antiforgery="true" asp-controller="Events" asp-action="Edit" method="post">
+        <div class="form-group">
+            <div class="form-control">
+                <label asp-for="name">Name</label>
+                <input asp-for="name" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-control">
+                <label asp-for="Salary">Salary</label>
+                <input asp-for="Salary" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            <div class="form-control">
+                <label asp-for="Currency">Currency</label>
+                <select asp-for="Currency">
+                    <option value="@Currency.PLN">PLN</option>
+                    <option value="@Currency.EUR">EUR</option>
+                    <option value="@Currency.USD">USD</option>
+                </select>
+                <span asp-validation-for="Currency" class="text-danger"></span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="reset" class="btn btn-danger">Reset</button>
+    </form>
+
+    <a asp-controller="Employees" asp-action="Index" class="btn btn-primary" type="button">Back</a>
+</div>*@

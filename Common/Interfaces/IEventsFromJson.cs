@@ -6,6 +6,8 @@ namespace Common.Services
     public interface IEventsFromJson
     {
         List<RootObject> GetJson();
-        RootObject Create(RootObject oneEvent);
+        RootObject Create(RootObject oneEvent);        
+        List<RootObject> GetEventsByTicketType(string type);
+        List<RootObject> Update(int id);
     }
 }
