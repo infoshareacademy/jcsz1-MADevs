@@ -8,6 +8,7 @@ namespace Common.Services
         List<RootObject> GetJson();
         RootObject Create(RootObject oneEvent);        
         List<RootObject> GetEventsByTicketType(string type);
-        List<RootObject> Update(int id);
+        RootObject GetEventById(int id);
+        bool UpdateEvent(int id, RootObject eventToUpdate);
     }
 }

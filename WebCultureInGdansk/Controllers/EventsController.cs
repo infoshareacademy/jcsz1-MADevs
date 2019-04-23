@@ -20,57 +20,38 @@ namespace WebCultureInGdansk.Controllers
             _eventsList = eventsList;
         }
 
-        // GET: Events
         [HttpGet]
         public IActionResult Index()
         {
             var result = _eventsList.GetJson();
             return View(result);
-        }
+        }        
 
-        // GET: Events/Details/5
-        public IActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // Get: Events/Create
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Events/Create
         [HttpPost]
         public IActionResult Create(RootObject oneEvent)
         {
             RootObject events = _eventsList.Create(oneEvent);
             return RedirectToAction("Index");
         }
-
-
-        // GET: Events/Edit/5
-        public IActionResult Update(int id)
+        
+        public IActionResult Edit(int id)
         {
-            return View();
+            var eventtoupdate = _eventsList.GetEventById(id);
+            return View(eventtoupdate);
         }
-
-        // POST: Events/Edit/5
+ 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(int id, IFormCollection collection)
+        public IActionResult Edit(int id, RootObject eventtoupdate)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _eventsList.UpdateEvent(id, eventtoupdate);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Events/Delete/5
@@ -100,8 +81,6 @@ namespace WebCultureInGdansk.Controllers
         public IActionResult TicketFilter(string type)
         {
             var result = _eventsList.GetEventsByTicketType(type);
-            //EventsByTicketType _filtered = new EventsByTicketType();
-            //var result = _filtered.GetEventsByTicketType(type);
             return View(result);
         }
         
@@ -116,6 +95,12 @@ namespace WebCultureInGdansk.Controllers
                     result = result.Where(s => s.name.Contains(searchString)).ToList();
                 }
                 return View(result);
+        }
+
+        // GET: Events/Details/5
+        public IActionResult Details(int id)
+        {
+            return View();
         }
     }
 }
