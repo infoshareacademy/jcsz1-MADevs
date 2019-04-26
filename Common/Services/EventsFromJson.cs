@@ -46,9 +46,19 @@ namespace Common
             }
         }
 
-        public List<RootObject> Update (int id)
+        public RootObject GetEventById(int id)
         {
-            return null;
+            return _eventsList.Single(events => events.id == id);
+        }
+
+        public bool UpdateEvent(int id, RootObject EventToUpdate)
+        {
+            var currentEvent = GetEventById(id);
+            currentEvent.name = EventToUpdate.name;
+            currentEvent.startDate = EventToUpdate.startDate;
+            currentEvent.place.name = EventToUpdate.place.name;
+            currentEvent.tickets.type = EventToUpdate.tickets.type;
+            return true;
         }
     }
 }
