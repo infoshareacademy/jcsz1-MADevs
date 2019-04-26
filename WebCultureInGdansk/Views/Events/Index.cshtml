@@ -4,16 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    <div class="search">
-        <form asp-controller="Events" asp-action="SearchByName" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Search" name="SearchString">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button> 
-        
-        </form>
-    </div>
-</div>
+<partial name="_partial"/>
 
+<<<<<<< HEAD
 
 <div class="container" style="padding-top: 100px">
     <table>
@@ -36,3 +29,5 @@
 </div>
 
 <a asp-controller="Events" asp-action="Create" class="btn btn-outline-success my-2 my-sm-0">Dodaj wydarzenie</a>
+=======
+>>>>>>> 8d8e7e89a5f24a987a8f00b49f63d34218e5b947

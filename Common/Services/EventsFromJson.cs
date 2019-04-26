@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using Common.Models;
 using Common.Services;
+using System.Linq;
 
 namespace Common
 {
@@ -25,42 +26,40 @@ namespace Common
             return _eventsList;
         }
 
-        public List<RootObject> DisplayByTicketType(string type)
-        {
-            switch (type)
-            {
-                case "Darmowe":
-                    return FilterByTicket("free");
-                case "Płatne":
-                    return FilterByTicket("tickets");
-                case "Nie podano":
-                    return FilterByTicket("unknown");
-                default:
-                    return GetJson();
-            }
-        }
-
-        private List<RootObject> FilterByTicket(string type)
-        {
-            var getData = GetJson();
-
-            List<RootObject> filtered = new List<RootObject>();
-
-            foreach (var item in getData)
-            {
-                if (item.tickets.type == type)
-                {
-                    filtered.Add(item);
-                }
-            }
-            return filtered;
-        }
-
         public RootObject Create(RootObject oneEvent)
         {
             oneEvent.id = _eventsList.Count + 1;
             _eventsList.Add(oneEvent);
             return oneEvent;
+        }
+
+        public List<RootObject> GetEventsByTicketType(string type)
+        {
+            if (type == "all")
+            {
+                var _all = GetJson();
+                return _all;
+            }
+            else
+            {
+                var _filtered = _eventsList.Where(ticket => ticket.tickets.type.Contains(type)).ToList();
+                return _filtered;
+            }
+        }
+
+        public RootObject GetEventById(int id)
+        {
+            return _eventsList.Single(events => events.id == id);
+        }
+
+        public bool UpdateEvent(int id, RootObject EventToUpdate)
+        {
+            var currentEvent = GetEventById(id);
+            currentEvent.name = EventToUpdate.name;
+            currentEvent.startDate = EventToUpdate.startDate;
+            currentEvent.place.name = EventToUpdate.place.name;
+            currentEvent.tickets.type = EventToUpdate.tickets.type;
+            return true;
         }
 
         public RootObject GetById(int id)

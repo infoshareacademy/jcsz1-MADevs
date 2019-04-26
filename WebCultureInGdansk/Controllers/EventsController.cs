@@ -20,12 +20,12 @@ namespace WebCultureInGdansk.Controllers
             _eventsList = eventsList;
         }
 
-        // GET: Events
         [HttpGet]
         public IActionResult Index()
         {
             var result = _eventsList.GetJson();
             return View(result);
+<<<<<<< HEAD
         }
 
         // GET: Events/Details/5
@@ -34,43 +34,35 @@ namespace WebCultureInGdansk.Controllers
             var result = _eventsList.GetById(id);
             return View(result);
         }
+=======
+        }        
+>>>>>>> 8d8e7e89a5f24a987a8f00b49f63d34218e5b947
 
-        // Get: Events/Create
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Events/Create
         [HttpPost]
         public IActionResult Create(RootObject oneEvent)
         {
             RootObject events = _eventsList.Create(oneEvent);
             return RedirectToAction("Index");
         }
-
-        // GET: Events/Edit/5
-        public ActionResult Edit(int id)
+        
+        public IActionResult Edit(int id)
         {
-            return View();
+            var eventtoupdate = _eventsList.GetEventById(id);
+            return View(eventtoupdate);
         }
-
-        // POST: Events/Edit/5
+ 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(int id, RootObject eventtoupdate)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _eventsList.UpdateEvent(id, eventtoupdate);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Events/Delete/5
@@ -95,6 +87,14 @@ namespace WebCultureInGdansk.Controllers
                 return View();
             }
         }
+       
+        [HttpPost]
+        public IActionResult TicketFilter(string type)
+        {
+            var result = _eventsList.GetEventsByTicketType(type);
+            return View(result);
+        }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SearchByName(string searchString)
@@ -106,6 +106,12 @@ namespace WebCultureInGdansk.Controllers
                     result = result.Where(s => s.name.Contains(searchString)).ToList();
                 }
                 return View(result);
+        }
+
+        // GET: Events/Details/5
+        public IActionResult Details(int id)
+        {
+            return View();
         }
     }
 }
