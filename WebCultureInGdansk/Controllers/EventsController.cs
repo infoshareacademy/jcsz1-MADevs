@@ -25,18 +25,16 @@ namespace WebCultureInGdansk.Controllers
         {
             var result = _eventsList.GetJson();
             return View(result);
-<<<<<<< HEAD
+
         }
 
         // GET: Events/Details/5
         public IActionResult Details(int id)
         {
-            var result = _eventsList.GetById(id);
+            var result = _eventsList.GetEventById(id);
             return View(result);
         }
-=======
-        }        
->>>>>>> 8d8e7e89a5f24a987a8f00b49f63d34218e5b947
+
 
         [HttpGet]
         public IActionResult Create()
@@ -50,13 +48,13 @@ namespace WebCultureInGdansk.Controllers
             RootObject events = _eventsList.Create(oneEvent);
             return RedirectToAction("Index");
         }
-        
+
         public IActionResult Edit(int id)
         {
             var eventtoupdate = _eventsList.GetEventById(id);
             return View(eventtoupdate);
         }
- 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, RootObject eventtoupdate)
@@ -87,31 +85,26 @@ namespace WebCultureInGdansk.Controllers
                 return View();
             }
         }
-       
+
         [HttpPost]
         public IActionResult TicketFilter(string type)
         {
             var result = _eventsList.GetEventsByTicketType(type);
             return View(result);
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SearchByName(string searchString)
         {
-                var result = _eventsList.GetJson();
+            var result = _eventsList.GetJson();
 
-                if (!String.IsNullOrEmpty(searchString))
-                {
-                    result = result.Where(s => s.name.Contains(searchString)).ToList();
-                }
-                return View(result);
-        }
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                result = result.Where(s => s.name.Contains(searchString)).ToList();
+            }
 
-        // GET: Events/Details/5
-        public IActionResult Details(int id)
-        {
-            return View();
+            return View(result);
         }
     }
 }

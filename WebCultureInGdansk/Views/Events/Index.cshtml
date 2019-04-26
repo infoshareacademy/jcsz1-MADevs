@@ -5,29 +5,3 @@
 }
 
 <partial name="_partial"/>
-
-<<<<<<< HEAD
-
-<div class="container" style="padding-top: 100px">
-    <table>
-        <tr>
-            <th>Nazwa wydarzenia</th>
-            <th>Kiedy</th>
-            <th>Gdzie</th>
-            <th>Bilety</th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td><a asp-controller="Events" asp-action="Details" asp-route-id="@item.id">@item.name</a></td>
-                <td> @item.startDate.ToShortDateString()</td>
-                <td> @item.place.name</td>
-                <td> @item.tickets.type</td>
-            </tr>
-        }
-    </table>
-</div>
-
-<a asp-controller="Events" asp-action="Create" class="btn btn-outline-success my-2 my-sm-0">Dodaj wydarzenie</a>
-=======
->>>>>>> 8d8e7e89a5f24a987a8f00b49f63d34218e5b947

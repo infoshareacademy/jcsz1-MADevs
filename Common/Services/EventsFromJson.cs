@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using Common.Models;
 using Common.Services;
-using System.Linq;
 
 namespace Common
 {
@@ -60,12 +59,6 @@ namespace Common
             currentEvent.place.name = EventToUpdate.place.name;
             currentEvent.tickets.type = EventToUpdate.tickets.type;
             return true;
-        }
-
-        public RootObject GetById(int id)
-        {
-            var result = _eventsList.Single(x => x.id == id);
-            return result;
         }
     }
 }

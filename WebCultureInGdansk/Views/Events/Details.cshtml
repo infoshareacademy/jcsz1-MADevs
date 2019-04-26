@@ -4,8 +4,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-<h3>@Model.id</h3>
-<h3>@Model.name</h3>
+<div>
+    <h3>@Model.name</h3>
+</div>
+<hr>
+<div class="container">
+    <h6>@Html.Raw(Model.descLong)</h6>
+</div>
+<hr>
+<div class="container">
+    <h5>Rodzaj biletów:</h5>
+    <h6>@Model.tickets.type</h6>
+</div>
+<hr>
+<div class="container">
+    <h5>Miejsce wydarzenia:</h5>
+    <h6>@Model.place.name</h6>
+</div>
+<hr>
+<div class="container">
+    <h5>Strona WWW:</h5>
+    <h6><a href="@Model.urls.www">@Model.urls.www</a></h6>
+</div>
+<div class="container" style="margin-top: 20px">
+    <a asp-controller="Events" asp-action="Index" class="btn btn-outline-success my-2 my-sm-0">Wróć</a>
+</div>
+
 
 
