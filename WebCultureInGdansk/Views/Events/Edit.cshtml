@@ -1,0 +1,38 @@
+﻿@model Common.Models.RootObject
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edytuj wydarzenie : @Model.name</h2>
+
+<div class="container">
+    <form asp-antiforgery="true" asp-controller="Events" asp-action="Edit" method="post">
+        <div class="form-group">
+            <div class="form-control">
+                <label asp-for="name">Name</label>
+                <input asp-for="name" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-control">
+                <label asp-for="startDate">Kiedy</label>
+                <input asp-for="startDate" />
+                <span asp-validation-for="startDate" class="text-danger"></span>
+            </div>
+            <div class="form-control">
+                <label asp-for="place.name">Gdzie</label>
+                <input asp-for="place.name" />
+                <span asp-validation-for="place.name" class="text-danger"></span>
+            </div>
+            <div class="form-control">
+                <label asp-for="tickets.type">Bilety</label>
+                <input asp-for="tickets.type" />
+                <span asp-validation-for="tickets.type" class="text-danger"></span>
+            </div>
+        </div>
+        <button type="submit">Zapisz</button>
+        <button type="reset">Reset</button>
+    </form>
+
+    <a asp-controller="Events" asp-action="Index">Cofnij</a>
+</div>
