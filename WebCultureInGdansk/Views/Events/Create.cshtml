@@ -8,20 +8,20 @@
 
 <form asp-controller="Events" asp-action="Create" method="post">
     <div class="form-group">
-        <label for="eventName">Nazwa wydarzenia</label>
-        <input asp-for="name" class="form-control" type="text" id="eventName" placeholder="Nazwa wydarzenia...">
+        <label>Nazwa wydarzenia</label>
+        <input asp-for="name" class="form-control" type="text" placeholder="Nazwa wydarzenia...">
     </div>
     <div class="form-group">
         <label>Kiedy</label>
-        <input asp-for="startDate">
+        <input asp-for="startDate" class="form-control" type="datetime-local" placeholder ="Start wydarzenia..." >
     </div>
     <div class="form-group">
-        <label for="eventWhere">Gdzie</label>
-        <input asp-for="place.name" class="form-control" type="text" id="eventWhere" placeholder="Miejsce wydarzenia...">
+        <label>Gdzie</label>
+        <input asp-for="place.name" class="form-control" type="text" placeholder="Miejsce wydarzenia...">
     </div>
     <div class="form-group">
-        <label for="eventTicket">Rodzaj biletów</label>
-        <select asp-for="tickets.type" class="form-control" id="eventTicket">
+        <label>Rodzaj biletów</label>
+        <select asp-for="tickets.type" class="form-control">
             <option>Płatne</option>
             <option>Darmowe</option>
             <option>Nie podano</option>
