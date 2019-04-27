@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using Common.Models;
 using Common.Services;
-using System.Linq;
 
 namespace Common
 {
