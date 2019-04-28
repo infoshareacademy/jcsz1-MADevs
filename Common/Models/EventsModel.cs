@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Common.Models
@@ -95,17 +96,29 @@ namespace Common.Models
     
     {
         public int id { get; set; }
+
+        [Required]
         public Place place { get; set; }
+
         public DateTime endDate { get; set; }
+
+        [Required]
         public string name { get; set; }
+
         public Urls urls { get; set; }
         public List<object> attachments { get; set; }
         public string descLong { get; set; }
         public int categoryId { get; set; }
+
+        [Required]
         public DateTime startDate { get; set; }
+
         public Organizer organizer { get; set; }
         public int active { get; set; }
+
+        [Required]
         public Tickets tickets { get; set; }
+
         public string descShort { get; set; }
         public Recurrence recurrence { get; set; }
         public Schedule schedule { get; set; }

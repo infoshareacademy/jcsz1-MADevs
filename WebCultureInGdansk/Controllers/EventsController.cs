@@ -22,29 +22,29 @@ namespace WebCultureInGdansk.Controllers
             _dbContext = dbContext;
         }
 
-        // GET: Events
         [HttpGet]
         public IActionResult Index()
         {
             _dbContext.SaveChanges();
             var result = _eventsList.GetJson();
             return View(result);
+
         }
 
         // GET: Events/Details/5
         public IActionResult Details(int id)
         {
-            return View();
+            var result = _eventsList.GetEventById(id);
+            return View(result);
         }
 
-        // Get: Events/Create
+
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Events/Create
         [HttpPost]
         public IActionResult Create(RootObject oneEvent)
         {
@@ -52,28 +52,18 @@ namespace WebCultureInGdansk.Controllers
             return RedirectToAction("Index");
         }
 
-    
-        // GET: Events/Edit/5
-        public ActionResult Edit(int id)
+        public IActionResult Edit(int id)
         {
-            return View();
+            var eventtoupdate = _eventsList.GetEventById(id);
+            return View(eventtoupdate);
         }
 
-        // POST: Events/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(int id, RootObject eventtoupdate)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _eventsList.UpdateEvent(id, eventtoupdate);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Events/Delete/5
@@ -100,12 +90,9 @@ namespace WebCultureInGdansk.Controllers
         }
 
         [HttpPost]
-        public ActionResult TicketFilter(string type)
+        public IActionResult TicketFilter(string type)
         {
-            var result = _eventsList.GetJson();
-
-            result = result.Where(ticket => ticket.tickets.type.Contains(type)).ToList();
-
+            var result = _eventsList.GetEventsByTicketType(type);
             return View(result);
         }
 
@@ -113,9 +100,9 @@ namespace WebCultureInGdansk.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SearchByName(string searchString)
         {
-                var result = _eventsList.GetJson();
-                if (!String.IsNullOrEmpty(searchString))
-                {
+            var result = _eventsList.GetJson();
+            if (!String.IsNullOrEmpty(searchString))
+            {
                     
                        result = result
                         
@@ -123,8 +110,9 @@ namespace WebCultureInGdansk.Controllers
                                     s.name.ToUpper().Contains(searchString) ||
                                     s.name.Contains(searchString))
                                     .ToList();
-                }
-                return View(result);
+            }
+
+            return View(result);
         }
     }
 }

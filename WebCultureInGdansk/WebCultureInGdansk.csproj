@@ -17,6 +17,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Moment.js" Version="2.24.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\Events\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Events\TicketFilter.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
