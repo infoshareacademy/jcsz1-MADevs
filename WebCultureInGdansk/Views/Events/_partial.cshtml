@@ -5,28 +5,31 @@
 }
 
 <div class="container">
-    <div>
+    <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12">
         <form asp-controller="Events" asp-action="SearchByName" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj" aria-label="Search" name="SearchString">
+            <input class="form-control mr-sm-2" type="search" placeholder="Szukana fraza..." aria-label="Search" name="SearchString">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button>
         </form>
     </div>
-</div>
-<div class="container" style="padding-top: 100px">
-    Wybierz rodzaj biletów :
-    <form asp-controller="Events" asp-action="TicketFilter">
-        <input class="w3-radio" type="radio" name="type" value="all" checked>
-        <label>Wszystkie</label><br>
-        <input class="w3-radio" type="radio" name="type" value="free">
-        <label>Darmowe</label><br>
-        <input class="w3-radio" type="radio" name="type" value="tickets">
-        <label>Płatne</label><br>
-        <input class="w3-radio" type="radio" name="type" value="unknown">
-        <label>Nie podano</label><br>
-        <button type="submit">Wybierz</button>
-    </form>
-</div>
 
+    @*<div class="container" style="padding-top: 100px">*@
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <p>Wybierz rodzaj biletów :</p>
+            <form asp-controller="Events" asp-action="TicketFilter">
+                <input class="w3-radio" type="radio" name="type" value="all" checked>
+                <label>Wszystkie</label><br>
+                <input class="w3-radio" type="radio" name="type" value="free">
+                <label>Darmowe</label><br>
+                <input class="w3-radio" type="radio" name="type" value="tickets">
+                <label>Płatne</label><br>
+                <input class="w3-radio" type="radio" name="type" value="unknown">
+                <label>Nie podano</label><br>
+                <button type="submit" class="btn btn-primary" style="margin-top: 20px">Wybierz</button>
+            </form>
+        </div>
+        </div>
+</div>
 <div class="container" style="padding-top: 100px">
     <table>
         <tr>
@@ -34,6 +37,7 @@
             <th>Kiedy</th>
             <th>Gdzie</th>
             <th>Bilety</th>
+            <th>Ulubione</th>
         </tr>
         @foreach (var item in Model)
         {
@@ -47,5 +51,6 @@
         }
     </table>
 </div>
-
-<a asp-controller="Events" asp-action="Create" class="btn btn-outline-success my-2 my-sm-0">Dodaj wydarzenie</a>
+<div class="container" style="padding-top: 20px">
+    <a asp-controller="Events" asp-action="Create" class="btn btn-primary">Dodaj wydarzenie</a>
+</div>

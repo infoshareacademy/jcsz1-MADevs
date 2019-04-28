@@ -45,8 +45,12 @@ namespace WebCultureInGdansk.Controllers
         [HttpPost]
         public IActionResult Create(RootObject oneEvent)
         {
-            RootObject events = _eventsList.Create(oneEvent);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                RootObject events = _eventsList.Create(oneEvent);
+                return RedirectToAction("Index");
+            }
+            return View(oneEvent);
         }
 
         public IActionResult Edit(int id)

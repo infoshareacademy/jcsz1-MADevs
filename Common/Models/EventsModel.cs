@@ -111,6 +111,7 @@ namespace Common.Models
         public int categoryId { get; set; }
 
         [Required]
+        [CustomDate]
         public DateTime startDate { get; set; }
 
         public Organizer organizer { get; set; }
@@ -123,4 +124,5 @@ namespace Common.Models
         public Recurrence recurrence { get; set; }
         public Schedule schedule { get; set; }
     }
+
 }
