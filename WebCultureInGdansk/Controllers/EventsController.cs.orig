@@ -48,12 +48,8 @@ namespace WebCultureInGdansk.Controllers
         [HttpPost]
         public IActionResult Create(RootObject oneEvent)
         {
-            if (ModelState.IsValid)
-            {
-                RootObject events = _eventsList.Create(oneEvent);
-                return RedirectToAction("Index");
-            }
-            return View(oneEvent);
+            RootObject events = _eventsList.Create(oneEvent);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id)
@@ -104,9 +100,10 @@ namespace WebCultureInGdansk.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SearchByName(string searchString)
         {
-            var result = _eventsList.GetJson();
-            if (!String.IsNullOrEmpty(searchString))
-            {
+<<<<<<< HEAD
+                var result = _eventsList.GetJson();
+                if (!String.IsNullOrEmpty(searchString))
+                {
                     
                        result = result
                         
@@ -114,9 +111,18 @@ namespace WebCultureInGdansk.Controllers
                                     s.name.ToUpper().Contains(searchString) ||
                                     s.name.Contains(searchString))
                                     .ToList();
+                }
+                return View(result);
+=======
+            var result = _eventsList.GetJson();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                result = result.Where(s => s.name.Contains(searchString)).ToList();
             }
 
             return View(result);
+>>>>>>> a303ff549c9d624b091eb0288bc7866a4bcfd1db
         }
     }
 }
