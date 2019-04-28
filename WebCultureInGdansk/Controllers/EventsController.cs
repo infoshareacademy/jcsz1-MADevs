@@ -8,22 +8,25 @@ using Microsoft.AspNetCore.Mvc;
 using Common;
 using Common.Models;
 using Common.Services;
-
+using System.Text.RegularExpressions;
 namespace WebCultureInGdansk.Controllers
 {
     public class EventsController : Controller
     {
         private readonly IEventsFromJson _eventsList;
+        private readonly DataContext _dbContext;
 
-        public EventsController(IEventsFromJson eventsList)
+        public EventsController(IEventsFromJson eventsList, DataContext dbContext)
         {
             _eventsList = eventsList;
+            _dbContext = dbContext;
         }
 
         // GET: Events
         [HttpGet]
         public IActionResult Index()
         {
+            _dbContext.SaveChanges();
             var result = _eventsList.GetJson();
             return View(result);
         }
@@ -111,10 +114,15 @@ namespace WebCultureInGdansk.Controllers
         public ActionResult SearchByName(string searchString)
         {
                 var result = _eventsList.GetJson();
-
                 if (!String.IsNullOrEmpty(searchString))
                 {
-                    result = result.Where(s => s.name.Contains(searchString)).ToList();
+                    
+                       result = result
+                        
+                        .Where(s => s.name.ToLower().Contains(searchString) || 
+                                    s.name.ToUpper().Contains(searchString) ||
+                                    s.name.Contains(searchString))
+                                    .ToList();
                 }
                 return View(result);
         }
