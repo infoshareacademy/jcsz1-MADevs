@@ -32,7 +32,16 @@ namespace Common.Repositories
             _context.SaveChanges();
             
           }
-        
+
+        public Favorite ViueSingelFavorite(int id)
+        {
+            return _context.Favorites.Single(x => x.EventId == id);
+        }
+
+        public List<Favorite> ViueAllFavorite(Favorite allFavoriteEvents)
+        {
+            return _context.Favorites.ToList();
+        }
     }
 
     

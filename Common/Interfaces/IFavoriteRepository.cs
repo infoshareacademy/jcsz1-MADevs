@@ -6,10 +6,10 @@ using Common.Models;
 namespace Common.Interfaces
 {
     public interface IFavoriteRepository
-    {
-        
+    {        
             Favorite Add(Favorite oneEvent);
             void DeleteByEventId(int id);
-        
+            Favorite ViueSingelFavorite(int id);
+            List<Favorite> ViueAllFavorite(Favorite allFavoriteEvents);
     }
 }
