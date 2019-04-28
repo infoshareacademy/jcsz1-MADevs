@@ -16,42 +16,48 @@ namespace CultureInGdansk.Tests.BussinessLogicTests
         {
             //ACT
 
-           var result = GetJson();
+            var result = GetJson();
 
             //ASSERT
 
-           Assert.NotEmpty(result);
+            Assert.NotEmpty(result);
 
         }
-       
-        //[Fact]
-        //public void CreateUserOwnEvent()
-        //{
-        //    RootObject newEvent = new RootObject()
-        //    {
-            
-        //    newEvent.name = "test"
-            
-        //    }
-        //}
+
+        [Fact]
+        public void CreateUserOwnEvent()
+        {
+            //ARRANGE
+            var newEvent = new RootObject();
+            newEvent.name = "test";
+            var addNewEvent = new EventsFromJson();
+
+            //ACT
+
+            var sut = addNewEvent.Create(newEvent);
+
+            //ASSERT
+
+            sut.name.Should().Be(newEvent.name);
+        }
+
 
         [Fact]
         public void FilterEventsByTicketsType()
         {
-           string type = "free";
-           var Filtered = new EventsFromJson();
-            Filtered.GetJson();
+            //ARRANGE
+
+            string type = "free";
+            var filtered = new EventsFromJson();
+            filtered.GetJson();
 
             //ACT
 
-            var sut = Filtered.GetEventsByTicketType(type);
+            var sut = filtered.GetEventsByTicketType(type);
 
             //ASSERT
 
             sut[0].tickets.type.Should().Be(type);
-
-            
-        }
-
+        }        
     }
 }
