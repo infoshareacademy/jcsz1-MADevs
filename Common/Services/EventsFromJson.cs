@@ -10,6 +10,7 @@ namespace Common
     public class EventsFromJson : IEventsFromJson
     {
         public List<RootObject> _eventsList = new List<RootObject>();
+        private readonly DataContext _context;
 
         public List<RootObject> GetJson()
         {

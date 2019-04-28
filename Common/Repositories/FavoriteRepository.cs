@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using Common.Interfaces;
 using Common.Models;
+using Common.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Logging;
@@ -15,6 +16,7 @@ namespace Common.Repositories
 
     public class FavoriteRepository : IFavoriteRepository
     {
+        private readonly IEventsFromJson _eventsList;
         private readonly DataContext _context;
         public FavoriteRepository(DataContext context)
         {
@@ -38,9 +40,16 @@ namespace Common.Repositories
             return _context.Favorites.Single(x => x.EventId == id);
         }
 
-        public List<Favorite> ViueAllFavorite(Favorite allFavoriteEvents)
+        public List<Favorite> ViueAllFavorite()
         {
             return _context.Favorites.ToList();
+        }
+
+        public List<RootObject> Test()
+        {
+            var events = _eventsList.GetJson();
+            var favorites = events.Where(x => ViueAllFavorite().Any(y => y.EventId == x.id));
+            return favorites.ToList();
         }
     }
 
