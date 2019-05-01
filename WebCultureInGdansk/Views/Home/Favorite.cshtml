@@ -1,0 +1,47 @@
+﻿@using System.Security.Cryptography.X509Certificates
+@using Common.Interfaces
+@using Common.Models
+@using Microsoft.AspNetCore.Http.Internal
+@using Microsoft.AspNetCore.Rewrite.Internal.ApacheModRewrite
+@using Microsoft.EntityFrameworkCore
+@model IEnumerable<Common.Models.RootObject>
+@inject IFavoriteRepository Favorite
+@{
+    ViewBag.Title = "";
+    Layout = "_Layout";
+}
+
+
+<h1>Tutaj będą ulubione</h1>
+@*var test = @Favorite.ViueAllFavorite();
+
+
+@foreach (var item in @Favorite.ViueAllFavorite())
+{
+    @Model.Where(x => x.id == )
+
+
+    @item.EventId
+}
+@Favorite.ViueAllFavorite()[1].Id;
+
+
+@Model.Where(x => x.id == 1).Select(x => x.name);*@
+
+
+
+@*var test = @Favorite.ViueAllFavorite().Select(x => new RootObject
+           {
+               id = x.EventId
+           }).ToList()
+
+@foreach (var item in Favorite)
+{
+    @item
+}*@
+
+@*@foreach (var item in Favorite.Test())
+{
+    @item.id
+    @item.name
+}*@

@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).First().name</h5>
                     <p class="card-text">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).First().descShort</p>
-                    <a href="#" class="btn btn-light">Więcej</a>
+                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).First().id" class="btn btn-light">Więcej</a>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(1).First().name</h5>
                     <p class="card-text">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(1).First().descShort</p>
-                    <a href="#" class="btn btn-light">Więcej</a>
+                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(1).First().id" class="btn btn-light">Więcej</a>
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(2).First().name</h5>
                     <p class="card-text">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(2).First().descShort</p>
-                    <a href="#" class="btn btn-light">Więcej</a>
+                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(2).First().id" class="btn btn-light">Więcej</a>
                 </div>
             </div>
         </div>

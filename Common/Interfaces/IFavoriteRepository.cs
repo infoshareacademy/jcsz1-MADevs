@@ -10,6 +10,7 @@ namespace Common.Interfaces
             Favorite Add(Favorite oneEvent);
             void DeleteByEventId(int id);
             Favorite ViueSingelFavorite(int id);
-            List<Favorite> ViueAllFavorite(Favorite allFavoriteEvents);
+            List<Favorite> ViueAllFavorite();
+            List<RootObject> Test();
     }
 }
