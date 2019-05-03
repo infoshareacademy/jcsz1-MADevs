@@ -5,10 +5,10 @@ namespace Common.Services
 {
     public interface IEventsFromJson
     {
-        List<RootObject> GetJson();
-        RootObject Create(RootObject oneEvent);        
-        List<RootObject> GetEventsByTicketType(string type);
-        RootObject GetEventById(int id);
-        bool UpdateEvent(int id, RootObject eventToUpdate);
+        List<EventsFields> GetJson();
+        EventsFields Create(EventsFields oneEvent);        
+        List<EventsFields> GetEventsByTicketType(string type);
+        EventsFields GetEventById(int id);
+        bool UpdateEvent(int id, EventsFields eventToUpdate);
     }
 }

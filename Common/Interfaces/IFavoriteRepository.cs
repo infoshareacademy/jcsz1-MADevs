@@ -11,6 +11,6 @@ namespace Common.Interfaces
             void DeleteByEventId(int id);
             Favorite ViueSingelFavorite(int id);
             List<Favorite> ViueAllFavorite();
-            List<RootObject> Test();
+            List<EventsFields> Test();
     }
 }

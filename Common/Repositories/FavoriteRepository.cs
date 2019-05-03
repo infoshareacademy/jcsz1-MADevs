@@ -45,10 +45,10 @@ namespace Common.Repositories
             return _context.Favorites.ToList();
         }
 
-        public List<RootObject> Test()
+        public List<EventsFields> Test()
         {
             var events = _eventsList.GetJson();
-            var favorites = events.Where(x => ViueAllFavorite().Any(y => y.EventId == x.id));
+            var favorites = events.Where(x => ViueAllFavorite().Any(y => y.EventId == x.Id));
             return favorites.ToList();
         }
     }

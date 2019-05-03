@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Common.Models.RootObject>
+﻿@model IEnumerable<Common.Models.EventsFields>
 @{
     ViewData["Title"] = "Wydarzenia";
 }
@@ -40,11 +40,11 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td><a asp-controller="Events" asp-action="Details" asp-route-id="@item.id">@item.name</a></td>
-                <td> @item.startDate.ToShortDateString()</td>
-                <td> @item.place.name</td>
-                <td> @item.tickets.type</td>
-                <td> <a asp-controller="Events" asp-action="Edit" asp-route-id="@item.id">Edytuj</a></td>
+                <td><a asp-controller="Events" asp-action="Details" asp-route-id="@item.Id">@item.Name</a></td>
+                <td> @item.StartDate.ToShortDateString()</td>
+                <td> @item.PlaceName</td>
+                <td> @item.TicketsType</td>
+                <td> <a asp-controller="Events" asp-action="Edit" asp-route-id="@item.Id">Edytuj</a></td>
             </tr>
         }
     </table>
