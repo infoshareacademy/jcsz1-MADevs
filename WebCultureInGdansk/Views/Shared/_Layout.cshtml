@@ -17,12 +17,14 @@
     </environment>
 </head>
 <body>
-<div class="container navigation-bar">
+    <div class="container navigation-bar">
         <nav class="container navbar fixed-top navbar-expand-lg navbar-light">
-            <a class="navbar-brand">Gdańska Kultura</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <img src="~/images/MaDevs.png" width="150" height="150" class="warning" />
+
+            @*<a class="navbar-brand">Gdańska</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>*@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -44,10 +46,10 @@
                 </ul>
             </div>
         </nav>
-</div>
+    </div>
+    <br /><br /><br /><br /><br />
 
-
-<partial name="_CookieConsentPartial" />
+    <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
         @RenderBody()
@@ -57,11 +59,11 @@
         </footer>
     </div>
 
-<environment include="Development">
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-</environment>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"

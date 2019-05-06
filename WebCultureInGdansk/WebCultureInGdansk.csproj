@@ -18,6 +18,8 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
     <PackageReference Include="Moment.js" Version="2.24.0" />
+    <PackageReference Include="NLog" Version="4.6.3" />
+    <PackageReference Include="NLog.Config" Version="4.6.3" />
   </ItemGroup>
 
   <ItemGroup>
