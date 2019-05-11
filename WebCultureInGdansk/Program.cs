@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Common.Services;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -17,13 +18,14 @@ namespace WebCultureInGdansk
     {
         public static void Main(string[] args)
         {
+
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
-                .WriteTo.File(new CompactJsonFormatter(), "Logs/log-.txt",
+                .WriteTo.File(new CompactJsonFormatter(), "Logs/log-.json",
                 rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
-            Log.Logger.Information("Executed at {ExecutionTime}", Environment.TickCount);
+            Log.Information("Webpage started");
 
             CreateWebHostBuilder(args).Build().Run();
         }
