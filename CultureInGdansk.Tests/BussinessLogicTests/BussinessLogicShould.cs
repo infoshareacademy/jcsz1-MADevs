@@ -28,8 +28,8 @@ namespace CultureInGdansk.Tests.BussinessLogicTests
         public void CreateUserOwnEvent()
         {
             //ARRANGE
-            var newEvent = new RootObject();
-            newEvent.name = "test";
+            var newEvent = new EventsFields();
+            newEvent.Name = "test";
             var addNewEvent = new EventsFromJson();
 
             //ACT
@@ -38,7 +38,7 @@ namespace CultureInGdansk.Tests.BussinessLogicTests
 
             //ASSERT
 
-            sut.name.Should().Be(newEvent.name);
+            sut.Name.Should().Be(newEvent.Name);
         }
 
 
@@ -57,7 +57,7 @@ namespace CultureInGdansk.Tests.BussinessLogicTests
 
             //ASSERT
 
-            sut[0].tickets.type.Should().Be(type);
+            sut[0].TicketsType.Should().Be(type);
         }        
     }
 }

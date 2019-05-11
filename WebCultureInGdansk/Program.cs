@@ -7,6 +7,9 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Core;
+using Serilog.Formatting.Compact;
 
 namespace WebCultureInGdansk
 {
@@ -14,11 +17,21 @@ namespace WebCultureInGdansk
     {
         public static void Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.File(new CompactJsonFormatter(), "Logs/log-.txt",
+                rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+            Log.Logger.Information("Executed at {ExecutionTime}", Environment.TickCount);
+
             CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
+
+
     }
 }

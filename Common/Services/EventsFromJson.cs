@@ -24,6 +24,7 @@ namespace Common
                 }
             }
             return _eventsList;
+            
         }
 
         public EventsFields Create(EventsFields oneEvent)
