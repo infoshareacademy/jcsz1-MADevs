@@ -4,6 +4,9 @@ using System.Linq;
 using System.Net;
 using Common.Models;
 using Common.Services;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using System.Threading.Tasks;
 
 namespace Common
 {
@@ -11,17 +14,28 @@ namespace Common
     {
         public List<EventsFields> _eventsList = new List<EventsFields>();
         private readonly DataContext _context;
+        private readonly Serilog.ILogger _log = Log.ForContext<IEventsFromJson>();
 
         public List<EventsFields> GetJson()
         {
             if (_eventsList.Count == 0)
             {
                 var path = "https://planerkulturalny.pl/api/rest/events.json";
-                using (WebClient wc = new WebClient())
+
+                try
                 {
-                    var json = wc.DownloadString(path);
-                    _eventsList = JsonConvert.DeserializeObject<List<EventsFields>>(json);
+                    using (WebClient wc = new WebClient())
+                    {
+                        var json = wc.DownloadString(path);
+                        _eventsList = JsonConvert.DeserializeObject<List<EventsFields>>(json);
+
+                    }
+                    _log.Information("Webpage started");
                 }
+                catch
+                { 
+                    _log.Error("API failed to load content");
+                };
             }
             return _eventsList;
             
