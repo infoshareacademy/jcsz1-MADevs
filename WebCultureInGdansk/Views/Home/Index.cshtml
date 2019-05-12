@@ -1,6 +1,6 @@
 ﻿@using System.Collections.Immutable
 
-@model IEnumerable<Common.Models.RootObject>
+@model IEnumerable<Common.Models.EventsFields>
 
 @{
     ViewData["Title"] = "Strona główna";
@@ -27,9 +27,9 @@
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="/images/StockSnap_N5IUE5LITY.jpg" alt="Upsss..." />
                 <div class="card-body">
-                    <h5 class="card-title">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).First().name</h5>
-                    <p class="card-text">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).First().descShort</p>
-                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).First().id" class="btn btn-light">Więcej</a>
+                    <h5 class="card-title">@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).First().Name</h5>
+                    <p class="card-text">@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).First().DescShort</p>
+                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).First().Id" class="btn btn-light">Więcej</a>
                 </div>
             </div>
         </div>
@@ -37,9 +37,9 @@
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="/images/coffee.jpg" alt="Upsss..." />
                 <div class="card-body">
-                    <h5 class="card-title">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(1).First().name</h5>
-                    <p class="card-text">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(1).First().descShort</p>
-                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(1).First().id" class="btn btn-light">Więcej</a>
+                    <h5 class="card-title">@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(1).First().Name</h5>
+                    <p class="card-text">@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(1).First().DescShort</p>
+                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(1).First().Id" class="btn btn-light">Więcej</a>
                 </div>
             </div>
         </div>
@@ -47,9 +47,9 @@
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="/images/Event1.jpg" alt="Upsss..." />
                 <div class="card-body">
-                    <h5 class="card-title">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(2).First().name</h5>
-                    <p class="card-text">@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(2).First().descShort</p>
-                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.startDate > DateTime.Now).OrderBy(x => x.startDate).Skip(2).First().id" class="btn btn-light">Więcej</a>
+                    <h5 class="card-title">@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(2).First().Name</h5>
+                    <p class="card-text">@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(2).First().DescShort</p>
+                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(2).First().Id" class="btn btn-light">Więcej</a>
                 </div>
             </div>
         </div>

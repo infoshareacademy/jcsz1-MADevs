@@ -46,11 +46,11 @@ namespace WebCultureInGdansk.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(RootObject oneEvent)
+        public IActionResult Create(EventsFields oneEvent)
         {
             if (ModelState.IsValid)
             {
-                RootObject events = _eventsList.Create(oneEvent);
+                EventsFields events = _eventsList.Create(oneEvent);
                 return RedirectToAction("Index");
             }
             return View(oneEvent);
@@ -64,7 +64,7 @@ namespace WebCultureInGdansk.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, RootObject eventtoupdate)
+        public IActionResult Edit(int id, EventsFields eventtoupdate)
         {
             _eventsList.UpdateEvent(id, eventtoupdate);
             return RedirectToAction(nameof(Index));
@@ -110,9 +110,9 @@ namespace WebCultureInGdansk.Controllers
                     
                        result = result
                         
-                        .Where(s => s.name.ToLower().Contains(searchString) || 
-                                    s.name.ToUpper().Contains(searchString) ||
-                                    s.name.Contains(searchString))
+                        .Where(s => s.Name.ToLower().Contains(searchString) || 
+                                    s.Name.ToUpper().Contains(searchString) ||
+                                    s.Name.Contains(searchString))
                                     .ToList();
             }
 

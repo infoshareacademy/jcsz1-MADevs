@@ -9,10 +9,10 @@ namespace Common
 {
     public class EventsFromJson : IEventsFromJson
     {
-        public List<RootObject> _eventsList = new List<RootObject>();
+        public List<EventsFields> _eventsList = new List<EventsFields>();
         private readonly DataContext _context;
 
-        public List<RootObject> GetJson()
+        public List<EventsFields> GetJson()
         {
             if (_eventsList.Count == 0)
             {
@@ -20,20 +20,20 @@ namespace Common
                 using (WebClient wc = new WebClient())
                 {
                     var json = wc.DownloadString(path);
-                    _eventsList = JsonConvert.DeserializeObject<List<RootObject>>(json);
+                    _eventsList = JsonConvert.DeserializeObject<List<EventsFields>>(json);
                 }
             }
             return _eventsList;
         }
 
-        public RootObject Create(RootObject oneEvent)
+        public EventsFields Create(EventsFields oneEvent)
         {
-            oneEvent.id = _eventsList.Count + 1;
+            oneEvent.Id = _eventsList.Count + 1;
             _eventsList.Add(oneEvent);
             return oneEvent;
         }
 
-        public List<RootObject> GetEventsByTicketType(string type)
+        public List<EventsFields> GetEventsByTicketType(string type)
         {
             if (type == "all")
             {
@@ -42,23 +42,23 @@ namespace Common
             }
             else
             {
-                var _filtered = _eventsList.Where(ticket => ticket.tickets.type.Contains(type)).ToList();
+                var _filtered = _eventsList.Where(ticket => ticket.TicketsType.Contains(type)).ToList();
                 return _filtered;
             }
         }
 
-        public RootObject GetEventById(int id)
+        public EventsFields GetEventById(int id)
         {
-            return _eventsList.Single(events => events.id == id);
+            return _eventsList.Single(events => events.Id == id);
         }
 
-        public bool UpdateEvent(int id, RootObject EventToUpdate)
+        public bool UpdateEvent(int id, EventsFields EventToUpdate)
         {
             var currentEvent = GetEventById(id);
-            currentEvent.name = EventToUpdate.name;
-            currentEvent.startDate = EventToUpdate.startDate;
-            currentEvent.place.name = EventToUpdate.place.name;
-            currentEvent.tickets.type = EventToUpdate.tickets.type;
+            currentEvent.Name = EventToUpdate.Name;
+            currentEvent.StartDate = EventToUpdate.StartDate;
+            currentEvent.PlaceName = EventToUpdate.PlaceName;
+            currentEvent.TicketsType = EventToUpdate.TicketsType;
             return true;
         }
     }
