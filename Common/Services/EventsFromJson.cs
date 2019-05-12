@@ -4,6 +4,10 @@ using System.Linq;
 using System.Net;
 using Common.Models;
 using Common.Services;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using System.Threading.Tasks;
+using System;
 
 namespace Common
 {
@@ -11,25 +15,38 @@ namespace Common
     {
         public List<EventsFields> _eventsList = new List<EventsFields>();
         private readonly DataContext _context;
+        private readonly Serilog.ILogger _log = Log.ForContext<IEventsFromJson>();
 
         public List<EventsFields> GetJson()
         {
             if (_eventsList.Count == 0)
             {
                 var path = "https://planerkulturalny.pl/api/rest/events.json";
-                using (WebClient wc = new WebClient())
-                {
-                    var json = wc.DownloadString(path);
-                    _eventsList = JsonConvert.DeserializeObject<List<EventsFields>>(json);
+
+                try
+                {                   
+                    using (WebClient wc = new WebClient())
+                    {
+                        var json = wc.DownloadString(path);
+                        _eventsList = JsonConvert.DeserializeObject<List<EventsFields>>(json);
+
+                    }
                 }
+                catch (Exception message)
+                {
+                    _log.Error(message.ToString());
+                };
             }
             return _eventsList;
+            
         }
 
         public EventsFields Create(EventsFields oneEvent)
         {
-            oneEvent.Id = _eventsList.Count + 1;
+            _log.Information("User added new event");
             _eventsList.Add(oneEvent);
+            oneEvent.Id = _eventsList.Count + 1;           
+            ;
             return oneEvent;
         }
 
@@ -37,12 +54,14 @@ namespace Common
         {
             if (type == "all")
             {
-                var _all = GetJson();
+                _log.Information("User listed all events");
+                var _all = GetJson();                
                 return _all;
             }
             else
             {
-                var _filtered = _eventsList.Where(ticket => ticket.TicketsType.Contains(type)).ToList();
+                _log.Information($"User listed events with {type} tickets", type);
+                var _filtered = _eventsList.Where(ticket => ticket.TicketsType.Contains(type)).ToList();                
                 return _filtered;
             }
         }
@@ -54,6 +73,7 @@ namespace Common
 
         public bool UpdateEvent(int id, EventsFields EventToUpdate)
         {
+            _log.Information("User updated an event");
             var currentEvent = GetEventById(id);
             currentEvent.Name = EventToUpdate.Name;
             currentEvent.StartDate = EventToUpdate.StartDate;
