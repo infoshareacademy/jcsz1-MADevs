@@ -21,11 +21,6 @@
         <nav class="container navbar fixed-top navbar-expand-lg navbar-light">
             <img src="~/images/MaDevs.png" width="150" height="150" class="warning" />
 
-            @*<a class="navbar-brand">Gdańska</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>*@
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -35,13 +30,16 @@
                         <a asp-area="" asp-controller="Events" asp-action="Index" class="nav-link">Wydarzenia</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-area="" asp-controller="Home" asp-action="Favorite" class="nav-link">Ulubione</a>
+                        <a asp-area="" asp-controller="Events" asp-action="Favorite" class="nav-link">Ulubione</a>
                     </li>
                     <li class="nav-item">
                         <a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">O nas</a>
                     </li>
                     <li class="nav-item">
                         <a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">Kontakt</a>
+                    </li>
+                    <li class="nav-item">
+                        <partial name="_SelectLanguagePartial" />
                     </li>
                 </ul>
             </div>
