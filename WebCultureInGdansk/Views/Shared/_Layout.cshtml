@@ -1,14 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Gdańska Kultura</title>
 
-    
+
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
-        <link rel="stylesheet" href="~/css/site.css"/>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="css/WebCultureInGdansk.css">
     </environment>
     <environment exclude="Development">
@@ -24,19 +26,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Strona Główna<span class="sr-only">(current)</span></a>
+                        <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">@_localizer["Strona Główna"]<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a asp-area="" asp-controller="Events" asp-action="Index" class="nav-link">Wydarzenia</a>
+                        <a asp-area="" asp-controller="Events" asp-action="Index" class="nav-link">@_localizer["Wydarzenia"]</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-area="" asp-controller="Events" asp-action="Favorite" class="nav-link">Ulubione</a>
+                        <a asp-area="" asp-controller="Events" asp-action="Favorite" class="nav-link">@_localizer["Ulubione"]</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">O nas</a>
+                        <a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">@_localizer["O nas"]</a>
                     </li>
                     <li class="nav-item">
-                        <a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">Kontakt</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">@_localizer["Kontakt"]</a>
                     </li>
                     <li class="nav-item">
                         <partial name="_SelectLanguagePartial" />
