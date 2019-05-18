@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using Serilog.AspNetCore;
+using Serilog.Settings.Configuration;
+using Serilog.Sinks.MSSqlServer;
 using Serilog.Core;
 using Serilog.Formatting.Compact;
 
@@ -16,24 +19,58 @@ namespace WebCultureInGdansk
 {
     public class Program
     {
+        public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
+       .SetBasePath(Directory.GetCurrentDirectory())
+       .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+       .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
+       .Build();
+
         public static void Main(string[] args)
         {
-
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Information()
-                .WriteTo.File(new CompactJsonFormatter(), "Logs/log-.json",
-                rollingInterval: RollingInterval.Day)
-                .CreateLogger();
+            .ReadFrom.Configuration(Configuration)
+            .CreateLogger();
 
-            Log.Information("Webpage started");
+            try
+            {
+                Log.Information("Webpage started successfully");
 
-            CreateWebHostBuilder(args).Build().Run();
+                BuildWebHost(args).Run();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+
+            //Log.Logger = new LoggerConfiguration()
+            //    .MinimumLevel.Information()
+            //    .WriteTo.File(new CompactJsonFormatter(), "Logs/log-.json",
+            //    rollingInterval: RollingInterval.Day)
+            //    .CreateLogger();
+
+            //Log.Information("Webpage started");
+
+            //CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IWebHost BuildWebHost(string[] args) =>
+       WebHost.CreateDefaultBuilder(args)
+              .UseStartup<Startup>()
+              .UseConfiguration(Configuration)
+              .UseSerilog()
+              .Build();
 
+        //public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        //    WebHost.CreateDefaultBuilder(args)
+        //        .UseStartup<Startup>()
+        //        .UseSerilog();
+
+
+        
 
     }
 }

@@ -41,7 +41,7 @@ namespace WebCultureInGdansk
             services.AddSingleton<IEventsFromJson, EventsFromJson>();
             services.AddTransient<IFavoriteRepository, FavoriteRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=(localdb)\Testbase;Database=Eventlist;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<Common.Models.DataContext>
                 (options => options.UseSqlServer(connection));
         }
