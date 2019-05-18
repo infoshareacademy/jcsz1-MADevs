@@ -45,32 +45,13 @@ namespace WebCultureInGdansk
             {
                 Log.CloseAndFlush();
             }
-
-            //Log.Logger = new LoggerConfiguration()
-            //    .MinimumLevel.Information()
-            //    .WriteTo.File(new CompactJsonFormatter(), "Logs/log-.json",
-            //    rollingInterval: RollingInterval.Day)
-            //    .CreateLogger();
-
-            //Log.Information("Webpage started");
-
-            //CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
+       public static IWebHost BuildWebHost(string[] args) =>
        WebHost.CreateDefaultBuilder(args)
               .UseStartup<Startup>()
               .UseConfiguration(Configuration)
               .UseSerilog()
               .Build();
-
-        //public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        //    WebHost.CreateDefaultBuilder(args)
-        //        .UseStartup<Startup>()
-        //        .UseSerilog();
-
-
-        
-
     }
 }
