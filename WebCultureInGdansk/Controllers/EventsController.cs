@@ -9,6 +9,8 @@ using Common;
 using Common.Models;
 using Common.Services;
 using System.Text.RegularExpressions;
+using Microsoft.Extensions.Localization;
+
 namespace WebCultureInGdansk.Controllers
 {
     public class EventsController : Controller
@@ -28,7 +30,11 @@ namespace WebCultureInGdansk.Controllers
             _dbContext.SaveChanges();
             var result = _eventsList.GetJson();
             return View(result);
+        }
 
+        public IActionResult Favorite()
+        {
+            return View();
         }
 
         // GET: Events/Details/5

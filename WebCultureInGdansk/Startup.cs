@@ -16,6 +16,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Formatting.Compact;
+using Microsoft.AspNetCore.Mvc.Razor;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Options;
 
 namespace WebCultureInGdansk
 {
@@ -40,10 +44,35 @@ namespace WebCultureInGdansk
 
             services.AddSingleton<IEventsFromJson, EventsFromJson>();
             services.AddTransient<IFavoriteRepository, FavoriteRepository>();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc()
+                .AddViewLocalization(opts=>
+                {
+                    opts.ResourcesPath = "Resources";
+                })
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             var connection = @"Server=(localdb)\Testbase;Database=Eventlist;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<Common.Models.DataContext>
                 (options => options.UseSqlServer(connection));
+
+            services.AddLocalization(opts =>
+            {
+                opts.ResourcesPath = "Resources";
+            });
+
+            services.Configure<RequestLocalizationOptions>(opts =>
+            {
+                var supportedCultures = new List<CultureInfo>
+                {
+                    new CultureInfo("pl-PL"),
+                    new CultureInfo("en-US"),
+                    new CultureInfo("de-DE")
+                };
+                opts.DefaultRequestCulture = new RequestCulture("pl-PL");
+                opts.SupportedCultures = supportedCultures;
+                opts.SupportedUICultures = supportedCultures;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,7 +88,10 @@ namespace WebCultureInGdansk
             }
 
             app.UseStaticFiles();
-            //app.UseCookiePolicy();
+            app.UseCookiePolicy();
+
+            var options = app.ApplicationServices.GetServices<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization();
 
             app.UseMvc(routes =>
             {
