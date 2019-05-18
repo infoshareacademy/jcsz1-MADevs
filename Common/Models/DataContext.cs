@@ -38,7 +38,5 @@ namespace Common.Models
         public string Exception { get; set; }
         public string Properties { get; set; }
         public string LogEvent { get; set; }
-
-
     }
 }
