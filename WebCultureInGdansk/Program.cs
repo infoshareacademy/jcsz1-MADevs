@@ -27,6 +27,7 @@ namespace WebCultureInGdansk
 
         public static void Main(string[] args)
         {
+            var logger = Serilog.Log.Logger;
             Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(Configuration)
             .CreateLogger();
