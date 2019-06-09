@@ -16,18 +16,52 @@ namespace Common.Models
         {
         }
 
+        public DbSet<Event> Events { get; set; }
         public DbSet<Favorite> Favorites { get; set; }
-        public DbSet<Log> Log { get; set; }
+        public DbSet<ViewsHistory> ViewsHistory { get; set; }
+        public DbSet<LoginHistory> LoginHistory { get; set; }
     }
 
     public class Favorite
     {
         [Key]
-        public int Id { get; set; }
+        public int FavoriteId { get; set; }
+        public bool Status { get; set; }
+
         public int EventId { get; set; }
+        public Event Events { get; set; }
+    }
+    public class Event
+    {
+        [Key]
+        public int EventId { get; set; }
+        public string PlaceName { get; set; }
+        public string Urls { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+        public string DescShort { get; set; }
+        public string DescLong { get; set; }
+
+        public Favorite Favorites { get; set; }
     }
 
-    public class Log
+    public class ViewsHistory
+    {
+        [Key]
+        public int ViewsHistoryId { get; set; }
+        public int EventId { get; set; }
+
+        public Event Events { get; set; }
+    }
+    public class LoginHistory
+    {
+        [Key]
+        public int LoginHistoryId { get; set; }
+        public int EventId { get; set; }
+    }
+}
+
+public class LogTable
     {
         [Key]
         public int Id { get; set; }
@@ -39,4 +73,3 @@ namespace Common.Models
         public string Properties { get; set; }
         public string LogEvent { get; set; }
     }
-}
