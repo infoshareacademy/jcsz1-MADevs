@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.3.1" />
+    <Compile Remove="Migrations\20190618202749_CreateIdentitySchema.cs" />
+    <Compile Remove="Migrations\20190618204454_CreateIdentitySchemaCorrected.cs" />
     <Compile Remove="Models\EventsModel.cs" />
   </ItemGroup>
 
@@ -35,6 +37,10 @@
     <Content Update="Views\Events\TicketFilter.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

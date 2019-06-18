@@ -56,6 +56,7 @@ namespace WebCultureInGdansk
             services.AddDbContext<Common.Models.DataContext>
                 (options => options.UseSqlServer(connection));
 
+
             services.AddLocalization(opts =>
             {
                 opts.ResourcesPath = "Resources";

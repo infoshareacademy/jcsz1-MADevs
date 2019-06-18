@@ -21,7 +21,7 @@
 <body>
     <div class="container navigation-bar">
         <nav class="container navbar fixed-top navbar-expand-lg navbar-light">
-            <img src="~/images/MaDevs.png" width="150" height="150" class="warning" />
+            @*<img src="~/images/MaDevs.png" width="150" height="150" class="warning" />*@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -40,10 +40,11 @@
                     <li class="nav-item">
                         <a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">@_localizer["Kontakt"]</a>
                     </li>
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <partial name="_SelectLanguagePartial" />
-                    </li>
+                    </li>*@
                 </ul>
+                <partial name="_LoginPartial"/>
             </div>
         </nav>
     </div>
