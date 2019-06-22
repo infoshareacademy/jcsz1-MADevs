@@ -52,7 +52,6 @@ namespace WebCultureInGdansk
        WebHost.CreateDefaultBuilder(args)
               .UseStartup<Startup>()
               .UseConfiguration(Configuration)
-              .UseSerilog()
               .Build();
     }
 }

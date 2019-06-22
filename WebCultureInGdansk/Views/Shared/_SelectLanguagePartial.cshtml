@@ -9,15 +9,38 @@
     var cultureItems = LocOptions.Value.SupportedUICultures
          .Select(culture => new SelectListItem { Value = culture.Name, Text = culture.DisplayName })
          .ToList();
+    var culturePl = LocOptions.Value.SupportedUICultures
+        .Select(culture => new SelectListItem { Value = culture.Name, Text = culture.DisplayName })
+        .Where(culture => culture.Value == "pl-PL")
+        .ToList();
+    var cultureEn = LocOptions.Value.SupportedUICultures
+        .Select(culture => new SelectListItem { Value = culture.Name, Text = culture.DisplayName })
+        .Where(culture => culture.Value == "en-US")
+        .ToList();
+    var cultureDe = LocOptions.Value.SupportedUICultures
+        .Select(culture => new SelectListItem { Value = culture.Name, Text = culture.DisplayName })
+        .Where(culture => culture.Value == "de-DE")
+        .ToList();
 }
 
+
 <div title="@Localizer["RequestCultureProvider"] @requestCulture?.Provider?.GetType().Name">
- <form id="ChooseLanguage" asp-controller="Home" asp-action="SetLanguage" 
-       asp-route-returnUrl ="@Context.Request.Path" method="post" class="form-horizontal" role="form">
-  @Localizer["Language"] 
- <select name="culture" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
-</select>
-     <button type="submit" class="btn-default">Save</button>
- </form>
+    <form id="ChooseLanguage" asp-controller="Home" asp-action="SetLanguage"
+          asp-route-returnUrl="@Context.Request.Path" method="post" class="form-horizontal" role="form">
+        <select name="culture" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="culturePl"></select>
+        <button type="submit" class="btn-default">PL</button>
+    </form>
 </div>
-       
+<div>
+    <form id="ChooseLanguage" asp-controller="Home" asp-action="SetLanguage"
+          asp-route-returnUrl="@Context.Request.Path" method="post" class="form-horizontal" role="form">
+        <input type="submit" name="culture" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureEn" value="EN">
+        @*<button type="submit" class="btn-default">EN</button>*@
+    </form>
+</div><div>
+    <form id="ChooseLanguage" asp-controller="Home" asp-action="SetLanguage"
+          asp-route-returnUrl="@Context.Request.Path" method="post" class="form-horizontal" role="form">
+        <select name="culture" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureDe"></select>
+        <button type="submit" class="btn-default">DE</button>
+    </form>
+</div>
