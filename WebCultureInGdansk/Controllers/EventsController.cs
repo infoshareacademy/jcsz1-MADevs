@@ -9,7 +9,9 @@ using Common;
 using Common.Models;
 using Common.Services;
 using System.Text.RegularExpressions;
+using Common.Interfaces;
 using Microsoft.Extensions.Localization;
+using WebCultureInGdansk.Dtos;
 
 namespace WebCultureInGdansk.Controllers
 {
@@ -17,11 +19,13 @@ namespace WebCultureInGdansk.Controllers
     {
         private readonly IEventsFromJson _eventsList;
         private readonly DataContext _dbContext;
+        private readonly IReportModuleService _reportModuleService;
 
-        public EventsController(IEventsFromJson eventsList, DataContext dbContext)
+        public EventsController(IEventsFromJson eventsList, DataContext dbContext, IReportModuleService reportModuleService)
         {
             _eventsList = eventsList;
             _dbContext = dbContext;
+            _reportModuleService = reportModuleService;
         }
 
         [HttpGet]
@@ -40,6 +44,11 @@ namespace WebCultureInGdansk.Controllers
         // GET: Events/Details/5
         public IActionResult Details(int id)
         {
+            var report = new ReportDto()
+            {
+                
+            };
+            this._reportModuleService.PostReport(report);
             var result = _eventsList.GetEventById(id);
             return View(result);
         }

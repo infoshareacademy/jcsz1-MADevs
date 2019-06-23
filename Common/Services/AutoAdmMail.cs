@@ -20,7 +20,7 @@ namespace Common.Services
             var smtp = new SmtpClient("adres smtp");
             smtp.Credentials = new NetworkCredential("adres nadawcy", "hasło do poczty");
             smtp.EnableSsl = true;
-            smtp.Port = 587;
+            smtp.Port = 587; //465
 
             smtp.Send(message);
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebCultureInGdansk.Models;
@@ -10,6 +11,7 @@ using Common.Services;
 using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
+using WebCultureInGdansk.Dtos;
 
 namespace WebCultureInGdansk.Controllers
 {
@@ -17,14 +19,22 @@ namespace WebCultureInGdansk.Controllers
     {
         private readonly IEventsFromJson _eventsList;
         private readonly IStringLocalizer<HomeController> _localizer;
-
         public HomeController(IEventsFromJson eventsList)
         {
             _eventsList = eventsList;
         }
 
-        public IActionResult Index()
+  
+        public async Task<IActionResult> Index()
         {
+
+            var report = new ReportDto()
+            {
+                RaportLevel = "Error",
+                RaportDesc = "error"
+            };
+
+
             var items = _eventsList.GetJson();
 
             return View(items);
