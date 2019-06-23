@@ -1,17 +1,20 @@
 ﻿@using System.Collections.Immutable
+@using Microsoft.AspNetCore.Mvc.Localization
 
 @model IEnumerable<Common.Models.EventsFields>
+@inject IViewLocalizer _localizer
 
 @{
-    ViewData["Title"] = "Strona główna";
+    ViewData["Title"] = _localizer["Strona główna"];
 }
 
 <div class="container">
     <div class="row align-items-center" style="background-color: #e9ecef;">
         <div class="col-lg-6 col-md-12 col-sm-12 jumbotron-text">
-            <h1 class="display-4">Gdańska Kultura</h1>
-            <p class="lead">Tutaj znajdzień wszystkie wydarzenia z Gdańsk i okolicy.</p>
-            <a asp-area="" asp-controller="Home" asp-action="About" class="btn btn-light">O nas</a>
+            <img src="~/images/MaDevs.png" width="150" height="150" class="warning" />
+            <h1 class="display-4">@_localizer["Gdańska Kultura"]</h1>
+            <p class="lead">@_localizer["Tutaj znajdziesz wszystkie wydarzenia z Gdańska i okolicy."]</p>
+            <a asp-area="" asp-controller="Home" asp-action="About" class="btn btn-light">@_localizer["O nas"]</a>
         </div>
         <div class="col-lg-6 col-md-12 col-sm-12" style="padding: 0 0 0 0">
             <img src="images/StockSnap_C9M98T85FN.jpg" class="img-fluid jumbotron-image">
@@ -29,7 +32,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).First().Name</h5>
                     <p class="card-text">@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).First().DescShort</p>
-                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).First().Id" class="btn btn-light">Więcej</a>
+                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).First().Id" class="btn btn-light">@_localizer["Więcej"]</a>
                 </div>
             </div>
         </div>
@@ -39,7 +42,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(1).First().Name</h5>
                     <p class="card-text">@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(1).First().DescShort</p>
-                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(1).First().Id" class="btn btn-light">Więcej</a>
+                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(1).First().Id" class="btn btn-light">@_localizer["Więcej"]</a>
                 </div>
             </div>
         </div>
@@ -49,7 +52,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(2).First().Name</h5>
                     <p class="card-text">@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(2).First().DescShort</p>
-                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(2).First().Id" class="btn btn-light">Więcej</a>
+                    <a asp-controller="Events" asp-action="Details" asp-route-id="@Model.Where(x => x.StartDate > DateTime.Now).OrderBy(x => x.StartDate).Skip(2).First().Id" class="btn btn-light">@_localizer["Więcej"]</a>
                 </div>
             </div>
         </div>
