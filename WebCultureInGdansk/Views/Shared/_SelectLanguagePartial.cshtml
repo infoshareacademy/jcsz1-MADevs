@@ -38,11 +38,5 @@
                 <button type="submit" class="btn-default">EN</button>
             </form>
 </td>
-        <td>
-    <form id="ChooseLanguage" asp-controller="Home" asp-action="SetLanguage"
-          asp-route-returnUrl="@Context.Request.Path" method="post" class="form-horizontal" role="form">
-        <select name="culture" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureDe"></select>
-        <button type="submit" class="btn-default">DE</button>
-    </form>
-</td>
+        </tr>
 </table>

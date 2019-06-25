@@ -11,25 +11,22 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">@_localizer["Wyszukaj"]</button>
             </form>
         </div>
-
-        <div class="container" style="padding-top: 100px">
-            <div class="col-lg-6 col-md-12 col-sm-12">
-                <p>@_localizer["Wybierz rodzaj biletów"] :</p>
-                <form asp-controller="Events" asp-action="TicketFilter">
-                    <input class="w3-radio" type="radio" name="type" value="all" checked>
-                    <label>@_localizer["Wszystkie"]</label><br>
-                    <input class="w3-radio" type="radio" name="type" value="free">
-                    <label>@_localizer["Darmowe"]</label><br>
-                    <input class="w3-radio" type="radio" name="type" value="tickets">
-                    <label>@_localizer["Płatne"]</label><br>
-                    <input class="w3-radio" type="radio" name="type" value="unknown">
-                    <label>@_localizer["Nie podano"]</label><br>
-                    <button type="submit" class="btn btn-primary" style="margin-top: 20px">@_localizer["Wybierz"]</button>
-                </form>
-            </div>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <p>@_localizer["Wybierz rodzaj biletów"] :</p>
+            <form asp-controller="Events" asp-action="TicketFilter">
+                <input class="w3-radio" type="radio" name="type" value="all" checked>
+                <label>@_localizer["Wszystkie"]</label>
+                <input class="w3-radio" type="radio" name="type" value="free">
+                <label>@_localizer["Darmowe"]</label>
+                <input class="w3-radio" type="radio" name="type" value="tickets">
+                <label>@_localizer["Płatne"]</label>
+                <input class="w3-radio" type="radio" name="type" value="unknown">
+                <label>@_localizer["Nie podano"]</label>
+                <button type="submit" class="btn btn-primary" style="margin-top: 0px">@_localizer["Wybierz"]</button>
+            </form>
         </div>
     </div>
-    <div class="container" style="padding-top: 100px">
+    <div class="container">
         <table>
             <tr>
                 <th>@_localizer["Nazwa wydarzenia"]</th>
