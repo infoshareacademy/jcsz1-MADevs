@@ -117,22 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Gdańska Kultura" xml:space="preserve">
-    <value>Culture in Gdansk</value>
+  <data name="tickets" xml:space="preserve">
+    <value>Płatne</value>
   </data>
-  <data name="Kontakt" xml:space="preserve">
-    <value>Contact</value>
+  <data name="unknown" xml:space="preserve">
+    <value>Nie podano</value>
   </data>
-  <data name="O nas" xml:space="preserve">
-    <value>About Us</value>
-  </data>
-  <data name="Strona Główna" xml:space="preserve">
-    <value>Main Page</value>
-  </data>
-  <data name="Ulubione" xml:space="preserve">
-    <value>Favourites</value>
-  </data>
-  <data name="Wydarzenia" xml:space="preserve">
-    <value>Events</value>
+  <data name="free" xml:space="preserve">
+    <value>Darmowe</value>
   </data>
 </root>

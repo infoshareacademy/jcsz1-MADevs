@@ -117,22 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Gdańska Kultura" xml:space="preserve">
-    <value>Culture in Gdansk</value>
+  <data name="Bilety" xml:space="preserve">
+    <value>Tickets</value>
   </data>
-  <data name="Kontakt" xml:space="preserve">
-    <value>Contact</value>
+  <data name="Darmowe" xml:space="preserve">
+    <value>Free</value>
   </data>
-  <data name="O nas" xml:space="preserve">
-    <value>About Us</value>
+  <data name="Dodaj wydarzenie" xml:space="preserve">
+    <value>Add event</value>
   </data>
-  <data name="Strona Główna" xml:space="preserve">
-    <value>Main Page</value>
+  <data name="Edytuj" xml:space="preserve">
+    <value>Edit</value>
   </data>
-  <data name="Ulubione" xml:space="preserve">
-    <value>Favourites</value>
+  <data name="free" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="Gdzie" xml:space="preserve">
+    <value>Where</value>
+  </data>
+  <data name="Kiedy" xml:space="preserve">
+    <value>When</value>
+  </data>
+  <data name="Nazwa wydarzenia" xml:space="preserve">
+    <value>Event name</value>
+  </data>
+  <data name="Nie podano" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Płatne" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="Szukana fraza..." xml:space="preserve">
+    <value>Search for ...</value>
+  </data>
+  <data name="tickets" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Wszystkie" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Wybierz" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Wybierz rodzaj biletów" xml:space="preserve">
+    <value>Choose ticket type</value>
   </data>
   <data name="Wydarzenia" xml:space="preserve">
     <value>Events</value>
+  </data>
+  <data name="Wyszukaj" xml:space="preserve">
+    <value>Search</value>
   </data>
 </root>

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Gdańska Kultura</title>
+    <title>@ViewData["Title"] - @_localizer["Gdańska Kultura"]</title>
 
 
     <environment include="Development">
@@ -21,8 +21,6 @@
 <body>
     <div class="container navigation-bar">
         <nav class="container navbar fixed-top navbar-expand-lg navbar-light">
-            <img src="~/images/MaDevs.png" width="150" height="150" class="warning" />
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -40,14 +38,11 @@
                     <li class="nav-item">
                         <a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">@_localizer["Kontakt"]</a>
                     </li>
-                    <li class="nav-item">
-                        <partial name="_SelectLanguagePartial" />
-                    </li>
                 </ul>
             </div>
+            <partial name="_SelectLanguagePartial" />
         </nav>
     </div>
-    <br /><br /><br /><br /><br />
 
     <partial name="_CookieConsentPartial" />
 
@@ -55,7 +50,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2019 - Gdańska Kultura</p>
+            <p>&copy; 2019 - @_localizer["Gdańska Kultura"]</p>
         </footer>
     </div>
 
