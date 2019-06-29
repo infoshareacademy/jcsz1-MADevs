@@ -11,9 +11,15 @@ namespace Common.Models
 
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options)
-            : base(options)
+        //public DataContext(DbContextOptions<DataContext> options)
+        //    : base(options)
+        //{
+        //}
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseSqlServer(
+                @"Server=(localdb)\Testbase;Database=Eventlist;Trusted_Connection=True;");
         }
 
         public DbSet<Event> Events { get; set; }

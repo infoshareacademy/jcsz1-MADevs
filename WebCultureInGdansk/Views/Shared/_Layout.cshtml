@@ -38,6 +38,15 @@
                     <li class="nav-item">
                         <a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">@_localizer["Kontakt"]</a>
                     </li>
+                    <li class="nav-item">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (User.IsInRole("Admin"))
+                             {
+                                 <a asp-area="" asp-controller="Admin" asp-action="Index" class="nav-link">@_localizer["Administacja"]</a>
+                             }
+                        }
+                    </li>
                 </ul>
             </div>
             <partial name="_SelectLanguagePartial" />

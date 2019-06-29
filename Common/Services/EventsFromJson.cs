@@ -14,7 +14,8 @@ namespace Common
     public class EventsFromJson : IEventsFromJson
     {
         public List<EventsFields> _eventsList = new List<EventsFields>();
-        private readonly DataContext _context;
+        //private readonly DataContext _context;
+        //DataContext context = new DataContext();
         
         //private readonly Serilog.ILogger _log = Log.ForContext<IEventsFromJson>();
         
@@ -51,6 +52,14 @@ namespace Common
             ;
             return oneEvent;
         }
+
+        //public Event CretateToDB(Event oneEvent)
+        //{
+        //    using (_context)
+        //    {
+                
+        //    }
+        //}
 
         public List<EventsFields> GetEventsByTicketType(string type)
         {
