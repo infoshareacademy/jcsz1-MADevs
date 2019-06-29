@@ -14,11 +14,9 @@ namespace Common
     public class EventsFromJson : IEventsFromJson
     {
         public List<EventsFields> _eventsList = new List<EventsFields>();
-        //private readonly DataContext _context;
-        //DataContext context = new DataContext();
-        
-        //private readonly Serilog.ILogger _log = Log.ForContext<IEventsFromJson>();
-        
+        public DataContext context = new DataContext();
+        public List<Event> transfer = new List<Event>();
+
         public List<EventsFields> GetJson()
         {
             if (_eventsList.Count == 0)
@@ -26,30 +24,56 @@ namespace Common
                 var path = "https://planerkulturalny.pl/api/rest/events.json";
 
                 try
-                {                   
+                {
                     using (WebClient wc = new WebClient())
                     {
                         var json = wc.DownloadString(path);
                         _eventsList = JsonConvert.DeserializeObject<List<EventsFields>>(json);
-
                     }
                 }
                 catch (Exception message)
                 {
-                    
-                    Serilog.Log.Error(message.ToString());
+                    Log.Error(message.ToString());
                 };
+
+                using (context)
+                {
+                    
+                    foreach (var item in _eventsList)
+                    {
+                        bool check = context.Events.Any(x=>x.EventId == item.Id);
+                        if (check == true)
+                        {
+                        }
+                        else
+                        {
+                            transfer.Add(new Event
+                            {
+                                EventId = item.Id,
+                                Name = item.Name,
+                                PlaceName = item.PlaceName,
+                                Urls = item.UrlsWww,
+                                StartDate = item.StartDate,
+                                EndDate = item.EndDate,
+                                DescLong = item.DescLong,
+                                DescShort = item.DescShort,
+                                TicketsType = item.TicketsType
+                            });
+                        };
+                    }
+                    context.Events.AddRange(transfer);
+                    context.SaveChanges();
+                }
             }
             return _eventsList;
-            
         }
+
 
         public EventsFields Create(EventsFields oneEvent)
         {
-            Serilog.Log.Information("User added new event");
+            Log.Information("User added new event");
             _eventsList.Add(oneEvent);
-            oneEvent.Id = _eventsList.Count + 1;           
-            ;
+            oneEvent.Id = _eventsList.Count + 1;
             return oneEvent;
         }
 
@@ -65,14 +89,14 @@ namespace Common
         {
             if (type == "all")
             {
-                Serilog.Log.Information("User listed all events");
-                var _all = GetJson();                
+                Log.Information("User listed all events");
+                var _all = GetJson();
                 return _all;
             }
             else
             {
-                Serilog.Log.Information($"User listed events with {type} tickets", type);
-                var _filtered = _eventsList.Where(ticket => ticket.TicketsType.Contains(type)).ToList();                
+                Log.Information($"User listed events with {type} tickets", type);
+                var _filtered = _eventsList.Where(ticket => ticket.TicketsType.Contains(type)).ToList();
                 return _filtered;
             }
         }
@@ -92,5 +116,7 @@ namespace Common
             currentEvent.TicketsType = EventToUpdate.TicketsType;
             return true;
         }
+
+        
     }
 }

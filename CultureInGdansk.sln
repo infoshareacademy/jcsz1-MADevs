@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCultureInGdansk", "WebCu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{1B719E72-93D4-49D9-A684-28774580EC74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CultureInGdansk.Tests", "CultureInGdansk.Tests\CultureInGdansk.Tests.csproj", "{28D4B58B-4693-441B-9479-86C5082F9649}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CultureInGdansk.Tests", "CultureInGdansk.Tests\CultureInGdansk.Tests.csproj", "{28D4B58B-4693-441B-9479-86C5082F9649}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CultureInGdanskDTO", "CultureInGdanskDTO\CultureInGdanskDTO.csproj", "{DBEC616E-F3BE-474D-AAF8-6C572389C10C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{28D4B58B-4693-441B-9479-86C5082F9649}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28D4B58B-4693-441B-9479-86C5082F9649}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28D4B58B-4693-441B-9479-86C5082F9649}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBEC616E-F3BE-474D-AAF8-6C572389C10C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBEC616E-F3BE-474D-AAF8-6C572389C10C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBEC616E-F3BE-474D-AAF8-6C572389C10C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBEC616E-F3BE-474D-AAF8-6C572389C10C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

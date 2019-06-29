@@ -16,7 +16,7 @@ namespace WebCultureInGdansk.Controllers
     public class HomeController : Controller
     {
         private readonly IEventsFromJson _eventsList;
-        private readonly IStringLocalizer<HomeController> _localizer;
+        public EventsFromDB _eventsListDb = new EventsFromDB();
 
         public HomeController(IEventsFromJson eventsList)
         {
@@ -26,7 +26,6 @@ namespace WebCultureInGdansk.Controllers
         public IActionResult Index()
         {
             var items = _eventsList.GetJson();
-
             return View(items);
         }
 

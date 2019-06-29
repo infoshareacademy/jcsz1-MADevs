@@ -45,7 +45,17 @@ namespace WebCultureInGdansk
 
             services.AddSingleton<IEventsFromJson, EventsFromJson>();
             services.AddTransient<IFavoriteRepository, FavoriteRepository>();
-            
+            services.AddMvc()
+                .AddViewLocalization(opts=>
+                {
+                    opts.ResourcesPath = "Resources";
+                })
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            //var connection = @"Server=(localdb)\Testbase;Database=Eventlist;Trusted_Connection=True;ConnectRetryCount=0";
+            //services.AddDbContext<Common.Models.DataContext>
+            //    (options => options.UseSqlServer(connection));
 
             services.AddLocalization(opts =>
             {

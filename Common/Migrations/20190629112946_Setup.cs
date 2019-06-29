@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Common.Migrations
 {
-    public partial class setup : Migration
+    public partial class Setup : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,31 +12,34 @@ namespace Common.Migrations
                 name: "Events",
                 columns: table => new
                 {
-                    EventId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    EventId = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     PlaceName = table.Column<string>(nullable: true),
                     Urls = table.Column<string>(nullable: true),
-                    StartDate = table.Column<string>(nullable: true),
-                    EndDate = table.Column<string>(nullable: true),
+                    StartDate = table.Column<DateTime>(nullable: false),
+                    EndDate = table.Column<DateTime>(nullable: false),
                     DescShort = table.Column<string>(nullable: true),
-                    DescLong = table.Column<string>(nullable: true)
+                    DescLong = table.Column<string>(nullable: true),
+                    TicketsType = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Events", x => x.EventId);
+                    table.PrimaryKey("PK_Events", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "LoginHistory",
                 columns: table => new
                 {
-                    LoginHistoryId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     EventId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LoginHistory", x => x.LoginHistoryId);
+                    table.PrimaryKey("PK_LoginHistory", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -62,19 +65,19 @@ namespace Common.Migrations
                 name: "Favorites",
                 columns: table => new
                 {
-                    FavoriteId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Status = table.Column<bool>(nullable: false),
                     EventId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Favorites", x => x.FavoriteId);
+                    table.PrimaryKey("PK_Favorites", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Favorites_Events_EventId",
                         column: x => x.EventId,
                         principalTable: "Events",
-                        principalColumn: "EventId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -82,18 +85,18 @@ namespace Common.Migrations
                 name: "ViewsHistory",
                 columns: table => new
                 {
-                    ViewsHistoryId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     EventId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ViewsHistory", x => x.ViewsHistoryId);
+                    table.PrimaryKey("PK_ViewsHistory", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ViewsHistory_Events_EventId",
                         column: x => x.EventId,
                         principalTable: "Events",
-                        principalColumn: "EventId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
