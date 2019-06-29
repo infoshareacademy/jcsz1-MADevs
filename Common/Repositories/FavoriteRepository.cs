@@ -27,13 +27,13 @@ namespace Common.Repositories
         {
             return _context.Favorites.Add(oneEvent).Entity;
         }
-        public void  DeleteByEventId(int id)
+        public void DeleteByEventId(int id)
         {
             var favorite = _context.Favorites.Single(x => x.EventId == id);
             _context.Favorites.Remove(favorite);
             _context.SaveChanges();
-            
-          }
+
+        }
 
         public Favorite ViueSingelFavorite(int id)
         {
