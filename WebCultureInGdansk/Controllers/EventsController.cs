@@ -16,19 +16,20 @@ namespace WebCultureInGdansk.Controllers
     public class EventsController : Controller
     {
         private readonly IEventsFromJson _eventsList;
-        private readonly DataContext _dbContext;
+        public EventsFromDB _eventsListDb = new EventsFromDB();
 
-        public EventsController(IEventsFromJson eventsList, DataContext dbContext)
-        {
+
+        public EventsController(IEventsFromJson eventsList)
+        { 
             _eventsList = eventsList;
-            _dbContext = dbContext;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            _dbContext.SaveChanges();
-            var result = _eventsList.GetJson();
+            //_dbContext.SaveChanges();
+  
+            var result = _eventsListDb.GetAllEvents();
             return View(result);
         }
 
@@ -40,6 +41,7 @@ namespace WebCultureInGdansk.Controllers
         // GET: Events/Details/5
         public IActionResult Details(int id)
         {
+ 
             var result = _eventsList.GetEventById(id);
             return View(result);
         }
