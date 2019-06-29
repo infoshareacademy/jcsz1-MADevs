@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Common.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190629112946_Setup")]
-    partial class Setup
+    [Migration("20190629165100_DBschema")]
+    partial class DBschema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,6 +113,8 @@ namespace Common.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("EventId");
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 

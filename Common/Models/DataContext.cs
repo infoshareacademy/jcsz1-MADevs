@@ -11,32 +11,25 @@ namespace Common.Models
 {
     public class DataContext : DbContext
     {
-        public DbSet<Event> Events { get; set; }
-        public DbSet<Favorite> Favorites { get; set; }
-        public DbSet<ViewsHistory> ViewsHistory { get; set; }
-        public DbSet<LoginHistory> LoginHistory { get; set; }
-        public DbSet<LogTable> LogTable { get; set; }
+        //public class DataContext : DbContext
+        //{
+        //    public DataContext(DbContextOptions<DataContext> options)
+        //  : base(options)
+        //    {
+        //    }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
                 .UseSqlServer(@"Server=(localdb)\Testbase;Database=EventList;Trusted_Connection=True;");
         }
+
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
+        public DbSet<ViewsHistory> ViewsHistory { get; set; }
+        public DbSet<LoginHistory> LoginHistory { get; set; }
+        public DbSet<LogTable> LogTable { get; set; }
     }
-
-    //public class DataContext : DbContext
-    //{
-    //    public DataContext(DbContextOptions<DataContext> options)
-    //  : base(options)
-    //    {
-    //    }
-
-    //    public DbSet<Event> Events { get; set; }
-    //    public DbSet<Favorite> Favorites { get; set; }
-    //    public DbSet<ViewsHistory> ViewsHistory { get; set; }
-    //    public DbSet<LoginHistory> LoginHistory { get; set; }
-    //    public DbSet<LogTable> LogTable { get; set; }
-    //}
 
     public class Favorite
     {
@@ -70,6 +63,7 @@ namespace Common.Models
         [Key]
         public int Id { get; set; }
         public int EventId { get; set; }
+        public string UserId { get; set; }
 
         public Event Events { get; set; }
     }

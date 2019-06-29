@@ -77,6 +77,14 @@ namespace Common
             return oneEvent;
         }
 
+        //public Event CretateToDB(Event oneEvent)
+        //{
+        //    using (_context)
+        //    {
+                
+        //    }
+        //}
+
         public List<EventsFields> GetEventsByTicketType(string type)
         {
             if (type == "all")
