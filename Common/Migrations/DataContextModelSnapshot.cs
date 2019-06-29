@@ -112,6 +112,8 @@ namespace Common.Migrations
 
                     b.Property<int>("EventId");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EventId");

@@ -103,14 +103,15 @@ namespace WebCultureInGdansk
                     roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
                 }
             }
-            var poweruser = new IdentityUser()
+
+            var poweruser = new IdentityUser
             {
-                UserName = Configuration.GetSection("UserSettings")["UserEmail"],
-                Email = Configuration.GetSection("UserSettings")["UserEmail"]
+                UserName = "admin@test.com",
+                Email = "admin@test.com"
             };
 
-            string UserPassword = Configuration.GetSection("UserSettings")["UserPassword"];
-            var _user = await UserManager.FindByEmailAsync(Configuration.GetSection("UserSettings")["UserEmail"]);
+            string UserPassword = "Password1!";
+            var _user = await UserManager.FindByEmailAsync($"{poweruser.Email}");
 
             if (_user == null)
             {
