@@ -18,6 +18,7 @@ namespace WebCultureInGdansk.Controllers
         private readonly IEventsFromJson _eventsList;
         public EventsFromDB _eventsListDb = new EventsFromDB();
 
+
         public EventsController(IEventsFromJson eventsList)
         { 
             _eventsList = eventsList;
@@ -40,6 +41,7 @@ namespace WebCultureInGdansk.Controllers
         // GET: Events/Details/5
         public IActionResult Details(int id)
         {
+ 
             var result = _eventsList.GetEventById(id);
             return View(result);
         }

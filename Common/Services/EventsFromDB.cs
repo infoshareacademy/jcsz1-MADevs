@@ -29,33 +29,7 @@ namespace Common.Services
                 }).ToList();
 
                 return dbevents;
-            }
-            
+            }          
         }
-
-        public List<EventsFields> GetEventById(int id)
-        {
-            using (context)
-            {
-                List<EventsFields> dbevents = context.Events.Select(x => new EventsFields()
-                {
-                    Id = x.EventId,
-                    Name = x.Name,
-                    PlaceName = x.PlaceName,
-                    UrlsWww = x.Urls,
-                    StartDate = x.StartDate,
-                    EndDate = x.EndDate,
-                    DescLong = x.DescLong,
-                    DescShort = x.DescShort,
-                    TicketsType = x.TicketsType
-
-                })
-                .Where(x=>x.Id == id)
-                .ToList();
-
-                return dbevents;
-            }
-        }
-
     }
 }

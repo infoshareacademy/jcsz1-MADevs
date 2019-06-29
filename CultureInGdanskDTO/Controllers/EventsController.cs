@@ -14,17 +14,23 @@ namespace CultureInGdanskDTO.Controllers
     [ApiController]
     public class EventsController : ControllerBase
     {
-        public EventsFromDB context = new EventsFromDB();
+        public ApiQuerry apiquerry = new ApiQuerry();
 
         [HttpGet]
-        public ActionResult<List<EventsFields>> Get()
+        public ActionResult<List<EventsFields>> GetAll()
         {
-            return context.GetAllEvents().ToList();
+            return apiquerry.GetAllEvents().ToList();
         }
-        public ActionResult<List<EventsFields>> Get(int id)
+        [HttpGet("{id}")]
+        public ActionResult<List<EventsFields>> GetById(int id)
         {
-            var result = context.GetEventById(id).ToList();
-            return result;
+            return apiquerry.GetEventById(id).ToList();
+        }
+
+        [HttpGet("{views}")]
+        public ActionResult<List<EventsFields>> GetViews()
+        {
+            return apiquerry.GetEventsViews().ToList();
         }
     }
 }
