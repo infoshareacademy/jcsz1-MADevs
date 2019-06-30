@@ -27,10 +27,10 @@ namespace CultureInGdanskDTO.Controllers
             return apiquerry.GetEventById(id).ToList();
         }
 
-        [HttpGet("{views}")]
-        public ActionResult<List<EventsFields>> GetViews()
+        [HttpGet("{favorites}")]
+        public ActionResult<List<EventsFields>> GetFavorites()
         {
-            return apiquerry.GetEventsViews().ToList();
+            return apiquerry.GetFavorites().ToList();
         }
     }
 }

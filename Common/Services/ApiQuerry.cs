@@ -42,17 +42,20 @@ namespace Common.Services
             }
         }
 
-        public List<EventsFields> GetEventsViews()
+        public List<EventsFields> GetFavorites()
         {
             using (context)
             {
-                List<EventsFields> dbevents = context.Events.Select(x => new EventsFields()
-                {
-                    Id = x.EventId,
-                    Name = x.Name,
-                    PlaceName = x.PlaceName
-                })
-                .ToList();
+               var dbevents = context.Favorites.Join(context.Events,
+                   x=>x.EventId,
+                   y=>y.Id,
+                   (x,y) => new EventsFields()
+                   {
+                       Id = x.EventId,
+                       Name = y.Name,
+                       PlaceName = y.PlaceName
+                   })
+                   .ToList();
 
                 return dbevents;
             }

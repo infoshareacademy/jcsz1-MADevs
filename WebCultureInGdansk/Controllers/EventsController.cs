@@ -35,7 +35,8 @@ namespace WebCultureInGdansk.Controllers
 
         public IActionResult Favorite()
         {
-            return View();
+            var result = _eventsListDb.GetFavorites();
+            return View(result);
         }
     
         // GET: Events/Details/5
