@@ -42,11 +42,26 @@
                     <td> @item.StartDate.ToShortDateString()</td>
                     <td> @item.PlaceName</td>
                     <td> @_localizer[item.TicketsType]</td>
-                    <td> <a asp-controller="Events" asp-action="Edit" asp-route-id="@item.Id">@_localizer["Edytuj"]</a></td>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @if (User.IsInRole("Admin"))
+                         {
+                             <td> <a asp-controller="Events" asp-action="Edit" asp-route-id="@item.Id">@_localizer["Edytuj"]</a></td>
+                         }
+                    }
+            
                 </tr>
             }
         </table>
     </div>
-    <div class="container" style="padding-top: 20px">
-        <a asp-controller="Events" asp-action="Create" class="btn btn-primary">@_localizer["Dodaj wydarzenie"]</a>
-    </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            @if (User.IsInRole("Admin"))
+             {
+         <div class="container" style="padding-top: 20px">
+             <a asp-controller="Events" asp-action="Create" class="btn btn-primary">@_localizer["Dodaj wydarzenie"]</a>
+         </div>
+             }
+        }
+     </
+    div>

@@ -29,9 +29,12 @@
                     <li class="nav-item">
                         <a asp-area="" asp-controller="Events" asp-action="Index" class="nav-link">@_localizer["Wydarzenia"]</a>
                     </li>
-                    <li class="nav-item">
-                        <a asp-area="" asp-controller="Events" asp-action="Favorite" class="nav-link">@_localizer["Ulubione"]</a>
-                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Events" asp-action="FavoriteView" class="nav-link">@_localizer["Ulubione"]</a>
+                        </li>
+                    }
                     <li class="nav-item">
                         <a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">@_localizer["O nas"]</a>
                     </li>

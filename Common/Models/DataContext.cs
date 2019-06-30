@@ -38,6 +38,7 @@ namespace Common.Models
         public bool Status { get; set; }
 
         public int EventId { get; set; }
+        public string UserId { get; set; }
         //public Event Events { get; set; }
     }
 

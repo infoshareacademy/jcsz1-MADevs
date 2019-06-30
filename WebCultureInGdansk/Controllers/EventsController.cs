@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebCultureInGdansk;
 using Microsoft.AspNetCore.Http;
@@ -9,7 +10,9 @@ using Common;
 using Common.Models;
 using Common.Services;
 using System.Text.RegularExpressions;
+using Common.Interfaces;
 using Microsoft.Extensions.Localization;
+using Microsoft.AspNetCore.Identity;
 
 namespace WebCultureInGdansk.Controllers
 {
@@ -17,11 +20,17 @@ namespace WebCultureInGdansk.Controllers
     {
         private readonly IEventsFromJson _eventsList;
         public EventsFromDB _eventsListDb = new EventsFromDB();
+        private readonly IFavoriteRepository _favorite;
         public FavoritesAdd _checkfav = new FavoritesAdd();
+        private DataContext _context;
+        public Favorite favoriteToAdd = new Favorite();
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public EventsController(IEventsFromJson eventsList)
+        public EventsController(IEventsFromJson eventsList, IFavoriteRepository favoriteRepository, DataContext context)
         {
             _eventsList = eventsList;
+            _favorite = favoriteRepository;
+            _context = context;
         }
 
         [HttpGet]
@@ -33,10 +42,34 @@ namespace WebCultureInGdansk.Controllers
             return View(result);
         }
 
-        public IActionResult Favorite()
+        public IActionResult FavoriteView()
         {
-            var result = _eventsListDb.GetFavorites();
-            return View(result);
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var result = _eventsListDb.GetFavorites(userId);
+                return View(result);
+            }
+            //var result
+            //var result = _eventsListDb.GetFavorites();
+            //return View(result);
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Favorite(int id)
+        {
+            var result = _eventsListDb.GetAllEvents().Single(x => x.Id == id);
+            if (result != null)
+
+            {
+                favoriteToAdd.EventId = result.Id;
+                favoriteToAdd.Status = true;
+                //favoriteToAdd.UserId = _userManager.GetUserId(HttpContext.User);
+                favoriteToAdd.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+                _favorite.Add(favoriteToAdd);
+            }
+
+            return RedirectToAction(nameof(Index));
         }
     
         // GET: Events/Details/5

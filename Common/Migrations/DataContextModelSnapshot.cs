@@ -58,8 +58,9 @@ namespace Common.Migrations
 
                     b.Property<bool>("Status");
 
-                    b.HasKey("Id");
+                    b.Property<string>("UserId");
 
+                    b.HasKey("Id");
                     b.ToTable("Favorites");
                 });
 
