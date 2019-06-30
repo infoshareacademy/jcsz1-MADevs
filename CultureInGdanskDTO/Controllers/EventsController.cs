@@ -17,20 +17,16 @@ namespace CultureInGdanskDTO.Controllers
         public ApiQuerry apiquerry = new ApiQuerry();
 
         [HttpGet]
-        public ActionResult<List<EventsFields>> GetAll()
+        public ActionResult <List<EventsFields>> GetAll()
         {
             return apiquerry.GetAllEvents().ToList();
         }
-        [HttpGet("{id}")]
-        public ActionResult<List<EventsFields>> GetById(int id)
-        {
-            return apiquerry.GetEventById(id).ToList();
-        }
 
-        [HttpGet("{favorites}")]
-        public ActionResult<List<EventsFields>> GetFavorites()
-        {
-            return apiquerry.GetFavorites().ToList();
-        }
+        //public ActionResult<List<EventsFields>> GetById(int id)
+        //{
+        //    return apiquerry.DisplayCount(id).ToList();
+        //}
+
+
     }
 }

@@ -52,5 +52,15 @@ namespace Common.Services
                 return dbevents;
             }
         }
+
+        public void ViewAdd(int id)
+        {
+            context.ViewsHistory.Add(
+                new ViewsHistory
+                {       
+                    EventId = id
+                });
+            context.SaveChanges();
+        }
     }
 }

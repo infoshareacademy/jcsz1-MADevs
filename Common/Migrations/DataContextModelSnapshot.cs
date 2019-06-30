@@ -60,9 +60,6 @@ namespace Common.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId")
-                        .IsUnique();
-
                     b.ToTable("Favorites");
                 });
 
@@ -116,25 +113,7 @@ namespace Common.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId");
-
                     b.ToTable("ViewsHistory");
-                });
-
-            modelBuilder.Entity("Common.Models.Favorite", b =>
-                {
-                    b.HasOne("Common.Models.Event", "Events")
-                        .WithOne("Favorites")
-                        .HasForeignKey("Common.Models.Favorite", "EventId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Common.Models.ViewsHistory", b =>
-                {
-                    b.HasOne("Common.Models.Event", "Events")
-                        .WithMany()
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

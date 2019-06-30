@@ -38,7 +38,7 @@ namespace Common.Models
         public bool Status { get; set; }
 
         public int EventId { get; set; }
-        public Event Events { get; set; }
+        //public Event Events { get; set; }
     }
 
     public class Event
@@ -55,7 +55,7 @@ namespace Common.Models
         public string DescLong { get; set; }
         public string TicketsType { get; set; }
 
-        public Favorite Favorites { get; set; }
+        //public Favorite Favorites { get; set; }
     }
 
     public class ViewsHistory
@@ -65,7 +65,7 @@ namespace Common.Models
         public int EventId { get; set; }
         public string UserId { get; set; }
 
-        public Event Events { get; set; }
+        //public Event Events { get; set; }
     }
 
     public class LoginHistory

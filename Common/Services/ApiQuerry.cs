@@ -18,7 +18,14 @@ namespace Common.Services
                 {
                     Id = x.EventId,
                     Name = x.Name,
-                    PlaceName = x.PlaceName
+                    PlaceName = x.PlaceName,
+                    UrlsWww = x.Urls,
+                    StartDate = x.StartDate,
+                    EndDate = x.EndDate,
+                    DescLong = x.DescLong,
+                    DescShort = x.DescShort,
+                    TicketsType = x.TicketsType
+
                 }).ToList();
 
                 return dbevents;
@@ -33,7 +40,13 @@ namespace Common.Services
                 {
                     Id = x.EventId,
                     Name = x.Name,
-                    PlaceName = x.PlaceName
+                    PlaceName = x.PlaceName,
+                    UrlsWww = x.Urls,
+                    StartDate = x.StartDate,
+                    EndDate = x.EndDate,
+                    DescLong = x.DescLong,
+                    DescShort = x.DescShort,
+                    TicketsType = x.TicketsType
                 })
                 .Where(x => x.Id == id)
                 .ToList();
@@ -42,23 +55,16 @@ namespace Common.Services
             }
         }
 
-        public List<EventsFields> GetFavorites()
-        {
-            using (context)
-            {
-               var dbevents = context.Favorites.Join(context.Events,
-                   x=>x.EventId,
-                   y=>y.Id,
-                   (x,y) => new EventsFields()
-                   {
-                       Id = x.EventId,
-                       Name = y.Name,
-                       PlaceName = y.PlaceName
-                   })
-                   .ToList();
+        //public List<EventsFields> DisplayCount(int id)
+        //{
+        //    using (context)
+        //    {
+        //        var count = context.ViewsHistory
+        //    .Where(o => o.EventId == id)
+        //    .Count();
 
-                return dbevents;
-            }
-        }
+        //        return count;
+        //    }
+        //}
     }
 }
