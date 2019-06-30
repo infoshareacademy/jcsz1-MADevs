@@ -42,12 +42,24 @@ namespace WebCultureInGdansk.Controllers
             return View(result);
         }
 
+        public IActionResult FavoriteView()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var result = _eventsListDb.GetFavorites(userId);
+                return View(result);
+            }
+            //var result
+            //var result = _eventsListDb.GetFavorites();
+            //return View(result);
+            return RedirectToAction(nameof(Index));
+        }
         public IActionResult Favorite(int id)
         {
             var result = _eventsListDb.GetAllEvents().Single(x => x.Id == id);
             if (result != null)
-            //var result = _eventsListDb.GetFavorites();
-            //return View(result);
+
             {
                 favoriteToAdd.EventId = result.Id;
                 favoriteToAdd.Status = true;
@@ -55,10 +67,6 @@ namespace WebCultureInGdansk.Controllers
                 favoriteToAdd.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
                 _favorite.Add(favoriteToAdd);
-            }
-            else
-            {
-                
             }
 
             return RedirectToAction(nameof(Index));

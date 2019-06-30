@@ -66,7 +66,7 @@ namespace Common.Models
         public int EventId { get; set; }
         public string UserId { get; set; }
 
-        public Event Events { get; set; }
+        //public Event Events { get; set; }
     }
 
     public class LoginHistory

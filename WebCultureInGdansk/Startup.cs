@@ -70,7 +70,7 @@ namespace WebCultureInGdansk
                     new CultureInfo("en-US"),
                     new CultureInfo("de-DE")
                 };
-                opts.DefaultRequestCulture = new RequestCulture("pl-PL");
+                opts.DefaultRequestCulture = new RequestCulture("en-US");
                 opts.SupportedCultures = supportedCultures;
                 opts.SupportedUICultures = supportedCultures;
             });

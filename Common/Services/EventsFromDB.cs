@@ -2,13 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using Remotion.Linq.Parsing.ExpressionVisitors.TreeEvaluation;
 
 namespace Common.Services
 {
     public class EventsFromDB 
     {
         public DataContext context = new DataContext();
+        public List<EventsFields> usersFavorite = new List<EventsFields>();
 
         public List<EventsFields> GetAllEvents()
         {
@@ -24,32 +28,35 @@ namespace Common.Services
                     EndDate = x.EndDate,
                     DescLong = x.DescLong,
                     DescShort = x.DescShort,
-                    TicketsType = x.TicketsType
-
+                    TicketsType = x.TicketsType,
                 }).ToList();
 
                 return dbevents;
             }          
         }
 
-        public List<EventsFields> GetFavorites()
+        public List<EventsFields> GetFavorites(string id)
         {
             using (context)
             {
-                var dbevents = context.Favorites.Join(context.Events,
-                    x => x.EventId,
-                    y => y.Id,
-                    (x, y) => new EventsFields()
-                    {
-                        Id = x.EventId,
-                        Name = y.Name,
-                        PlaceName = y.PlaceName,
-                        TicketsType = y.TicketsType,
-                        StartDate = y.StartDate
-                    })
-                    .ToList();
+                var favorites = context.Favorites.Where(x => x.UserId == id).Select(y => y.EventId).ToList();
+                var test = context.Events.Where(item => favorites.Contains(item.EventId)).ToList();
 
-                return dbevents;
+                foreach (var item in test)
+                {
+                    usersFavorite.Add(new EventsFields
+                    {
+                        Name = item.Name,
+                        PlaceName = item.PlaceName,
+                        StartDate = item.StartDate,
+                        EndDate = item.EndDate,
+                        DescLong = item.DescLong,
+                        DescShort = item.DescShort,
+                        TicketsType = item.TicketsType
+                    });
+                }
+
+                return usersFavorite;
             }
         }
     }
