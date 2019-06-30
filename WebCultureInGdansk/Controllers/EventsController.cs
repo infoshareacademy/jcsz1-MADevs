@@ -21,13 +21,13 @@ namespace WebCultureInGdansk.Controllers
         private readonly IEventsFromJson _eventsList;
         public EventsFromDB _eventsListDb = new EventsFromDB();
         private readonly IFavoriteRepository _favorite;
+        public FavoritesAdd _checkfav = new FavoritesAdd();
         private DataContext _context;
         public Favorite favoriteToAdd = new Favorite();
         private readonly UserManager<IdentityUser> _userManager;
 
-
         public EventsController(IEventsFromJson eventsList, IFavoriteRepository favoriteRepository, DataContext context)
-        { 
+        {
             _eventsList = eventsList;
             _favorite = favoriteRepository;
             _context = context;
@@ -37,7 +37,7 @@ namespace WebCultureInGdansk.Controllers
         public IActionResult Index()
         {
             //_dbContext.SaveChanges();
-  
+
             var result = _eventsListDb.GetAllEvents();
             return View(result);
         }
@@ -46,6 +46,8 @@ namespace WebCultureInGdansk.Controllers
         {
             var result = _eventsListDb.GetAllEvents().Single(x => x.Id == id);
             if (result != null)
+            //var result = _eventsListDb.GetFavorites();
+            //return View(result);
             {
                 favoriteToAdd.EventId = result.Id;
                 favoriteToAdd.Status = true;
@@ -61,11 +63,11 @@ namespace WebCultureInGdansk.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
+    
         // GET: Events/Details/5
         public IActionResult Details(int id)
         {
- 
+            
             var result = _eventsList.GetEventById(id);
             return View(result);
         }
@@ -139,13 +141,13 @@ namespace WebCultureInGdansk.Controllers
             var result = _eventsList.GetJson();
             if (!String.IsNullOrEmpty(searchString))
             {
-                    
-                       result = result
-                        
-                        .Where(s => s.Name.ToLower().Contains(searchString) || 
-                                    s.Name.ToUpper().Contains(searchString) ||
-                                    s.Name.Contains(searchString))
-                                    .ToList();
+
+                result = result
+
+                 .Where(s => s.Name.ToLower().Contains(searchString) ||
+                             s.Name.ToUpper().Contains(searchString) ||
+                             s.Name.Contains(searchString))
+                             .ToList();
             }
 
             return View(result);

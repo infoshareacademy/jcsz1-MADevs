@@ -31,5 +31,26 @@ namespace Common.Services
                 return dbevents;
             }          
         }
+
+        public List<EventsFields> GetFavorites()
+        {
+            using (context)
+            {
+                var dbevents = context.Favorites.Join(context.Events,
+                    x => x.EventId,
+                    y => y.Id,
+                    (x, y) => new EventsFields()
+                    {
+                        Id = x.EventId,
+                        Name = y.Name,
+                        PlaceName = y.PlaceName,
+                        TicketsType = y.TicketsType,
+                        StartDate = y.StartDate
+                    })
+                    .ToList();
+
+                return dbevents;
+            }
+        }
     }
 }
