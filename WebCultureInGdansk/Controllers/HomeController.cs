@@ -5,31 +5,36 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebCultureInGdansk.Models;
+using Common;
+using Common.Services;
+using Microsoft.Extensions.Localization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Http;
 
 namespace WebCultureInGdansk.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IEventsFromJson _eventsList;
+        public EventsFromDB _eventsListDb = new EventsFromDB();
+
+        public HomeController(IEventsFromJson eventsList)
+        {
+            _eventsList = eventsList;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var items = _eventsList.GetJson();
+            return View(items);
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
         public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
@@ -39,5 +44,18 @@ namespace WebCultureInGdansk.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpPost]
+        public IActionResult SetLanguage(string culture, string returnUrl)
+        {
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddDays(1) });
+
+            return LocalRedirect(returnUrl);
+        }
+
+       
     }
 }

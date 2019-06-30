@@ -1,0 +1,52 @@
+﻿
+@model IEnumerable<Common.Models.EventsFields>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <form asp-controller="Events" asp-action="SearchByName" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder=@_localizer["Szukana fraza..."] aria-label="Search" name="SearchString">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">@_localizer["Wyszukaj"]</button>
+            </form>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <p>@_localizer["Wybierz rodzaj biletów"] :</p>
+            <form asp-controller="Events" asp-action="TicketFilter">
+                <input class="w3-radio" type="radio" name="type" value="all" checked>
+                <label>@_localizer["Wszystkie"]</label>
+                <input class="w3-radio" type="radio" name="type" value="free">
+                <label>@_localizer["Darmowe"]</label>
+                <input class="w3-radio" type="radio" name="type" value="tickets">
+                <label>@_localizer["Płatne"]</label>
+                <input class="w3-radio" type="radio" name="type" value="unknown">
+                <label>@_localizer["Nie podano"]</label>
+                <button type="submit" class="btn btn-primary" style="margin-top: 0px">@_localizer["Wybierz"]</button>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <table>
+            <tr>
+                <th>@_localizer["Nazwa wydarzenia"]</th>
+                <th>@_localizer["Kiedy"]</th>
+                <th>@_localizer["Gdzie"]</th>
+                <th>@_localizer["Bilety"]</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><a asp-controller="Events" asp-action="Details" asp-route-id="@item.Id">@item.Name</a></td>
+                    <td> @item.StartDate.ToShortDateString()</td>
+                    <td> @item.PlaceName</td>
+                    <td> @_localizer[item.TicketsType]</td>
+                    <td> <a asp-controller="Events" asp-action="Edit" asp-route-id="@item.Id">@_localizer["Edytuj"]</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="container" style="padding-top: 20px">
+        <a asp-controller="Events" asp-action="Create" class="btn btn-primary">@_localizer["Dodaj wydarzenie"]</a>
+    </div>

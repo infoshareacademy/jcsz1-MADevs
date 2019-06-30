@@ -1,0 +1,35 @@
+﻿@using System.Security.Cryptography.X509Certificates
+@using Common.Interfaces
+@using Common.Models
+@using Microsoft.AspNetCore.Http.Internal
+@using Microsoft.AspNetCore.Rewrite.Internal.ApacheModRewrite
+@using Microsoft.EntityFrameworkCore
+@model IEnumerable<Common.Models.EventsFields>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
+@{
+    ViewBag.Title = "";
+    Layout = "_Layout";
+}
+
+
+    <div class="container">
+        <table>
+            <tr>
+                <th>@_localizer["Nazwa wydarzenia"]</th>
+                <th>@_localizer["Kiedy"]</th>
+                <th>@_localizer["Gdzie"]</th>
+                <th>@_localizer["Bilety"]</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><a asp-controller="Events" asp-action="Details" asp-route-id="@item.Id">@item.Name</a></td>
+                    <td> @item.StartDate.ToShortDateString()</td>
+                    <td> @item.PlaceName</td>
+                    <td> @_localizer[item.TicketsType]</td>
+                    <td> <a asp-controller="Events" asp-action="Edit" asp-route-id="@item.Id">@_localizer["Usuń z ulubionych"]</a></td>
+                </tr>
+            }
+        </table>
+    </div>

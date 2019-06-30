@@ -1,7 +1,14 @@
-﻿@{
-    ViewData["Title"] = "About";
-}
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
 
-<p>Use this area to provide additional information.</p>
+@{
+    ViewData["Title"] = _localizer["O nas"];
+}
+
+<h3>@_localizer["Zespół MaDevs"]</h3>
+
+<div>
+    Bacon ipsum dolor amet leberkas tongue shankle cupim spare ribs. Strip steak chicken t-bone pork boudin meatball jerky cupim andouille beef tenderloin jowl fatback tail kielbasa. Buffalo leberkas tri-tip turkey sausage, rump boudin. Chuck filet mignon spare ribs, meatball pancetta ham hock alcatra biltong. Sirloin shank corned beef, bresaola filet mignon pig strip steak beef ribs picanha tenderloin salami ground round hamburger.
+    
+    Ground round pork hamburger swine fatback bacon. Brisket prosciutto shankle t-bone beef. Pig porchetta frankfurter turkey chicken drumstick, pancetta filet mignon beef ribs jowl pork buffalo fatback brisket. Chicken spare ribs sirloin t-bone swine buffalo salami rump short ribs turkey meatloaf frankfurter sausage tenderloin landjaeger. Ribeye spare ribs drumstick, pork chop tail pork strip steak turkey andouille. Ham hock strip steak ground round chuck kevin. Fatback prosciutto spare ribs beef ribs alcatra, rump andouille chicken tail t-bone picanha ham porchetta sausage shoulder.
+</div>

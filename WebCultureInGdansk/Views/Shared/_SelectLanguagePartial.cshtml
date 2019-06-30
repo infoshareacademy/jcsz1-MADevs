@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{ var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    
+    var culturePl = LocOptions.Value.SupportedUICultures
+        .Select(culture => new SelectListItem { Value = culture.Name })
+        .Where(culture => culture.Value == "pl-PL")
+        .ToList();
+    var cultureEn = LocOptions.Value.SupportedUICultures
+        .Select(culture => new SelectListItem { Value = culture.Name })
+        .Where(culture => culture.Value == "en-US")
+        .ToList();
+    var cultureDe = LocOptions.Value.SupportedUICultures
+        .Select(culture => new SelectListItem { Value = culture.Name })
+        .Where(culture => culture.Value == "de-DE")
+        .ToList();
+}
+
+
+<table width="1" style="margin-top:-50px">
+    <tr>
+        <td>
+    <form id="ChooseLanguage" asp-controller="Home" asp-action="SetLanguage"
+          asp-route-returnUrl="@Context.Request.Path" method="post" class="form-horizontal" role="form">
+        <select name="culture" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="culturePl"></select>
+        <button type="submit" class="btn-default">PL</button>
+    </form>
+</td>
+        <td>
+            <form id="ChooseLanguage" asp-controller="Home" asp-action="SetLanguage"
+                  asp-route-returnUrl="@Context.Request.Path" method="post" class="form-horizontal" role="form">
+                <select name="culture" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureEn"></select>
+                <button type="submit" class="btn-default">EN</button>
+            </form>
+</td>
+        </tr>
+</table>

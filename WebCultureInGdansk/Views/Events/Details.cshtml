@@ -1,0 +1,34 @@
+﻿@model Common.Models.EventsFields
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h3>@Model.Name</h3>
+</div>
+<hr>
+<div class="container">
+    <h6>@Html.Raw(Model.DescLong)</h6>
+</div>
+<hr>
+<div class="container">
+    <h5>Rodzaj biletów:</h5>
+    <h6>@Model.TicketsType</h6>
+</div>
+<hr>
+<div class="container">
+    <h5>Miejsce wydarzenia:</h5>
+    <h6>@Model.PlaceName</h6>
+</div>
+<hr>
+<div class="container">
+    <h5>Strona WWW:</h5>
+    <h6><a href="@Model.UrlsWww">@Model.UrlsWww</a></h6>
+</div>
+<div class="container" style="margin-top: 20px">
+    <a class="btn btn-outline-success my-2 my-sm-0" href="javascript:void(0);" onclick="history.go(-1);">Wróć</a>
+</div>
+
+
+
