@@ -17,9 +17,9 @@ namespace CultureInGdanskDTO.Controllers
         public ApiQuerry apiquerry = new ApiQuerry();
 
         [HttpGet]
-        public ActionResult <List<EventsFields>> GetAll()
+        public ActionResult <List<ViewsHistory>> GetAll()
         {
-            return apiquerry.GetAllEvents().ToList();
+            return apiquerry.GetHistory().ToList();
         }
 
         //public ActionResult<List<EventsFields>> GetById(int id)

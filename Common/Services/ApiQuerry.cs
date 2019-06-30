@@ -55,16 +55,18 @@ namespace Common.Services
             }
         }
 
-        //public List<EventsFields> DisplayCount(int id)
-        //{
-        //    using (context)
-        //    {
-        //        var count = context.ViewsHistory
-        //    .Where(o => o.EventId == id)
-        //    .Count();
+        public List<ViewsHistory> GetHistory()
+        {
+            using (context)
+            {
+                List<ViewsHistory> dbevents = context.ViewsHistory.Select(x => new ViewsHistory()
+                {
+                    Id = x.EventId,
 
-        //        return count;
-        //    }
-        //}
+                }).ToList();
+
+                return dbevents;
+            }
+        }
     }
 }
