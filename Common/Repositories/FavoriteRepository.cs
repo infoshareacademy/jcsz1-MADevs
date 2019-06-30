@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using Common.Interfaces;
 using Common.Models;
 using Common.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Logging;
+
 
 namespace Common.Repositories
 {
@@ -20,13 +22,16 @@ namespace Common.Repositories
         private readonly DataContext _context;
         public FavoriteRepository(DataContext context)
         {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _context = context;
         }
 
-        public Favorite Add(Favorite oneEvent)
+        public void Add(Favorite oneEvent)
         {
-            return _context.Favorites.Add(oneEvent).Entity;
+             _context.Favorites.Add(oneEvent);
+             _context.SaveChanges();
         }
+
+
         public void DeleteByEventId(int id)
         {
             var favorite = _context.Favorites.Single(x => x.EventId == id);

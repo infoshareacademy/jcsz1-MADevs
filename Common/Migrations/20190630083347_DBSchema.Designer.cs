@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Common.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190629165100_DBschema")]
-    partial class DBschema
+    [Migration("20190630083347_DBSchema")]
+    partial class DBSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,10 +60,9 @@ namespace Common.Migrations
 
                     b.Property<bool>("Status");
 
-                    b.HasKey("Id");
+                    b.Property<string>("UserId");
 
-                    b.HasIndex("EventId")
-                        .IsUnique();
+                    b.HasKey("Id");
 
                     b.ToTable("Favorites");
                 });
@@ -121,14 +120,6 @@ namespace Common.Migrations
                     b.HasIndex("EventId");
 
                     b.ToTable("ViewsHistory");
-                });
-
-            modelBuilder.Entity("Common.Models.Favorite", b =>
-                {
-                    b.HasOne("Common.Models.Event", "Events")
-                        .WithOne("Favorites")
-                        .HasForeignKey("Common.Models.Favorite", "EventId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Common.Models.ViewsHistory", b =>

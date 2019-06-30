@@ -58,10 +58,9 @@ namespace Common.Migrations
 
                     b.Property<bool>("Status");
 
-                    b.HasKey("Id");
+                    b.Property<string>("UserId");
 
-                    b.HasIndex("EventId")
-                        .IsUnique();
+                    b.HasKey("Id");
 
                     b.ToTable("Favorites");
                 });
@@ -119,14 +118,6 @@ namespace Common.Migrations
                     b.HasIndex("EventId");
 
                     b.ToTable("ViewsHistory");
-                });
-
-            modelBuilder.Entity("Common.Models.Favorite", b =>
-                {
-                    b.HasOne("Common.Models.Event", "Events")
-                        .WithOne("Favorites")
-                        .HasForeignKey("Common.Models.Favorite", "EventId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Common.Models.ViewsHistory", b =>
