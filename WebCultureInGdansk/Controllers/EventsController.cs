@@ -17,10 +17,10 @@ namespace WebCultureInGdansk.Controllers
     {
         private readonly IEventsFromJson _eventsList;
         public EventsFromDB _eventsListDb = new EventsFromDB();
-
+        public FavoritesAdd _checkfav = new FavoritesAdd();
 
         public EventsController(IEventsFromJson eventsList)
-        { 
+        {
             _eventsList = eventsList;
         }
 
@@ -28,20 +28,21 @@ namespace WebCultureInGdansk.Controllers
         public IActionResult Index()
         {
             //_dbContext.SaveChanges();
-  
+
             var result = _eventsListDb.GetAllEvents();
             return View(result);
         }
 
         public IActionResult Favorite()
         {
-            return View();
+            var result = _eventsListDb.GetFavorites();
+            return View(result);
         }
-
+    
         // GET: Events/Details/5
         public IActionResult Details(int id)
         {
- 
+            
             var result = _eventsList.GetEventById(id);
             return View(result);
         }
@@ -115,13 +116,13 @@ namespace WebCultureInGdansk.Controllers
             var result = _eventsList.GetJson();
             if (!String.IsNullOrEmpty(searchString))
             {
-                    
-                       result = result
-                        
-                        .Where(s => s.Name.ToLower().Contains(searchString) || 
-                                    s.Name.ToUpper().Contains(searchString) ||
-                                    s.Name.Contains(searchString))
-                                    .ToList();
+
+                result = result
+
+                 .Where(s => s.Name.ToLower().Contains(searchString) ||
+                             s.Name.ToUpper().Contains(searchString) ||
+                             s.Name.Contains(searchString))
+                             .ToList();
             }
 
             return View(result);

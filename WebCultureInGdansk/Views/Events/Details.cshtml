@@ -3,7 +3,7 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-        @*@public FavoritesAdd _checkfav = new FavoritesAdd();*@
+
 <div>
     <h3>@Model.Name</h3>
 </div>
@@ -26,7 +26,6 @@
     <h5>Strona WWW:</h5>
     <h6><a href="@Model.UrlsWww">@Model.UrlsWww</a></h6>
 </div>
-@*@_checkfav.FavCheck(Model.Id);*@
 <div class="container" style="margin-top: 20px">
     <a class="btn btn-outline-success my-2 my-sm-0" href="javascript:void(0);" onclick="history.go(-1);">Wróć</a>
 </div>

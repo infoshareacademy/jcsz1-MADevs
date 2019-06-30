@@ -5,43 +5,31 @@
 @using Microsoft.AspNetCore.Rewrite.Internal.ApacheModRewrite
 @using Microsoft.EntityFrameworkCore
 @model IEnumerable<Common.Models.EventsFields>
-@inject IFavoriteRepository Favorite
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer _localizer
 @{
     ViewBag.Title = "";
     Layout = "_Layout";
 }
 
 
-<h1>Tutaj będą ulubione</h1>
-@*var test = @Favorite.ViueAllFavorite();
-
-
-@foreach (var item in @Favorite.ViueAllFavorite())
-{
-    @Model.Where(x => x.id == )
-
-
-    @item.EventId
-}
-@Favorite.ViueAllFavorite()[1].Id;
-
-
-@Model.Where(x => x.id == 1).Select(x => x.name);*@
-
-
-
-@*var test = @Favorite.ViueAllFavorite().Select(x => new RootObject
-           {
-               id = x.EventId
-           }).ToList()
-
-@foreach (var item in Favorite)
-{
-    @item
-}*@
-
-@*@foreach (var item in Favorite.Test())
-{
-    @item.id
-    @item.name
-}*@
+    <div class="container">
+        <table>
+            <tr>
+                <th>@_localizer["Nazwa wydarzenia"]</th>
+                <th>@_localizer["Kiedy"]</th>
+                <th>@_localizer["Gdzie"]</th>
+                <th>@_localizer["Bilety"]</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><a asp-controller="Events" asp-action="Details" asp-route-id="@item.Id">@item.Name</a></td>
+                    <td> @item.StartDate.ToShortDateString()</td>
+                    <td> @item.PlaceName</td>
+                    <td> @_localizer[item.TicketsType]</td>
+                    <td> <a asp-controller="Events" asp-action="Edit" asp-route-id="@item.Id">@_localizer["Usuń z ulubionych"]</a></td>
+                </tr>
+            }
+        </table>
+    </div>
