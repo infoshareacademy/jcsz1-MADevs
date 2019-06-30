@@ -17,16 +17,53 @@ namespace CultureInGdanskDTO.Controllers
         public ApiQuerry apiquerry = new ApiQuerry();
 
         [HttpGet]
-        public ActionResult <List<ViewsHistory>> GetAll()
+        public ActionResult <List<EventsFields>> Get()
         {
-            return apiquerry.GetHistory().ToList();
+            return apiquerry.GetAllEvents().ToList();
         }
 
-        //public ActionResult<List<EventsFields>> GetById(int id)
-        //{
-        //    return apiquerry.DisplayCount(id).ToList();
-        //}
+        [HttpGet("{id}")]
+        public ActionResult<List<EventsFields>> GetById(int id)
+        {
+            return apiquerry.GetEventById(id).ToList();
+        }
+    }
 
+    [Route("api/[controller]")]
+    [ApiController]
+    public class FavoritesController : ControllerBase
+    {
+        public ApiQuerry apiquerry = new ApiQuerry();
 
+        [HttpGet]
+        public ActionResult<List<Favorite>> Get()
+        {
+            return apiquerry.GetFavEvents().ToList();
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<List<Favorite>> GetById(int id)
+        {
+            return apiquerry.GetFavEventById(id).ToList();
+        }
+    }
+
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ViewsController : ControllerBase
+    {
+        public ApiQuerry apiquerry = new ApiQuerry();
+
+        [HttpGet]
+        public ActionResult<List<ViewsHistory>> Get()
+        {
+            return apiquerry.GetAllViews().ToList();
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<List<ViewsHistory>> GetById(int id)
+        {
+            return apiquerry.GetViewById(id).ToList();
+        }
     }
 }

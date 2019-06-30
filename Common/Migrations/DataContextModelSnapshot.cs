@@ -61,6 +61,7 @@ namespace Common.Migrations
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
+
                     b.ToTable("Favorites");
                 });
 

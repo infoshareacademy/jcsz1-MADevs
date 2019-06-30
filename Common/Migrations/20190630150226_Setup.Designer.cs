@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Common.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190630122412_Setup")]
+    [Migration("20190630150226_Setup")]
     partial class Setup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,6 +59,8 @@ namespace Common.Migrations
                     b.Property<int>("EventId");
 
                     b.Property<bool>("Status");
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 

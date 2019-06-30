@@ -55,15 +55,61 @@ namespace Common.Services
             }
         }
 
-        public List<ViewsHistory> GetHistory()
+        public List<Favorite> GetFavEvents()
+        {
+            using (context)
+            {
+                List<Favorite> dbevents = context.ViewsHistory.Select(x => new Favorite()
+                {
+                    Id = x.EventId,
+
+                }).ToList();
+
+                return dbevents;
+            }
+        }
+
+        public List<Favorite> GetFavEventById(int id)
+        {
+            using (context)
+            {
+                List<Favorite> dbevents = context.Events.Select(x => new Favorite()
+                {
+                    Id = x.EventId,
+                })
+                .Where(x => x.Id == id)
+                .ToList();
+
+                return dbevents;
+            }
+        }
+
+        public List<ViewsHistory> GetAllViews()
         {
             using (context)
             {
                 List<ViewsHistory> dbevents = context.ViewsHistory.Select(x => new ViewsHistory()
                 {
-                    Id = x.EventId,
+                    Id = x.Id,
+                    EventId = x.EventId,
 
                 }).ToList();
+
+                return dbevents;
+            }
+        }
+
+        public List<ViewsHistory> GetViewById(int id)
+        {
+            using (context)
+            {
+                List<ViewsHistory> dbevents = context.Events.Select(x => new ViewsHistory()
+                {
+                    Id = x.Id,
+                    EventId = x.EventId,
+                })
+                .Where(x => x.Id == id)
+                .ToList();
 
                 return dbevents;
             }
