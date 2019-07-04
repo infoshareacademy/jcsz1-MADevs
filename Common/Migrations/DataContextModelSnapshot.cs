@@ -115,17 +115,7 @@ namespace Common.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId");
-
                     b.ToTable("ViewsHistory");
-                });
-
-            modelBuilder.Entity("Common.Models.ViewsHistory", b =>
-                {
-                    b.HasOne("Common.Models.Event", "Events")
-                        .WithMany()
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

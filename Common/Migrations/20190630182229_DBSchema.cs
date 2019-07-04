@@ -88,22 +88,14 @@ namespace Common.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ViewsHistory", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ViewsHistory_Events_EventId",
-                        column: x => x.EventId,
-                        principalTable: "Events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ViewsHistory_EventId",
-                table: "ViewsHistory",
-                column: "EventId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Events");
+
             migrationBuilder.DropTable(
                 name: "Favorites");
 
@@ -115,9 +107,6 @@ namespace Common.Migrations
 
             migrationBuilder.DropTable(
                 name: "ViewsHistory");
-
-            migrationBuilder.DropTable(
-                name: "Events");
         }
     }
 }
