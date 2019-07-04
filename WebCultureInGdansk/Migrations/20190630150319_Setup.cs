@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebCultureInGdansk.Migrations
 {
-    public partial class IdentitySchema : Migration
+    public partial class Setup : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

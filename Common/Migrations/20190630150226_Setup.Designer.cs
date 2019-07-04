@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Common.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190630083347_DBSchema")]
-    partial class DBSchema
+    [Migration("20190630150226_Setup")]
+    partial class Setup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -117,17 +117,7 @@ namespace Common.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId");
-
                     b.ToTable("ViewsHistory");
-                });
-
-            modelBuilder.Entity("Common.Models.ViewsHistory", b =>
-                {
-                    b.HasOne("Common.Models.Event", "Events")
-                        .WithMany()
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

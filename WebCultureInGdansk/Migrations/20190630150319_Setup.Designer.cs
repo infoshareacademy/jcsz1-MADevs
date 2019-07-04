@@ -10,8 +10,8 @@ using WebCultureInGdansk.Models;
 namespace WebCultureInGdansk.Migrations
 {
     [DbContext(typeof(IdentityDBContext))]
-    [Migration("20190630081637_IdentityDBSchema")]
-    partial class IdentityDBSchema
+    [Migration("20190630150319_Setup")]
+    partial class Setup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

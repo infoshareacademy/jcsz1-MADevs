@@ -77,6 +77,7 @@ namespace WebCultureInGdansk.Controllers
         {
             
             var result = _eventsList.GetEventById(id);
+            _eventsListDb.ViewAdd(id);
             return View(result);
         }
 
