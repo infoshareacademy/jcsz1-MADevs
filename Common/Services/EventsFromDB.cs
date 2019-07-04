@@ -59,5 +59,15 @@ namespace Common.Services
                 return usersFavorite;
             }
         }
+
+        public void ViewAdd(int id)
+        {
+            context.ViewsHistory.Add(
+                new ViewsHistory
+                {       
+                    EventId = id
+                });
+            context.SaveChanges();
+        }
     }
 }

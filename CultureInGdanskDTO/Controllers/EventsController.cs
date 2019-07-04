@@ -17,20 +17,53 @@ namespace CultureInGdanskDTO.Controllers
         public ApiQuerry apiquerry = new ApiQuerry();
 
         [HttpGet]
-        public ActionResult<List<EventsFields>> GetAll()
+        public ActionResult <List<EventsFields>> Get()
         {
             return apiquerry.GetAllEvents().ToList();
         }
+
         [HttpGet("{id}")]
         public ActionResult<List<EventsFields>> GetById(int id)
         {
             return apiquerry.GetEventById(id).ToList();
         }
+    }
 
-        [HttpGet("{favorites}")]
-        public ActionResult<List<EventsFields>> GetFavorites()
+    [Route("api/[controller]")]
+    [ApiController]
+    public class FavoritesController : ControllerBase
+    {
+        public ApiQuerry apiquerry = new ApiQuerry();
+
+        [HttpGet]
+        public ActionResult<List<Favorite>> Get()
         {
-            return apiquerry.GetFavorites().ToList();
+            return apiquerry.GetFavEvents().ToList();
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<List<Favorite>> GetById(int id)
+        {
+            return apiquerry.GetFavEventById(id).ToList();
+        }
+    }
+
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ViewsController : ControllerBase
+    {
+        public ApiQuerry apiquerry = new ApiQuerry();
+
+        [HttpGet]
+        public ActionResult<List<ViewsHistory>> Get()
+        {
+            return apiquerry.GetAllViews().ToList();
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<List<ViewsHistory>> GetById(int id)
+        {
+            return apiquerry.GetViewById(id).ToList();
         }
     }
 }

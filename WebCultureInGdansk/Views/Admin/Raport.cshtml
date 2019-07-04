@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Common.Models.ReportStatViewModel>
+
+    @{
+        ViewData["Title"] = "Raport";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Raport</h2>
+    <table>
+        <tr>
+            <th>Nazwa wydarzenia</th>
+            <th>Ilość wydarzeń</th>
+        </tr>
+ 
+        @*@foreach (var item in Model)
+        {
+           <tr>
+                <td><a asp-controller="Events" asp-action="Details" asp-route-id="@item.Id">@item.</a></td>
+                <td> @item.EventName</td>
+                <td> @item.ViewsCount</td>
+           </tr>
+    </table>*@
+

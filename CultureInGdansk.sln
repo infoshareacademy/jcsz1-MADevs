@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CultureInGdansk.Tests", "CultureInGdansk.Tests\CultureInGdansk.Tests.csproj", "{28D4B58B-4693-441B-9479-86C5082F9649}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CultureInGdanskDTO", "CultureInGdanskDTO\CultureInGdanskDTO.csproj", "{DBEC616E-F3BE-474D-AAF8-6C572389C10C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CultureInGdanskAPI", "CultureInGdanskDTO\CultureInGdanskAPI.csproj", "{DBEC616E-F3BE-474D-AAF8-6C572389C10C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
