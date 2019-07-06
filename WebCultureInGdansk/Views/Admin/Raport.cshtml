@@ -9,15 +9,14 @@
     <table>
         <tr>
             <th>Nazwa wydarzenia</th>
-            <th>Ilość wydarzeń</th>
+            <th>Ilość wyświetleń</th>
         </tr>
  
-        @*@foreach (var item in Model)
+        @foreach (var item in Model)
         {
            <tr>
-                <td><a asp-controller="Events" asp-action="Details" asp-route-id="@item.Id">@item.</a></td>
-                <td> @item.EventName</td>
+                <td><a asp-controller="Events" asp-action="Details" asp-route-id="@item.Id">@item.EventName</a></td>
                 <td> @item.ViewsCount</td>
-           </tr>
-    </table>*@
+           </tr>}
+    </table>
 
